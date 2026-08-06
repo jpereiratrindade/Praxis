@@ -25,7 +25,7 @@ O primeiro incremento funcional do SisTer-HOA é a **Forja de Projetos Governado
 Versão atual:
 
 ```text
-sister-ops 0.1.0
+sister-ops 0.1.1
 ```
 
 Estado do projeto:
@@ -183,7 +183,7 @@ Confira a CLI:
 Saída esperada:
 
 ```text
-sister-ops 0.1.0
+sister-ops 0.1.1
 ```
 
 Consulte o catálogo:
@@ -546,7 +546,7 @@ Essa implementação serve como bootstrap verificável. A evolução prevista é
 
 ## Limitações do MVP
 
-A versão `0.1.0` ainda não inclui:
+A versão `0.1.1` ainda não inclui:
 
 - adoção de projetos existentes;
 - atualização incremental de estruturas;
@@ -722,9 +722,9 @@ Copyright © 2026 José Pedro Trindade
 
 ## Princípio orientador
 
-> O assistente pode propor.  
-> O plano deve explicitar.  
-> A autoridade deve autorizar.  
-> O executor deve obedecer.  
-> O sistema deve verificar.  
+> O assistente pode propor.
+> O plano deve explicitar.
+> A autoridade deve autorizar.
+> O executor deve obedecer.
+> O sistema deve verificar.
 > A evidência deve permanecer.

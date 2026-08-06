@@ -1,4 +1,6 @@
 #!/usr/bin/env python3
+# SPDX-License-Identifier: GPL-3.0-only
+# Copyright (C) 2026 José Pedro Trindade
 """SisTer-HOA Project Forge MVP.
 
 CLI determinística para planejar, criar, inspecionar e verificar projetos
@@ -23,7 +25,9 @@ from dataclasses import dataclass
 from pathlib import Path
 from typing import Iterable, Mapping
 
-VERSION = "0.1.0"
+VERSION = "0.1.1"
+LICENSE_ID = "GPL-3.0-only"
+LICENSE_FILE = Path(__file__).resolve().parent / "licenses" / "GPL-3.0.txt"
 RISK_LEVEL = "mutate_local"
 SUPPORTED_BLUEPRINTS = (
     ("cpp", "cli", "harness", "cpp-cli-harness"),
@@ -147,31 +151,30 @@ def common_files(bp: Blueprint, generated_at: str) -> dict[str, str]:
     shape: {bp.shape}
     governance: {bp.governance}
     role: {bp.role}
+    license: {LICENSE_ID}
     harness_mode: true
     generated_by: sister-ops/project-forge@{VERSION}
     generated_at: {generated_at}
     """
 
-    license_text = """\
-    SPDX-License-Identifier: GPL-3.0-or-later
-
-    Este projeto é distribuído sob a GNU General Public License,
-    versão 3 ou, a critério do usuário, qualquer versão posterior.
-    Consulte https://www.gnu.org/licenses/gpl-3.0.html
-    """
+    try:
+        license_text = LICENSE_FILE.read_text(encoding="utf-8")
+    except OSError as exc:
+        raise ForgeError(f"texto da licença não disponível: {LICENSE_FILE}") from exc
 
     blueprint_schema = {
         "$schema": "https://json-schema.org/draft/2020-12/schema",
         "$id": "sister://contracts/project-blueprint/0.1",
         "title": "SisTer Project Blueprint",
         "type": "object",
-        "required": ["name", "language", "shape", "governance", "role"],
+        "required": ["name", "language", "shape", "governance", "role", "license"],
         "properties": {
             "name": {"type": "string", "minLength": 1},
             "language": {"enum": ["cpp", "python"]},
             "shape": {"enum": ["cli", "service", "library", "web", "hybrid"]},
             "governance": {"enum": ["basic", "governed", "harness"]},
             "role": {"enum": ["standalone", "subsystem", "assistant", "adapter"]},
+            "license": {"enum": [LICENSE_ID]},
         },
         "additionalProperties": False,
     }
@@ -463,6 +466,11 @@ def cpp_files(bp: Blueprint) -> dict[str, str]:
     ```bash
     ./build/{target} status
     ```
+
+    ## Licença
+
+    GNU General Public License v3.0 only (`GPL-3.0-only`).
+    Consulte o arquivo `LICENSE`.
     """
 
     cmake = f"""\
@@ -586,6 +594,11 @@ def python_files(bp: Blueprint) -> dict[str, str]:
     ```bash
     PYTHONPATH=src python3 -m {package}.main status
     ```
+
+    ## Licença
+
+    GNU General Public License v3.0 only (`GPL-3.0-only`).
+    Consulte o arquivo `LICENSE`.
     """
 
     pyproject = f"""\
@@ -945,6 +958,7 @@ def structural_checks(project: Path, language: str | None = None) -> list[Check]
     required = [
         "project.sister.yaml",
         "README.md",
+        "LICENSE",
         "contracts/project-blueprint.schema.json",
         "contracts/operations/agent.schema.json",
         "contracts/operations/skill.schema.json",
@@ -969,12 +983,24 @@ def structural_checks(project: Path, language: str | None = None) -> list[Check]
     elif detected == "python":
         required.extend(["pyproject.toml", "tests/test_smoke.py"])
 
+    license_path = project / "LICENSE"
+    try:
+        project_license_text = license_path.read_text(encoding="utf-8")
+    except OSError:
+        project_license_text = ""
+    license_ok = (
+        manifest.get("license") == LICENSE_ID
+        and "GNU GENERAL PUBLIC LICENSE" in project_license_text
+        and "Version 3, 29 June 2007" in project_license_text
+    )
+
     checks = [
         Check(
             "Project Blueprint",
             manifest.get("governance") == "harness" and manifest.get("harness_mode") == "true",
             "project.sister.yaml",
         ),
+        Check("Licença GPLv3", license_ok, manifest.get("license", "não declarada")),
         Check("Linguagem detectada", detected in {"cpp", "python"}, str(detected or "desconhecida")),
     ]
 
@@ -1205,6 +1231,7 @@ def command_inspect(args: argparse.Namespace) -> int:
     print(f"Forma: {manifest.get('shape', 'não declarada')}")
     print(f"Governança: {manifest.get('governance', 'não declarada')}")
     print(f"Papel: {manifest.get('role', 'não declarado')}")
+    print(f"Licença: {manifest.get('license', 'não declarada')}")
     print(f"Harness: {'materializado' if all(c.ok for c in checks) else 'incompleto'}")
     if missing_details:
         print()
