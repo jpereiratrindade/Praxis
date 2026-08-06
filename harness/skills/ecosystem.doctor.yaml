@@ -1,0 +1,15 @@
+id: ecosystem.doctor
+version: 0.1.0
+authority: sister-hoa
+risk: read
+executor:
+  adapter: internal-cpp
+  operation: doctor
+preconditions:
+  - repository_root_resolved
+postconditions:
+  - all_governance_checks_reported
+  - missing_artifacts_not_hidden
+evidence:
+  - diagnostic_report
+confirmation: not_required

@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "sister://hoa/contracts/operation-plan/0.1",
+  "type": "object",
+  "required": ["id", "goal", "agent", "steps", "max_risk", "requires_confirmation"],
+  "properties": {
+    "id": {"type": "string"},
+    "goal": {"type": "string"},
+    "agent": {"type": "string"},
+    "steps": {"type": "array"},
+    "max_risk": {"enum": ["read", "mutate_local", "publish", "destructive"]},
+    "requires_confirmation": {"type": "boolean"}
+  },
+  "additionalProperties": true
+}

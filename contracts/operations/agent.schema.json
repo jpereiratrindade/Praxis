@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "sister://hoa/contracts/agent/0.1",
+  "type": "object",
+  "required": ["id", "version", "objective", "skill_allowlist", "max_risk", "authority_boundary"],
+  "properties": {
+    "id": {"type": "string", "minLength": 1},
+    "version": {"type": "string", "minLength": 1},
+    "objective": {"type": "string", "minLength": 1},
+    "skill_allowlist": {"type": "array", "items": {"type": "string"}},
+    "max_risk": {"enum": ["read", "mutate_local", "publish", "destructive"]},
+    "authority_boundary": {"type": "string", "minLength": 1}
+  },
+  "additionalProperties": true
+}

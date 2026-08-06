@@ -1,7 +1,12 @@
 #!/usr/bin/env bash
 # SPDX-License-Identifier: GPL-3.0-only
-# Copyright (C) 2026 José Pedro Trindade
 set -Eeuo pipefail
-ROOT="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
-export SISTER_HOA_HOME="${SISTER_HOA_HOME:-$ROOT}"
-exec python3 "$ROOT/tools/project_forge/sister_ops.py" "$@"
+root="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
+binary="$root/build/sister-ops"
+if [[ ! -x "$binary" ]]; then
+  printf 'ERRO: binário C++23 ainda não construído.\n' >&2
+  printf 'Execute: ./scripts/run_quality.sh\n' >&2
+  exit 2
+fi
+export SISTER_HOA_HOME="$root"
+exec "$binary" "$@"

@@ -1,0 +1,13 @@
+schema: sister-project/0.2
+name: SisTer-HOA
+id: sister-hoa
+implementation_language: cpp
+language_standard: c++23
+architecture: layered-modular
+harness_document: HOA-SisTer/0.1
+harness_phase: H0
+governance_profile: governed-harness
+license: GPL-3.0-only
+authority: local-operator
+llm_execution_authority: none
+mutating_skills_enabled: false

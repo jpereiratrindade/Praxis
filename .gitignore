@@ -4,3 +4,11 @@
 # Python
 __pycache__/
 *.py[cod]
+
+# C++ / CMake
+build/
+build-*/
+compile_commands.json
+
+# Local Harness state
+.sister-hoa/

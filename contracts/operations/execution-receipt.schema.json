@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "sister://hoa/contracts/execution-receipt/0.1",
+  "type": "object",
+  "required": ["id", "plan_id", "operator", "started_at", "finished_at", "steps", "result"],
+  "properties": {
+    "id": {"type": "string"},
+    "plan_id": {"type": "string"},
+    "operator": {"type": "string"},
+    "started_at": {"type": "string"},
+    "finished_at": {"type": "string"},
+    "steps": {"type": "array"},
+    "result": {"enum": ["succeeded", "failed", "interrupted"]}
+  },
+  "additionalProperties": true
+}

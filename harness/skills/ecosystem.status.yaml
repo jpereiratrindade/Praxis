@@ -1,0 +1,14 @@
+id: ecosystem.status
+version: 0.1.0
+authority: sister-hoa
+risk: read
+executor:
+  adapter: internal-cpp
+  operation: status
+preconditions:
+  - native_binary_available
+postconditions:
+  - implementation_and_phase_reported
+evidence:
+  - command_exit_code
+confirmation: not_required

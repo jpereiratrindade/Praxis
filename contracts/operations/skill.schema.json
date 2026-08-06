@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "sister://hoa/contracts/skill/0.1",
+  "type": "object",
+  "required": ["id", "version", "authority", "risk", "executor", "preconditions", "postconditions", "evidence"],
+  "properties": {
+    "id": {"type": "string", "minLength": 1},
+    "version": {"type": "string", "minLength": 1},
+    "authority": {"type": "string", "minLength": 1},
+    "risk": {"enum": ["read", "mutate_local", "publish", "destructive"]},
+    "executor": {"type": "object"},
+    "preconditions": {"type": "array", "items": {"type": "string"}},
+    "postconditions": {"type": "array", "items": {"type": "string"}},
+    "evidence": {"type": "array", "items": {"type": "string"}}
+  },
+  "additionalProperties": true
+}

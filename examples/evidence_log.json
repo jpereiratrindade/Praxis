@@ -1,0 +1,12 @@
+{
+  "schema": "sister-evidence-log/0.1",
+  "entries": [
+    {
+      "id": "evidence-h0-bootstrap",
+      "operation": "governance.baseline.verify",
+      "risk": "read",
+      "result": "expected",
+      "evidence": ["cmake-build", "ctest", "governance-validator"]
+    }
+  ]
+}

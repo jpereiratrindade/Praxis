@@ -1,0 +1,69 @@
+#!/usr/bin/env python3
+# SPDX-License-Identifier: GPL-3.0-only
+from __future__ import annotations
+
+import json
+import pathlib
+import sys
+
+ROOT = pathlib.Path(__file__).resolve().parents[1]
+
+REQUIRED = [
+    "project.sister.yaml",
+    "CONTRIBUTING.md",
+    ".github/CODEOWNERS",
+    ".github/pull_request_template.md",
+    "policies/ai_usage_policy.md",
+    "policies/approval_matrix.md",
+    "policies/context_boundary_policy.md",
+    "policies/evidence_and_audit_policy.md",
+    "docs/adr/ADR-0001-native-cpp23-core.md",
+    "docs/architecture/DDD.md",
+    "docs/dai/DAI.md",
+    "mcp/contracts/operation_registry_tool_contract.md",
+    "examples/evidence_log.json",
+]
+
+SCHEMAS = [
+    "contracts/operations/agent.schema.json",
+    "contracts/operations/skill.schema.json",
+    "contracts/operations/operation-plan.schema.json",
+    "contracts/operations/execution-receipt.schema.json",
+]
+
+
+def main() -> int:
+    errors: list[str] = []
+    for relative in REQUIRED:
+        if not (ROOT / relative).exists():
+            errors.append(f"missing: {relative}")
+
+    for relative in SCHEMAS:
+        path = ROOT / relative
+        if not path.exists():
+            errors.append(f"missing: {relative}")
+            continue
+        try:
+            json.loads(path.read_text(encoding="utf-8"))
+        except (OSError, json.JSONDecodeError) as exc:
+            errors.append(f"invalid JSON: {relative}: {exc}")
+
+    agents = sorted((ROOT / "harness/agents").glob("*.yaml"))
+    skills = sorted((ROOT / "harness/skills").glob("*.yaml"))
+    if len(agents) < 2:
+        errors.append("at least two registered agents are required")
+    if len(skills) < 3:
+        errors.append("at least three registered skills are required")
+
+    if errors:
+        print("Governance baseline: NOT_READY", file=sys.stderr)
+        for error in errors:
+            print(f"- {error}", file=sys.stderr)
+        return 1
+
+    print(f"Governance baseline: READY ({len(agents)} agents, {len(skills)} skills)")
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

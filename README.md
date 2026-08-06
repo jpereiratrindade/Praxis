@@ -1,5 +1,15 @@
 # SisTer-HOA
 
+<!-- NATIVE_CPP23_STATUS -->
+
+> [!IMPORTANT]
+> O núcleo oficial do SisTer-HOA é agora o executável nativo C++23 `sister-ops`.
+> A implementação Python inicial foi preservada em `legacy/python-project-forge/`
+> apenas como referência durante a migração incremental da Forja. O estágio atual
+> é H0: `status`, `health`, `doctor`, contratos, agentes, skills, políticas e
+> verificação da governança — sem LLM e sem operações mutáveis.
+
+
 **Harness Operacional Assistido do ecossistema SisTer**
 
 O **SisTer-HOA** é uma infraestrutura local para planejar, autorizar, executar, verificar e registrar operações de engenharia de software de forma governada.
