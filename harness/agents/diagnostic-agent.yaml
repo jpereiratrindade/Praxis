@@ -7,4 +7,5 @@ skill_allowlist:
   - ecosystem.status@0.1.0
   - ecosystem.health@0.1.0
   - ecosystem.doctor@0.1.0
+  - dashboard.observe@0.1.0
 evidence_required: true

@@ -1,0 +1,18 @@
+id: dashboard.observe
+version: 0.1.0
+authority: sister-hoa
+risk: read
+executor:
+  adapter: internal-cpp
+  operation: dashboard.serve
+preconditions:
+  - native_binary_available
+  - repository_governance_inspectable
+postconditions:
+  - loopback_only_listener
+  - get_and_head_only
+  - no_mutating_route_available
+evidence:
+  - command_exit_code
+  - http_method_policy
+confirmation: not_required

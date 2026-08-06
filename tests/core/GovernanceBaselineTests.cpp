@@ -20,7 +20,7 @@ int main() {
 
     require(report.ok(), "governance baseline must be complete");
     require(report.agentCount >= 2, "at least two agents must be registered");
-    require(report.skillCount >= 3, "at least three skills must be registered");
+    require(report.skillCount >= 4, "at least four skills must be registered");
 
     std::cout << "GovernanceBaselineTests: PASS\n";
     return 0;

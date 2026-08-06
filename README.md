@@ -32,55 +32,85 @@ O primeiro incremento funcional do SisTer-HOA é a **Forja de Projetos Governado
 
 ## Estado atual
 
-Versão atual:
+Versão nativa atual:
 
 ```text
-sister-ops 0.1.1
+sister-ops 0.3.0 (C++23)
 ```
 
-Estado do projeto:
+Fase operacional:
 
 ```text
-MVP funcional
+Harness H0
+modo determinístico, sem LLM e sem skills mutáveis
 ```
 
-O MVP já permite:
+O núcleo C++23 já oferece:
 
-- consultar o catálogo de blueprints;
-- planejar a criação de projetos;
-- revisar o destino e os arquivos previstos;
-- autorizar explicitamente a execução;
-- gerar projetos C++ ou Python;
-- criar estruturas compatíveis com o padrão Harness;
-- executar build e testes;
-- verificar contratos e estruturas;
-- registrar evidências e recibos;
-- inspecionar projetos já materializados;
-- impedir sobrescrita de diretórios existentes.
+- `status`, `health` e `doctor`;
+- verificação da baseline de governança;
+- ajuda geral e contextual derivada do registro de comandos;
+- snapshot observacional em JSON;
+- painel web local e exclusivamente de leitura;
+- agentes, skills, políticas, contratos, ADR, DAI, cenários e testes;
+- quality gates por CMake, CTest e validador de governança.
 
-O seguinte ciclo foi validado experimentalmente:
+A Forja de Projetos desenvolvida no protótipo inicial permanece em
+`legacy/python-project-forge/` como referência para a migração incremental ao
+núcleo nativo. Ela não integra ainda a superfície oficial do executável C++23.
+
+### Ajuda da CLI
+
+```bash
+./sister-ops --help
+./sister-ops help
+./sister-ops help doctor
+./sister-ops help dashboard
+```
+
+A ajuda informa o uso, o risco e se o comando possui capacidade de mutação.
+No estágio H0, todos os comandos registrados são de leitura.
+
+### Painel de observação
+
+Produza o snapshot no terminal:
+
+```bash
+./sister-ops dashboard snapshot
+```
+
+Inicie a interface local:
+
+```bash
+./sister-ops dashboard serve --port 8090
+```
+
+Abra no navegador:
 
 ```text
-blueprint
-    ↓
-plano
-    ↓
-autorização
-    ↓
-materialização
-    ↓
-build e testes
-    ↓
-verificação
-    ↓
-evidência e recibo
+http://127.0.0.1:8090
 ```
 
-Resultado obtido nos ensaios C++ e Python:
+O painel:
 
-```text
-HARNESS_READY
+- escuta somente em `127.0.0.1`;
+- aceita apenas `GET` e `HEAD`;
+- rejeita métodos mutáveis com `405 Method Not Allowed`;
+- não cria planos;
+- não executa skills;
+- não modifica arquivos;
+- não lê segredos;
+- exibe claramente o modo `READ ONLY`.
+
+Teste da fronteira HTTP:
+
+```bash
+curl -I http://127.0.0.1:8090/
+curl http://127.0.0.1:8090/api/snapshot
+curl -X POST -i http://127.0.0.1:8090/api/snapshot
 ```
+
+O último comando deve retornar `405` e `Allow: GET, HEAD`.
 
 ---
 

@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <meta name="description" content="Painel de observação somente leitura do SisTer-HOA">
+  <title>SisTer-HOA · Painel de Observação</title>
+  <link rel="stylesheet" href="/assets/app.css">
+</head>
+<body>
+  <div class="ambient ambient-a" aria-hidden="true"></div>
+  <div class="ambient ambient-b" aria-hidden="true"></div>
+
+  <header class="topbar">
+    <a class="brand" href="/" aria-label="SisTer-HOA">
+      <span class="brand-mark">HOA</span>
+      <span>
+        <strong>SisTer</strong>
+        <small>Harness Operacional Assistido</small>
+      </span>
+    </a>
+    <div class="topbar-status">
+      <span class="pulse" aria-hidden="true"></span>
+      <span id="generated-at">carregando snapshot</span>
+      <span class="readonly-badge">READ ONLY</span>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero panel">
+      <div class="hero-copy">
+        <p class="eyebrow">OBSERVAÇÃO · H0 · C++23 NATIVO</p>
+        <h1>O Harness está visível.<br><span>As rédeas continuam fora da web.</span></h1>
+        <p class="hero-text">
+          Este painel apresenta a identidade, a governança e os sinais operacionais do SisTer-HOA.
+          Ele não cria planos, não executa skills e não modifica o sistema.
+        </p>
+        <div class="hero-meta">
+          <span id="system-version">versão —</span>
+          <span id="system-mode">modo —</span>
+          <span>bind 127.0.0.1</span>
+        </div>
+      </div>
+      <div class="harness-orbit" aria-label="Ciclo Harness">
+        <div class="orbit-core">
+          <strong id="governance-state">—</strong>
+          <small>governança</small>
+        </div>
+        <span class="orbit-node node-1">observar</span>
+        <span class="orbit-node node-2">interpretar</span>
+        <span class="orbit-node node-3">planejar</span>
+        <span class="orbit-node node-4">autorizar</span>
+        <span class="orbit-node node-5">executar</span>
+        <span class="orbit-node node-6">verificar</span>
+      </div>
+    </section>
+
+    <section class="metrics" aria-label="Indicadores">
+      <article class="metric-card">
+        <span class="metric-label">núcleo</span>
+        <strong>C++23</strong>
+        <small>implementação nativa</small>
+      </article>
+      <article class="metric-card">
+        <span class="metric-label">agentes</span>
+        <strong id="agent-count">—</strong>
+        <small>registrados no Harness</small>
+      </article>
+      <article class="metric-card">
+        <span class="metric-label">skills</span>
+        <strong id="skill-count">—</strong>
+        <small>todas de risco read</small>
+      </article>
+      <article class="metric-card">
+        <span class="metric-label">cenários</span>
+        <strong id="scenario-count">—</strong>
+        <small>experimentos documentados</small>
+      </article>
+    </section>
+
+    <section class="content-grid">
+      <article class="panel governance-panel">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">BASELINE</p>
+            <h2>Governança materializada</h2>
+          </div>
+          <span class="state-chip" id="governance-chip">—</span>
+        </div>
+        <div class="checks" id="governance-checks" aria-live="polite">
+          <p class="loading">Lendo políticas, contratos e registros…</p>
+        </div>
+      </article>
+
+      <aside class="side-stack">
+        <article class="panel safety-panel">
+          <div class="section-heading compact">
+            <div>
+              <p class="eyebrow">FRONTEIRA</p>
+              <h2>Autoridade da interface</h2>
+            </div>
+          </div>
+          <dl class="safety-list">
+            <div><dt>executar operações</dt><dd>nenhuma</dd></div>
+            <div><dt>modificar arquivos</dt><dd>nenhuma</dd></div>
+            <div><dt>métodos HTTP</dt><dd>GET · HEAD</dd></div>
+            <div><dt>LLM</dt><dd id="llm-state">—</dd></div>
+            <div><dt>skills mutáveis</dt><dd id="mutation-state">—</dd></div>
+          </dl>
+        </article>
+
+        <article class="panel evidence-panel">
+          <div class="section-heading compact">
+            <div>
+              <p class="eyebrow">RASTROS</p>
+              <h2>Memória operacional</h2>
+            </div>
+          </div>
+          <div class="evidence-stats">
+            <div><strong id="evidence-count">—</strong><span>evidências</span></div>
+            <div><strong id="report-count">—</strong><span>relatórios</span></div>
+          </div>
+          <p>O painel lê contagens. Conteúdo integral de logs e segredos permanece fora da interface.</p>
+        </article>
+      </aside>
+    </section>
+
+    <section class="panel roadmap-panel">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">PROGRESSÃO</p>
+          <h2>Fases do Harness</h2>
+        </div>
+        <span class="phase-label" id="phase-label">H0</span>
+      </div>
+      <div class="phase-track">
+        <div class="phase active"><span>H0</span><strong>Observar</strong><small>núcleo, governança, diagnóstico e painel</small></div>
+        <div class="phase"><span>H1</span><strong>Registrar</strong><small>AgentRegistry, SkillRegistry e OperationRegistry</small></div>
+        <div class="phase"><span>H2</span><strong>Planejar</strong><small>planos estruturados, ainda sem execução autônoma</small></div>
+        <div class="phase"><span>H3</span><strong>Operar</strong><small>mutações autorizadas, verificadas e auditáveis</small></div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <span>SisTer-HOA · Painel de Observação</span>
+    <span>Sem botões mágicos. Por projeto.</span>
+  </footer>
+
+  <noscript>Este painel precisa de JavaScript apenas para ler o snapshot local.</noscript>
+  <script src="/assets/app.js" defer></script>
+</body>
+</html>

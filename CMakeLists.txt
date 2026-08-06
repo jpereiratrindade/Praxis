@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.25)
-project(SisTerHOA VERSION 0.2.0 LANGUAGES CXX)
+project(SisTerHOA VERSION 0.3.0 LANGUAGES CXX)
 
 set(CMAKE_CXX_STANDARD 23)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
@@ -38,7 +38,10 @@ endif()
 
 add_library(sister_hoa_core STATIC
     src/core/GovernanceBaseline.cpp
+    src/core/CommandRegistry.cpp
     src/cli/Commands.cpp
+    src/dashboard/DashboardSnapshot.cpp
+    src/dashboard/ReadOnlyHttpServer.cpp
 )
 
 target_include_directories(sister_hoa_core PUBLIC
@@ -60,3 +63,21 @@ add_executable(SisTerHOACoreTests
 target_link_libraries(SisTerHOACoreTests PRIVATE sister_hoa_core sister_hoa_project_options)
 
 add_test(NAME core_governance_tests COMMAND SisTerHOACoreTests)
+
+add_executable(SisTerHOAHelpTests
+    tests/cli/HelpCommandTests.cpp
+)
+target_link_libraries(SisTerHOAHelpTests PRIVATE sister_hoa_core sister_hoa_project_options)
+target_compile_definitions(SisTerHOAHelpTests PRIVATE
+    SISTER_HOA_SOURCE_DIR="${CMAKE_CURRENT_SOURCE_DIR}"
+)
+add_test(NAME cli_help_tests COMMAND SisTerHOAHelpTests)
+
+add_executable(SisTerHOADashboardTests
+    tests/dashboard/DashboardReadOnlyTests.cpp
+)
+target_link_libraries(SisTerHOADashboardTests PRIVATE sister_hoa_core sister_hoa_project_options)
+target_compile_definitions(SisTerHOADashboardTests PRIVATE
+    SISTER_HOA_SOURCE_DIR="${CMAKE_CURRENT_SOURCE_DIR}"
+)
+add_test(NAME dashboard_read_only_tests COMMAND SisTerHOADashboardTests)

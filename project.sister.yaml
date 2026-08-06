@@ -11,3 +11,5 @@ license: GPL-3.0-only
 authority: local-operator
 llm_execution_authority: none
 mutating_skills_enabled: false
+dashboard_mode: read-only-local
+web_control_authority: none

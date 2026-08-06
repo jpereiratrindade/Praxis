@@ -17,11 +17,18 @@ REQUIRED = [
     "policies/approval_matrix.md",
     "policies/context_boundary_policy.md",
     "policies/evidence_and_audit_policy.md",
+    "policies/read_only_dashboard_policy.md",
     "docs/adr/ADR-0001-native-cpp23-core.md",
+    "docs/adr/ADR-0002-read-only-observation-dashboard.md",
     "docs/architecture/DDD.md",
     "docs/dai/DAI.md",
     "mcp/contracts/operation_registry_tool_contract.md",
     "examples/evidence_log.json",
+    "harness/skills/dashboard.observe.yaml",
+    "harness/scenarios/HOA-EXP-002-dashboard-read-only.md",
+    "web/index.html",
+    "web/assets/app.css",
+    "web/assets/app.js",
 ]
 
 SCHEMAS = [
@@ -52,8 +59,8 @@ def main() -> int:
     skills = sorted((ROOT / "harness/skills").glob("*.yaml"))
     if len(agents) < 2:
         errors.append("at least two registered agents are required")
-    if len(skills) < 3:
-        errors.append("at least three registered skills are required")
+    if len(skills) < 4:
+        errors.append("at least four registered skills are required")
 
     if errors:
         print("Governance baseline: NOT_READY", file=sys.stderr)
