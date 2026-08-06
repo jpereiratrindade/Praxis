@@ -1,2 +1,6 @@
 # Estado local do SisTer-HOA Project Forge
 .sister-hoa/
+
+# Python
+__pycache__/
+*.py[cod]
