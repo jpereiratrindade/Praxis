@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+set -Eeuo pipefail
+ROOT="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
+export SISTER_HOA_HOME="${SISTER_HOA_HOME:-$ROOT}"
+exec python3 "$ROOT/tools/project_forge/sister_ops.py" "$@"
