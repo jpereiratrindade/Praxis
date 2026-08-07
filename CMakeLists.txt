@@ -45,6 +45,7 @@ add_library(sister_hoa_core STATIC
     src/targets/TargetRegistry.cpp
     src/observation/ExternalObservation.cpp
     src/action/ActionPlan.cpp
+    src/workspace/ProjectWorkspace.cpp
 )
 
 target_include_directories(sister_hoa_core PUBLIC
@@ -59,6 +60,9 @@ add_executable(sister-ops
     apps/sister-ops/main.cpp
 )
 target_link_libraries(sister-ops PRIVATE sister_hoa_core sister_hoa_project_options)
+
+add_executable(hoa apps/hoa/main.cpp)
+target_link_libraries(hoa PRIVATE sister_hoa_core sister_hoa_project_options)
 
 add_executable(SisTerHOACoreTests
     tests/core/GovernanceBaselineTests.cpp
@@ -84,3 +88,7 @@ target_compile_definitions(SisTerHOADashboardTests PRIVATE
     SISTER_HOA_SOURCE_DIR="${CMAKE_CURRENT_SOURCE_DIR}"
 )
 add_test(NAME dashboard_read_only_tests COMMAND SisTerHOADashboardTests)
+
+add_executable(SisTerHOAWorkspaceTests tests/workspace/ProjectWorkspaceTests.cpp)
+target_link_libraries(SisTerHOAWorkspaceTests PRIVATE sister_hoa_core sister_hoa_project_options)
+add_test(NAME workspace_tests COMMAND SisTerHOAWorkspaceTests)
