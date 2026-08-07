@@ -4,11 +4,16 @@
 #include "sister/hoa/DashboardSnapshot.hpp"
 #include "sister/hoa/GovernanceBaseline.hpp"
 #include "sister/hoa/ReadOnlyHttpServer.hpp"
+#include "sister/hoa/TargetRegistry.hpp"
+#include "sister/hoa/ExternalObservation.hpp"
+#include "sister/hoa/ActionPlan.hpp"
 #include "sister/hoa/Version.hpp"
 
 #include <charconv>
 #include <cstdint>
 #include <iostream>
+#include <algorithm>
+#include <iomanip>
 #include <optional>
 #include <string>
 #include <string_view>
@@ -38,7 +43,7 @@ int printGovernance(const GovernanceReport& report, const bool verbose) {
 
     std::cout << (report.agentCount >= 2 ? "PASS" : "FAIL")
               << "  agents — " << report.agentCount << " registered\n";
-    std::cout << (report.skillCount >= 4 ? "PASS" : "FAIL")
+    std::cout << (report.skillCount >= 9 ? "PASS" : "FAIL")
               << "  skills — " << report.skillCount << " registered\n";
     std::cout << "\nGovernance baseline: " << (report.ok() ? "READY" : "NOT_READY") << '\n';
     return report.ok() ? 0 : 4;
@@ -60,9 +65,9 @@ int commandDoctor(const std::filesystem::path& repositoryRoot) {
     std::cout << "SisTer-HOA doctor\n\n";
     const auto report = inspectGovernanceBaseline(repositoryRoot);
     const auto result = printGovernance(report, true);
-    std::cout << "\nHarness H0: " << (result == 0 ? "READY" : "NOT_READY") << '\n';
-    std::cout << "LLM provider: DISABLED (expected in H0)\n";
-    std::cout << "Mutating skills: DISABLED (expected in H0)\n";
+    std::cout << "\nHarness H1: " << (result == 0 ? "READY" : "NOT_READY") << '\n';
+    std::cout << "LLM provider: DISABLED (expected in H1)\n";
+    std::cout << "External execution: DISABLED; action planning: ENABLED (expected in H1)\n";
     std::cout << "Dashboard control authority: NONE\n";
     return result;
 }
@@ -141,6 +146,116 @@ int commandDashboard(
     return 2;
 }
 
+
+int commandTarget(const std::span<const std::string_view> arguments,
+                  const std::filesystem::path& repositoryRoot) {
+    TargetRegistry registry(repositoryRoot);
+    if (arguments.empty() || arguments[0] == "catalog") {
+        std::cout << "TARGET             KIND          FILESYSTEM   TCP         ACTIONS\n";
+        for (const auto& target : registry.targets()) {
+            const auto observation = observeTarget(target);
+            std::string filesystem = "—";
+            std::string tcp = "—";
+            for (const auto& check : observation.checks) {
+                if (check.id == "filesystem") filesystem = std::string(toString(check.state));
+                if (check.id == "tcp") tcp = std::string(toString(check.state));
+            }
+            std::cout << std::left << std::setw(19) << target.id
+                      << std::setw(14) << target.kind
+                      << std::setw(13) << filesystem
+                      << std::setw(12) << tcp
+                      << target.actions.size() << '\n';
+        }
+        std::cout << "\nModo: READ_ONLY\n";
+        return 0;
+    }
+    if (arguments[0] == "inspect" && arguments.size() == 2U) {
+        const auto* target = registry.find(arguments[1]);
+        if (target == nullptr) {
+            std::cerr << "ERRO: target não registrado: " << arguments[1] << '\n';
+            return 2;
+        }
+        const auto observation = observeTarget(*target);
+        std::cout << "Target: " << target->name << " [" << target->id << "]\n"
+                  << "Kind: " << target->kind << "\n"
+                  << "Repository: " << target->repository.string() << "\n"
+                  << "Result: " << toString(observation.state) << "\n\n";
+        for (const auto& check : observation.checks) {
+            std::cout << std::left << std::setw(14) << check.id
+                      << std::setw(14) << toString(check.state)
+                      << check.detail << '\n';
+        }
+        std::cout << "\nAuthority: observe=allowed, mutate=plan-only\n";
+        return observation.state == ObservationState::unavailable ? 5 : 0;
+    }
+    std::cerr << "ERRO: uso: sister-ops target <catalog|inspect ID>\n";
+    return 2;
+}
+
+int commandEcosystem(const std::span<const std::string_view> arguments,
+                     const std::filesystem::path& repositoryRoot) {
+    if (arguments.size() != 1U || (arguments[0] != "status" && arguments[0] != "health")) {
+        std::cerr << "ERRO: uso: sister-ops ecosystem <status|health>\n";
+        return 2;
+    }
+    TargetRegistry registry(repositoryRoot);
+    std::cout << "Ecossistema SisTer\n\nTARGET             RESULT        CHECKS\n";
+    bool allReady = true;
+    for (const auto& target : registry.targets()) {
+        const auto observation = observeTarget(target);
+        allReady = allReady && observation.state == ObservationState::ready;
+        std::cout << std::left << std::setw(19) << target.id
+                  << std::setw(14) << toString(observation.state)
+                  << observation.checks.size() << '\n';
+    }
+    std::cout << "\nModo: READ_ONLY\nHarness: H1 OBSERVATION\n";
+    return allReady ? 0 : 5;
+}
+
+int commandAction(const std::span<const std::string_view> arguments,
+                  const std::filesystem::path& repositoryRoot) {
+    if (arguments.empty() || arguments[0] == "catalog") {
+        std::cout << "Ações externas registradas\n\n"
+                  << "  project.build    mutate_local   plan-only\n"
+                  << "  project.test     mutate_local   plan-only\n"
+                  << "  service.restart  mutate_local   plan-only\n\n"
+                  << "Execução externa: DISABLED\n";
+        return 0;
+    }
+    if (arguments[0] == "plan" && arguments.size() == 4U && arguments[2] == "--target") {
+        const auto operation = arguments[1];
+        if (!isKnownAction(operation)) {
+            std::cerr << "ERRO: ação desconhecida: " << operation << '\n';
+            return 2;
+        }
+        TargetRegistry registry(repositoryRoot);
+        const auto* target = registry.find(arguments[3]);
+        if (target == nullptr) {
+            std::cerr << "ERRO: target não registrado: " << arguments[3] << '\n';
+            return 2;
+        }
+        if (std::ranges::find(target->actions, operation) == target->actions.end()) {
+            std::cerr << "ERRO: ação não autorizada pelo target: " << operation << '\n';
+            return 3;
+        }
+        const auto plan = createActionPlan(repositoryRoot, *target, operation);
+        std::cout << "Plano: " << plan.id << "\n"
+                  << "Operação: " << operation << "\n"
+                  << "Alvo: " << target->id << "\n"
+                  << "Risco: mutate_local\n"
+                  << "Estado: PLANNED_NOT_EXECUTED\n"
+                  << "Execução externa: DISABLED\n\n"
+                  << "Plano salvo em: " << plan.path.string() << '\n';
+        return 0;
+    }
+    if (arguments[0] == "apply") {
+        std::cerr << "ERRO: action apply ainda está desabilitado no H1; somente planos são permitidos\n";
+        return 4;
+    }
+    std::cerr << "ERRO: uso: sister-ops action <catalog|plan OP --target ID>\n";
+    return 2;
+}
+
 } // namespace
 
 int runCommand(
@@ -175,6 +290,15 @@ int runCommand(
     }
     if (arguments[0] == "dashboard") {
         return commandDashboard(arguments.subspan(1), repositoryRoot);
+    }
+    if (arguments[0] == "target") {
+        return commandTarget(arguments.subspan(1), repositoryRoot);
+    }
+    if (arguments[0] == "ecosystem") {
+        return commandEcosystem(arguments.subspan(1), repositoryRoot);
+    }
+    if (arguments[0] == "action") {
+        return commandAction(arguments.subspan(1), repositoryRoot);
     }
 
     std::cerr << "ERRO: comando desconhecido: " << arguments[0] << "\n\n";

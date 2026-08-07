@@ -29,6 +29,11 @@ REQUIRED = [
     "web/index.html",
     "web/assets/app.css",
     "web/assets/app.js",
+    "contracts/targets/target.schema.json",
+    "policies/external_authority_policy.md",
+    "docs/adr/ADR-0003-external-targets-plan-only-actions.md",
+    "harness/scenarios/HOA-EXP-003-external-observation.md",
+    "config/targets/sister.target",
 ]
 
 SCHEMAS = [
@@ -59,8 +64,8 @@ def main() -> int:
     skills = sorted((ROOT / "harness/skills").glob("*.yaml"))
     if len(agents) < 2:
         errors.append("at least two registered agents are required")
-    if len(skills) < 4:
-        errors.append("at least four registered skills are required")
+    if len(skills) < 9:
+        errors.append("at least nine registered skills are required")
 
     if errors:
         print("Governance baseline: NOT_READY", file=sys.stderr)

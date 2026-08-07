@@ -18,7 +18,7 @@ void require(const bool condition, const char* message) {
 int main() {
     const auto general = sister::hoa::renderGeneralHelp();
     require(general.find("dashboard serve") != std::string::npos, "general help must list dashboard serve");
-    require(general.find("operações mutáveis  desabilitadas") != std::string::npos,
+    require(general.find("execução desabilitada") != std::string::npos,
             "general help must state mutation policy");
 
     const auto doctor = sister::hoa::renderCommandHelp("doctor");
@@ -27,6 +27,8 @@ int main() {
     const auto dashboard = sister::hoa::renderCommandHelp("dashboard");
     require(dashboard.find("GET e HEAD") != std::string::npos, "dashboard help must expose HTTP boundary");
 
+    require(sister::hoa::findCommand("target catalog") != nullptr, "target catalog descriptor must exist");
+    require(sister::hoa::findCommand("action plan") != nullptr, "action plan descriptor must exist");
     require(sister::hoa::findCommand("status") != nullptr, "status descriptor must exist");
     require(sister::hoa::findCommand("unknown") == nullptr, "unknown descriptor must not exist");
 

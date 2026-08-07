@@ -7,7 +7,7 @@
 namespace sister::hoa {
 namespace {
 
-constexpr std::array<std::pair<std::string_view, std::string_view>, 26> kRequiredPaths{{
+constexpr std::array<std::pair<std::string_view, std::string_view>, 31> kRequiredPaths{{
     {"manifest", "project.sister.yaml"},
     {"license", "LICENSE"},
     {"contributing", "CONTRIBUTING.md"},
@@ -34,6 +34,11 @@ constexpr std::array<std::pair<std::string_view, std::string_view>, 26> kRequire
     {"dashboard-html", "web/index.html"},
     {"dashboard-css", "web/assets/app.css"},
     {"dashboard-js", "web/assets/app.js"},
+    {"target-contract", "contracts/targets/target.schema.json"},
+    {"external-authority-policy", "policies/external_authority_policy.md"},
+    {"external-target-adr", "docs/adr/ADR-0003-external-targets-plan-only-actions.md"},
+    {"external-scenario", "harness/scenarios/HOA-EXP-003-external-observation.md"},
+    {"target-config", "config/targets/sister.target"},
 }};
 
 std::size_t countYamlFiles(const std::filesystem::path& directory) {
@@ -63,7 +68,7 @@ bool GovernanceReport::ok() const {
             return false;
         }
     }
-    return agentCount >= 2 && skillCount >= 4;
+    return agentCount >= 2 && skillCount >= 9;
 }
 
 std::filesystem::path locateRepositoryRoot(const std::filesystem::path& start) {

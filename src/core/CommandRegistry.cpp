@@ -8,7 +8,7 @@
 namespace sister::hoa {
 namespace {
 
-constexpr std::array<CommandDescriptor, 7> kCommands{{
+constexpr std::array<CommandDescriptor, 13> kCommands{{
     {
         .name = "status",
         .summary = "Exibe identidade, versão e fase atual do Harness.",
@@ -50,6 +50,48 @@ constexpr std::array<CommandDescriptor, 7> kCommands{{
         .usage = "sister-ops dashboard serve [--port 8090]",
         .risk = "read",
         .details = "Escuta apenas em 127.0.0.1 e aceita somente GET e HEAD. POST, PUT, PATCH e DELETE retornam 405.",
+    },
+    {
+        .name = "target catalog",
+        .summary = "Lista alvos externos registrados e seu estado observável.",
+        .usage = "sister-ops target catalog",
+        .risk = "read",
+        .details = "Carrega config/targets e executa observações determinísticas de filesystem e TCP.",
+    },
+    {
+        .name = "target inspect",
+        .summary = "Inspeciona um alvo externo registrado.",
+        .usage = "sister-ops target inspect <id>",
+        .risk = "read",
+        .details = "Apresenta checks externos sem modificar o alvo.",
+    },
+    {
+        .name = "ecosystem status",
+        .summary = "Resume o estado dos alvos do ecossistema.",
+        .usage = "sister-ops ecosystem status",
+        .risk = "read",
+        .details = "Executa observações externas registradas em modo somente leitura.",
+    },
+    {
+        .name = "ecosystem health",
+        .summary = "Classifica a saúde externa do ecossistema.",
+        .usage = "sister-ops ecosystem health",
+        .risk = "read",
+        .details = "Retorna sucesso apenas quando todos os alvos estão READY.",
+    },
+    {
+        .name = "action catalog",
+        .summary = "Lista ações externas conhecidas e sua autoridade.",
+        .usage = "sister-ops action catalog",
+        .risk = "read",
+        .details = "No H1, ações são somente planejáveis; execução permanece desabilitada.",
+    },
+    {
+        .name = "action plan",
+        .summary = "Cria plano governado para ação externa.",
+        .usage = "sister-ops action plan <operação> --target <id>",
+        .risk = "mutate_local",
+        .details = "Grava plano local, mas não executa a operação externa.",
     },
     {
         .name = "help",
@@ -113,7 +155,7 @@ std::string renderGeneralHelp() {
            << "  Harness             " << kHarnessPhase << "\n"
            << "  implementação       C++23 nativo\n"
            << "  LLM                  desabilitado\n"
-           << "  operações mutáveis  desabilitadas\n"
+           << "  ação externa        plan-only; execução desabilitada\n"
            << "  painel web           somente leitura em 127.0.0.1\n\n"
            << "Ajuda contextual:\n"
            << "  sister-ops help doctor\n"

@@ -1,0 +1,10 @@
+id: action.plan
+version: 0.1.0
+authority: ecosystem-operator
+risk: mutate_local
+executor:
+  adapter: internal
+  operation: action.plan
+confirmation: not_required_plan_only
+evidence:
+  - structured_output

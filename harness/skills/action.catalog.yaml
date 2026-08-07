@@ -1,0 +1,10 @@
+id: action.catalog
+version: 0.1.0
+authority: ecosystem-operator
+risk: read
+executor:
+  adapter: internal
+  operation: action.catalog
+confirmation: not_required
+evidence:
+  - structured_output

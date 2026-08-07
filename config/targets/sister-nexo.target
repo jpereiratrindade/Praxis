@@ -1,0 +1,8 @@
+id=sister-nexo
+name=SisTer Nexo
+kind=subsystem
+repository=~/dev/cpp/sister-nexo
+host=127.0.0.1
+port=8015
+observations=filesystem,tcp
+actions=project.build,project.test,service.restart

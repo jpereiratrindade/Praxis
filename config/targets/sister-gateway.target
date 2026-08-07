@@ -1,0 +1,8 @@
+id=sister-gateway
+name=SisTer Gateway
+kind=gateway
+repository=~/dev/cpp/SisTer
+host=127.0.0.1
+port=8443
+observations=filesystem,tcp
+actions=service.restart

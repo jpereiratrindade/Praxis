@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.25)
-project(SisTerHOA VERSION 0.3.0 LANGUAGES CXX)
+project(SisTerHOA VERSION 0.4.0 LANGUAGES CXX)
 
 set(CMAKE_CXX_STANDARD 23)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
@@ -42,6 +42,9 @@ add_library(sister_hoa_core STATIC
     src/cli/Commands.cpp
     src/dashboard/DashboardSnapshot.cpp
     src/dashboard/ReadOnlyHttpServer.cpp
+    src/targets/TargetRegistry.cpp
+    src/observation/ExternalObservation.cpp
+    src/action/ActionPlan.cpp
 )
 
 target_include_directories(sister_hoa_core PUBLIC

@@ -1,0 +1,8 @@
+id=sister
+name=SisTer
+kind=orchestrator
+repository=~/dev/cpp/SisTer
+host=127.0.0.1
+port=8000
+observations=filesystem,tcp
+actions=project.build,project.test
