@@ -46,6 +46,7 @@ add_library(sister_hoa_core STATIC
     src/observation/ExternalObservation.cpp
     src/action/ActionPlan.cpp
     src/workspace/ProjectWorkspace.cpp
+    src/workspace/GitSyncStatus.cpp
 )
 
 target_include_directories(sister_hoa_core PUBLIC
