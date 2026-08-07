@@ -1,0 +1,6 @@
+schema: hoa-project/0.1
+id: generic-cpp-example
+name: Generic C++ Example
+paths:
+  targets: .hoa/targets
+  state: .hoa/state

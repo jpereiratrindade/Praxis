@@ -1,0 +1,9 @@
+id: workspace.sync-status
+name: Inspect Git synchronization
+risk: read
+authority: confined
+command: hoa workspace sync-status
+optional_mutation:
+  flag: --fetch
+  risk: mutate_local
+purpose: Classify local Git state relative to the configured origin branch.
