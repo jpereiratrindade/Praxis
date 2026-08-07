@@ -24,6 +24,12 @@ int main() {
             "snapshot must identify read-only mode");
     require(snapshot.find("\"mutating_skills_enabled\": false") != std::string::npos,
             "snapshot must deny mutating skills");
+    require(snapshot.find("\"ecosystem\"") != std::string::npos,
+            "snapshot must expose ecosystem observations");
+    require(snapshot.find("\"project.build\"") != std::string::npos,
+            "snapshot must expose the plan-only action catalog");
+    require(snapshot.find("\"external_execution_enabled\": false") != std::string::npos,
+            "snapshot must deny external execution");
 
     const auto index = sister::hoa::routeReadOnlyRequest("GET", "/", root);
     require(index.status == 200, "GET / must succeed");

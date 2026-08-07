@@ -1,10 +1,13 @@
 #include "sister/hoa/DashboardSnapshot.hpp"
 
+#include "sister/hoa/ExternalObservation.hpp"
 #include "sister/hoa/GovernanceBaseline.hpp"
+#include "sister/hoa/TargetRegistry.hpp"
 #include "sister/hoa/Version.hpp"
 
 #include <chrono>
 #include <ctime>
+#include <filesystem>
 #include <iomanip>
 #include <sstream>
 #include <string_view>
@@ -52,20 +55,26 @@ std::string utcTimestamp() {
 
 std::size_t countRegularFiles(const std::filesystem::path& directory) {
     std::error_code error;
-    if (!std::filesystem::is_directory(directory, error)) {
-        return 0;
-    }
-
+    if (!std::filesystem::is_directory(directory, error)) return 0;
     std::size_t count = 0;
     for (const auto& entry : std::filesystem::directory_iterator(directory, error)) {
-        if (error) {
-            break;
-        }
-        if (entry.is_regular_file()) {
-            ++count;
-        }
+        if (error) break;
+        if (entry.is_regular_file()) ++count;
     }
     return count;
+}
+
+std::string_view aggregateState(const std::vector<TargetObservation>& observations) {
+    bool degraded = false;
+    bool unknown = false;
+    for (const auto& observation : observations) {
+        if (observation.state == ObservationState::unavailable) return "UNAVAILABLE";
+        if (observation.state == ObservationState::degraded) degraded = true;
+        if (observation.state == ObservationState::unknown) unknown = true;
+    }
+    if (degraded) return "DEGRADED";
+    if (unknown) return "UNKNOWN";
+    return "READY";
 }
 
 } // namespace
@@ -75,10 +84,15 @@ std::string buildDashboardSnapshotJson(const std::filesystem::path& repositoryRo
     const auto scenarioCount = countRegularFiles(repositoryRoot / "harness/scenarios");
     const auto evidenceCount = countRegularFiles(repositoryRoot / "harness/evidence");
     const auto reportCount = countRegularFiles(repositoryRoot / "harness/reports");
+    const TargetRegistry registry(repositoryRoot);
+
+    std::vector<TargetObservation> observations;
+    observations.reserve(registry.targets().size());
+    for (const auto& target : registry.targets()) observations.push_back(observeTarget(target));
 
     std::ostringstream output;
     output << "{\n"
-           << "  \"schema\": \"sister-hoa-dashboard/0.1\",\n"
+           << "  \"schema\": \"sister-hoa-dashboard/0.2\",\n"
            << "  \"generated_at\": \"" << utcTimestamp() << "\",\n"
            << "  \"system\": {\n"
            << "    \"name\": \"SisTer-HOA\",\n"
@@ -95,6 +109,8 @@ std::string buildDashboardSnapshotJson(const std::filesystem::path& repositoryRo
            << "    \"bind_address\": \"127.0.0.1\",\n"
            << "    \"allowed_http_methods\": [\"GET\", \"HEAD\"],\n"
            << "    \"mutating_skills_enabled\": false,\n"
+           << "    \"external_execution_enabled\": false,\n"
+           << "    \"action_planning_enabled\": true,\n"
            << "    \"llm_provider\": \"DISABLED\"\n"
            << "  },\n"
            << "  \"governance\": {\n"
@@ -112,6 +128,39 @@ std::string buildDashboardSnapshotJson(const std::filesystem::path& repositoryRo
     }
 
     output << "    ]\n"
+           << "  },\n"
+           << "  \"ecosystem\": {\n"
+           << "    \"status\": \"" << aggregateState(observations) << "\",\n"
+           << "    \"targets\": [\n";
+
+    for (std::size_t index = 0; index < registry.targets().size(); ++index) {
+        const auto& target = registry.targets()[index];
+        const auto& observation = observations[index];
+        output << "      {\"id\": \"" << escapeJson(target.id)
+               << "\", \"name\": \"" << escapeJson(target.name)
+               << "\", \"kind\": \"" << escapeJson(target.kind)
+               << "\", \"state\": \"" << toString(observation.state)
+               << "\", \"actions\": " << target.actions.size() << ", \"checks\": [";
+        for (std::size_t checkIndex = 0; checkIndex < observation.checks.size(); ++checkIndex) {
+            const auto& check = observation.checks[checkIndex];
+            output << "{\"id\": \"" << escapeJson(check.id)
+                   << "\", \"state\": \"" << toString(check.state)
+                   << "\", \"detail\": \"" << escapeJson(check.detail) << "\"}";
+            if (checkIndex + 1U != observation.checks.size()) output << ',';
+        }
+        output << "]}" << (index + 1U == registry.targets().size() ? "\n" : ",\n");
+    }
+
+    output << "    ]\n"
+           << "  },\n"
+           << "  \"actions\": {\n"
+           << "    \"planning_enabled\": true,\n"
+           << "    \"execution_enabled\": false,\n"
+           << "    \"catalog\": [\n"
+           << "      {\"id\": \"project.build\", \"risk\": \"mutate_local\", \"mode\": \"plan-only\"},\n"
+           << "      {\"id\": \"project.test\", \"risk\": \"mutate_local\", \"mode\": \"plan-only\"},\n"
+           << "      {\"id\": \"service.restart\", \"risk\": \"mutate_local\", \"mode\": \"plan-only\"}\n"
+           << "    ]\n"
            << "  },\n"
            << "  \"harness\": {\n"
            << "    \"scenarios\": " << scenarioCount << ",\n"
