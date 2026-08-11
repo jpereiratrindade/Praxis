@@ -92,7 +92,7 @@ std::string buildDashboardSnapshotJson(const std::filesystem::path& repositoryRo
 
     std::ostringstream output;
     output << "{\n"
-           << "  \"schema\": \"sister-hoa-dashboard/0.2\",\n"
+           << "  \"schema\": \"praxis-dashboard/0.3\",\n"
            << "  \"generated_at\": \"" << utcTimestamp() << "\",\n"
            << "  \"system\": {\n"
            << "    \"name\": \"SisTer-HOA\",\n"

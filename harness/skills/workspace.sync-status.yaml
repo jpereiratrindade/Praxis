@@ -2,7 +2,7 @@ id: workspace.sync-status
 name: Inspect Git synchronization
 risk: read
 authority: confined
-command: hoa workspace sync-status
+command: praxis workspace sync-status
 optional_mutation:
   flag: --fetch
   risk: mutate_local

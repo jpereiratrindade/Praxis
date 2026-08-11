@@ -1,0 +1,21 @@
+id: workspace-operator
+version: 0.2.0
+objective: coordenar observações e planos autorizados sobre o workspace selecionado sem presumir identidade de sistema
+max_risk: read
+authority_boundary: selected-workspace
+skill_allowlist:
+  - workspace.inspect@0.1.0
+  - workspace.sync-status@0.1.0
+  - target.catalog@0.1.0
+  - target.inspect@0.1.0
+  - action.catalog@0.1.0
+  - action.plan@0.1.0
+  - ecosystem.status@0.1.0
+  - ecosystem.health@0.1.0
+  - ecosystem.doctor@0.1.0
+  - ecosystem.observe@0.1.0
+  - dashboard.observe@0.1.0
+evidence_required: true
+mutating_skills_enabled: false
+compatibility:
+  sister_ecosystem_skills: transitional

@@ -1,8 +1,8 @@
 id: diagnostic-agent
 version: 0.1.0
-objective: observar e explicar o estado do HOA sem produzir mutações
+objective: observar e explicar o estado do Praxis sem produzir mutações
 max_risk: read
-authority_boundary: sister-hoa-local-readonly
+authority_boundary: praxis-local-readonly
 skill_allowlist:
   - ecosystem.status@0.1.0
   - ecosystem.health@0.1.0

@@ -1,6 +1,6 @@
 id: action.plan
 version: 0.1.0
-authority: ecosystem-operator
+authority: workspace-operator
 risk: mutate_local
 executor:
   adapter: internal

@@ -1,6 +1,6 @@
 id: ecosystem.status
 version: 0.1.0
-authority: sister-hoa
+authority: praxis
 risk: read
 executor:
   adapter: internal-cpp

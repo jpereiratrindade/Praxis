@@ -41,12 +41,12 @@ ActionPlanResult createActionPlan(const std::filesystem::path& repositoryRoot,
                                   const TargetDefinition& target,
                                   const std::string_view operation) {
     const auto id = planId();
-    const auto directory = repositoryRoot / ".sister-hoa" / "plans";
+    const auto directory = repositoryRoot / ".praxis" / "plans";
     std::filesystem::create_directories(directory);
     const auto path = directory / (id + ".json");
     std::ofstream output(path);
     output << "{\n"
-           << "  \"schema\": \"sister-external-action-plan/0.1\",\n"
+           << "  \"schema\": \"praxis-external-action-plan/0.1\",\n"
            << "  \"id\": \"" << id << "\",\n"
            << "  \"operation\": \"" << escapeJson(operation) << "\",\n"
            << "  \"target\": \"" << escapeJson(target.id) << "\",\n"

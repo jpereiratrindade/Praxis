@@ -1,4 +1,7 @@
-# Estado local do SisTer-HOA Project Forge
+# Estado local canônico do Praxis
+.praxis/
+
+# Estado legado do SisTer-HOA (compatibilidade)
 .sister-hoa/
 
 # Python

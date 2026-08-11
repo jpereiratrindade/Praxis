@@ -96,7 +96,7 @@ HttpResponse routeReadOnlyRequest(
         return HttpResponse{
             .status = 405,
             .reason = "Method Not Allowed",
-            .body = "SisTer-HOA dashboard is read-only. Allowed methods: GET, HEAD.\n",
+            .body = "Praxis dashboard is read-only. Allowed methods: GET, HEAD.\n",
             .allow = "GET, HEAD",
         };
     }
@@ -183,7 +183,7 @@ int serveReadOnlyDashboard(
         throw std::runtime_error(message);
     }
 
-    std::cout << "SisTer-HOA — Painel de Observação\n"
+    std::cout << "Praxis — Centro de Observação\n"
               << "URL: http://127.0.0.1:" << port << "\n\n"
               << "Modo: READ_ONLY\n"
               << "Métodos aceitos: GET, HEAD\n"

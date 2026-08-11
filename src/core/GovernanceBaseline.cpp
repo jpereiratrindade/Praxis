@@ -8,7 +8,7 @@ namespace sister::hoa {
 namespace {
 
 constexpr std::array<std::pair<std::string_view, std::string_view>, 31> kRequiredPaths{{
-    {"manifest", "project.sister.yaml"},
+    {"manifest", ".hoa/project.yaml"},
     {"license", "LICENSE"},
     {"contributing", "CONTRIBUTING.md"},
     {"codeowners", ".github/CODEOWNERS"},
@@ -38,7 +38,7 @@ constexpr std::array<std::pair<std::string_view, std::string_view>, 31> kRequire
     {"external-authority-policy", "policies/external_authority_policy.md"},
     {"external-target-adr", "docs/adr/ADR-0003-external-targets-plan-only-actions.md"},
     {"external-scenario", "harness/scenarios/HOA-EXP-003-external-observation.md"},
-    {"target-config", "config/targets/sister.target"},
+    {"workspace-contract", "contracts/workspace/project-workspace.schema.json"},
 }};
 
 std::size_t countYamlFiles(const std::filesystem::path& directory) {
@@ -72,16 +72,28 @@ bool GovernanceReport::ok() const {
 }
 
 std::filesystem::path locateRepositoryRoot(const std::filesystem::path& start) {
-    if (const char* configured = std::getenv("SISTER_HOA_HOME")) {
-        const std::filesystem::path candidate{configured};
-        if (std::filesystem::exists(candidate / "project.sister.yaml")) {
-            return std::filesystem::weakly_canonical(candidate);
+    const auto configuredRoot = [](const char* variable) -> std::filesystem::path {
+        if (const char* configured = std::getenv(variable)) {
+            const std::filesystem::path candidate{configured};
+            if (std::filesystem::exists(candidate / ".hoa" / "project.yaml") ||
+                std::filesystem::exists(candidate / "project.sister.yaml")) {
+                return std::filesystem::weakly_canonical(candidate);
+            }
         }
+        return {};
+    };
+
+    if (const auto praxisHome = configuredRoot("PRAXIS_HOME"); !praxisHome.empty()) {
+        return praxisHome;
+    }
+    if (const auto legacyHome = configuredRoot("SISTER_HOA_HOME"); !legacyHome.empty()) {
+        return legacyHome;
     }
 
     std::filesystem::path current = std::filesystem::absolute(start);
     while (!current.empty()) {
-        if (std::filesystem::exists(current / "project.sister.yaml") &&
+        if ((std::filesystem::exists(current / ".hoa" / "project.yaml") ||
+             std::filesystem::exists(current / "project.sister.yaml")) &&
             std::filesystem::exists(current / "CMakeLists.txt")) {
             return std::filesystem::weakly_canonical(current);
         }

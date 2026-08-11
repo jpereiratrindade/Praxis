@@ -13,6 +13,8 @@ required = [
     "harness/skills/workspace.inspect.yaml",
     "harness/skills/workspace.sync-status.yaml",
     "harness/scenarios/HOA-EXP-004-generic-cpp-workspace.md",
+    "policies/praxis_identity_policy.md",
+    "docs/architecture/PRAXIS.md",
 ]
 missing = [item for item in required if not (root / item).is_file()]
 for item in required:

@@ -23,7 +23,7 @@ selecionar workspace
 
 ## Git como primeiro laboratório
 
-`hoa workspace sync-status [--fetch]` é a primeira operação transversal. Sem `--fetch`, apenas lê refs locais. Com `--fetch`, atualiza refs remotas locais e por isso é classificada como `mutate_local`, embora não altere arquivos de trabalho nem crie merge.
+`praxis workspace sync-status [--fetch]` é a primeira operação transversal. Sem `--fetch`, apenas lê refs locais. Com `--fetch`, atualiza refs remotas locais e por isso é classificada como `mutate_local`, embora não altere arquivos de trabalho nem crie merge.
 
 Estados: `UP_TO_DATE`, `AHEAD`, `BEHIND`, `DIVERGED`, `DIRTY`, `UNAVAILABLE`, `NOT_REPOSITORY`.
 

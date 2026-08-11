@@ -2,6 +2,6 @@ id: workspace.inspect
 name: Inspect workspace
 risk: read
 authority: confined
-command: hoa workspace inspect
+command: praxis workspace inspect
 evidence: stdout
 purpose: Discover the selected workspace without assuming SisTer-specific identity.

@@ -8,5 +8,6 @@ if [[ ! -x "$binary" ]]; then
   printf 'Execute: ./scripts/run_quality.sh\n' >&2
   exit 2
 fi
-export SISTER_HOA_HOME="$root"
+export PRAXIS_HOME="$root"
+export SISTER_HOA_HOME="$root"  # legacy compatibility
 exec "$binary" "$@"

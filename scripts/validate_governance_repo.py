@@ -9,7 +9,7 @@ import sys
 ROOT = pathlib.Path(__file__).resolve().parents[1]
 
 REQUIRED = [
-    "project.sister.yaml",
+    ".hoa/project.yaml",
     "CONTRIBUTING.md",
     ".github/CODEOWNERS",
     ".github/pull_request_template.md",
@@ -33,7 +33,10 @@ REQUIRED = [
     "policies/external_authority_policy.md",
     "docs/adr/ADR-0003-external-targets-plan-only-actions.md",
     "harness/scenarios/HOA-EXP-003-external-observation.md",
-    "config/targets/sister.target",
+    "contracts/workspace/project-workspace.schema.json",
+    "policies/praxis_identity_policy.md",
+    "docs/adr/ADR-0005-praxis-product-identity.md",
+    "docs/architecture/PRAXIS.md",
 ]
 
 SCHEMAS = [
