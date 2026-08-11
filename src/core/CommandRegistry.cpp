@@ -1,11 +1,11 @@
-#include "sister/hoa/CommandRegistry.hpp"
+#include "praxis/CommandRegistry.hpp"
 
-#include "sister/hoa/Version.hpp"
+#include "praxis/Version.hpp"
 
 #include <array>
 #include <sstream>
 
-namespace sister::hoa {
+namespace praxis {
 namespace {
 
 constexpr std::array<CommandDescriptor, 13> kCommands{{
@@ -189,4 +189,4 @@ std::string renderCommandHelp(const std::string_view name) {
     return output.str();
 }
 
-} // namespace sister::hoa
+} // namespace praxis

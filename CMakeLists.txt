@@ -7,36 +7,36 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 enable_testing()
 
-option(SISTER_HOA_ENABLE_WARNINGS "Enable strict warning baseline." ON)
-option(SISTER_HOA_ENABLE_WERROR "Treat warnings as errors." OFF)
-option(SISTER_HOA_ENABLE_SANITIZERS "Enable ASan and UBSan." OFF)
+option(PRAXIS_ENABLE_WARNINGS "Enable strict warning baseline." ON)
+option(PRAXIS_ENABLE_WERROR "Treat warnings as errors." OFF)
+option(PRAXIS_ENABLE_SANITIZERS "Enable ASan and UBSan." OFF)
 
-add_library(sister_hoa_project_options INTERFACE)
+add_library(praxis_project_options INTERFACE)
 
-if(SISTER_HOA_ENABLE_WARNINGS)
+if(PRAXIS_ENABLE_WARNINGS)
     if(MSVC)
-        target_compile_options(sister_hoa_project_options INTERFACE /W4 /permissive-)
+        target_compile_options(praxis_project_options INTERFACE /W4 /permissive-)
     else()
-        target_compile_options(sister_hoa_project_options INTERFACE -Wall -Wextra -Wpedantic)
+        target_compile_options(praxis_project_options INTERFACE -Wall -Wextra -Wpedantic)
     endif()
 endif()
 
-if(SISTER_HOA_ENABLE_WERROR)
+if(PRAXIS_ENABLE_WERROR)
     if(MSVC)
-        target_compile_options(sister_hoa_project_options INTERFACE /WX)
+        target_compile_options(praxis_project_options INTERFACE /WX)
     else()
-        target_compile_options(sister_hoa_project_options INTERFACE -Werror)
+        target_compile_options(praxis_project_options INTERFACE -Werror)
     endif()
 endif()
 
-if(SISTER_HOA_ENABLE_SANITIZERS AND CMAKE_CXX_COMPILER_ID MATCHES "Clang|GNU")
-    target_compile_options(sister_hoa_project_options INTERFACE
+if(PRAXIS_ENABLE_SANITIZERS AND CMAKE_CXX_COMPILER_ID MATCHES "Clang|GNU")
+    target_compile_options(praxis_project_options INTERFACE
         -fsanitize=address,undefined -fno-omit-frame-pointer)
-    target_link_options(sister_hoa_project_options INTERFACE
+    target_link_options(praxis_project_options INTERFACE
         -fsanitize=address,undefined -fno-omit-frame-pointer)
 endif()
 
-add_library(sister_hoa_core STATIC
+add_library(praxis_core STATIC
     src/core/GovernanceBaseline.cpp
     src/core/CommandRegistry.cpp
     src/cli/Commands.cpp
@@ -49,51 +49,51 @@ add_library(sister_hoa_core STATIC
     src/workspace/GitSyncStatus.cpp
 )
 
-target_include_directories(sister_hoa_core PUBLIC
+target_include_directories(praxis_core PUBLIC
     ${CMAKE_CURRENT_SOURCE_DIR}/include
 )
-target_compile_definitions(sister_hoa_core PUBLIC
-    SISTER_HOA_SOURCE_DIR="${CMAKE_CURRENT_SOURCE_DIR}"
+target_compile_definitions(praxis_core PUBLIC
+    PRAXIS_SOURCE_DIR="${CMAKE_CURRENT_SOURCE_DIR}"
 )
-target_link_libraries(sister_hoa_core PUBLIC sister_hoa_project_options)
+target_link_libraries(praxis_core PUBLIC praxis_project_options)
 
 add_executable(sister-ops
     apps/sister-ops/main.cpp
 )
-target_link_libraries(sister-ops PRIVATE sister_hoa_core sister_hoa_project_options)
+target_link_libraries(sister-ops PRIVATE praxis_core praxis_project_options)
 
 add_executable(praxis apps/praxis/main.cpp)
-target_link_libraries(praxis PRIVATE sister_hoa_core sister_hoa_project_options)
+target_link_libraries(praxis PRIVATE praxis_core praxis_project_options)
 
 # Compatibility alias during the SisTer-HOA -> Praxis transition.
 add_executable(hoa apps/praxis/main.cpp)
-target_link_libraries(hoa PRIVATE sister_hoa_core sister_hoa_project_options)
+target_link_libraries(hoa PRIVATE praxis_core praxis_project_options)
 
-add_executable(SisTerHOACoreTests
+add_executable(PraxisCoreTests
     tests/core/GovernanceBaselineTests.cpp
 )
-target_link_libraries(SisTerHOACoreTests PRIVATE sister_hoa_core sister_hoa_project_options)
+target_link_libraries(PraxisCoreTests PRIVATE praxis_core praxis_project_options)
 
-add_test(NAME core_governance_tests COMMAND SisTerHOACoreTests)
+add_test(NAME core_governance_tests COMMAND PraxisCoreTests)
 
-add_executable(SisTerHOAHelpTests
+add_executable(PraxisHelpTests
     tests/cli/HelpCommandTests.cpp
 )
-target_link_libraries(SisTerHOAHelpTests PRIVATE sister_hoa_core sister_hoa_project_options)
-target_compile_definitions(SisTerHOAHelpTests PRIVATE
-    SISTER_HOA_SOURCE_DIR="${CMAKE_CURRENT_SOURCE_DIR}"
+target_link_libraries(PraxisHelpTests PRIVATE praxis_core praxis_project_options)
+target_compile_definitions(PraxisHelpTests PRIVATE
+    PRAXIS_SOURCE_DIR="${CMAKE_CURRENT_SOURCE_DIR}"
 )
-add_test(NAME cli_help_tests COMMAND SisTerHOAHelpTests)
+add_test(NAME cli_help_tests COMMAND PraxisHelpTests)
 
-add_executable(SisTerHOADashboardTests
+add_executable(PraxisDashboardTests
     tests/dashboard/DashboardReadOnlyTests.cpp
 )
-target_link_libraries(SisTerHOADashboardTests PRIVATE sister_hoa_core sister_hoa_project_options)
-target_compile_definitions(SisTerHOADashboardTests PRIVATE
-    SISTER_HOA_SOURCE_DIR="${CMAKE_CURRENT_SOURCE_DIR}"
+target_link_libraries(PraxisDashboardTests PRIVATE praxis_core praxis_project_options)
+target_compile_definitions(PraxisDashboardTests PRIVATE
+    PRAXIS_SOURCE_DIR="${CMAKE_CURRENT_SOURCE_DIR}"
 )
-add_test(NAME dashboard_read_only_tests COMMAND SisTerHOADashboardTests)
+add_test(NAME dashboard_read_only_tests COMMAND PraxisDashboardTests)
 
-add_executable(SisTerHOAWorkspaceTests tests/workspace/ProjectWorkspaceTests.cpp)
-target_link_libraries(SisTerHOAWorkspaceTests PRIVATE sister_hoa_core sister_hoa_project_options)
-add_test(NAME workspace_tests COMMAND SisTerHOAWorkspaceTests)
+add_executable(PraxisWorkspaceTests tests/workspace/ProjectWorkspaceTests.cpp)
+target_link_libraries(PraxisWorkspaceTests PRIVATE praxis_core praxis_project_options)
+add_test(NAME workspace_tests COMMAND PraxisWorkspaceTests)

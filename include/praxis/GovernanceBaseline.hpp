@@ -4,7 +4,7 @@
 #include <string>
 #include <vector>
 
-namespace sister::hoa {
+namespace praxis {
 
 struct GovernanceCheck {
     std::string id;
@@ -28,4 +28,4 @@ struct GovernanceReport {
 [[nodiscard]] GovernanceReport inspectGovernanceBaseline(
     const std::filesystem::path& repositoryRoot);
 
-} // namespace sister::hoa
+} // namespace praxis

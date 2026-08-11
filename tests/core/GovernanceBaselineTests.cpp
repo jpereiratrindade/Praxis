@@ -1,4 +1,4 @@
-#include "sister/hoa/GovernanceBaseline.hpp"
+#include "praxis/GovernanceBaseline.hpp"
 
 #include <cstdlib>
 #include <iostream>
@@ -15,8 +15,8 @@ void require(const bool condition, const char* message) {
 } // namespace
 
 int main() {
-    const auto root = sister::hoa::locateRepositoryRoot(SISTER_HOA_SOURCE_DIR);
-    const auto report = sister::hoa::inspectGovernanceBaseline(root);
+    const auto root = praxis::locateRepositoryRoot(PRAXIS_SOURCE_DIR);
+    const auto report = praxis::inspectGovernanceBaseline(root);
 
     require(report.ok(), "governance baseline must be complete");
     require(report.agentCount >= 2, "at least two agents must be registered");

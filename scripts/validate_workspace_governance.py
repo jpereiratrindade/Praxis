@@ -4,8 +4,8 @@ import sys
 
 root = Path(__file__).resolve().parents[1]
 required = [
-    "include/sister/hoa/ProjectWorkspace.hpp",
-    "include/sister/hoa/GitSyncStatus.hpp",
+    "include/praxis/ProjectWorkspace.hpp",
+    "include/praxis/GitSyncStatus.hpp",
     "docs/adr/ADR-0004-workspace-as-operational-boundary.md",
     "docs/engineering/WORKSPACE_ENGINEERING.md",
     "policies/workspace_authority_policy.md",

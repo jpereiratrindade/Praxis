@@ -2,7 +2,7 @@
 #include <filesystem>
 #include <string>
 
-namespace sister::hoa {
+namespace praxis {
 
 enum class WorkspaceSelectionSource { command_line, current_directory };
 
@@ -23,4 +23,4 @@ private:
 
 [[nodiscard]] std::string toString(WorkspaceSelectionSource source);
 
-} // namespace sister::hoa
+} // namespace praxis

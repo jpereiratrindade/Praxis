@@ -3,9 +3,9 @@
 #include <filesystem>
 #include <string>
 
-namespace sister::hoa {
+namespace praxis {
 
 [[nodiscard]] std::string buildDashboardSnapshotJson(
     const std::filesystem::path& repositoryRoot);
 
-} // namespace sister::hoa
+} // namespace praxis

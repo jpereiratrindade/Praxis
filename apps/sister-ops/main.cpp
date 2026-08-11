@@ -1,5 +1,5 @@
-#include "sister/hoa/Commands.hpp"
-#include "sister/hoa/GovernanceBaseline.hpp"
+#include "praxis/Commands.hpp"
+#include "praxis/GovernanceBaseline.hpp"
 
 #include <exception>
 #include <iostream>
@@ -14,8 +14,8 @@ int main(int argc, char** argv) {
             arguments.emplace_back(argv[index]);
         }
 
-        const auto repositoryRoot = sister::hoa::locateRepositoryRoot();
-        return sister::hoa::runCommand(arguments, repositoryRoot);
+        const auto repositoryRoot = praxis::locateRepositoryRoot();
+        return praxis::runCommand(arguments, repositoryRoot);
     } catch (const std::exception& error) {
         std::cerr << "ERRO: " << error.what() << '\n';
         return 1;

@@ -1,10 +1,10 @@
-#include "sister/hoa/GovernanceBaseline.hpp"
+#include "praxis/GovernanceBaseline.hpp"
 
 #include <array>
 #include <cstdlib>
 #include <system_error>
 
-namespace sister::hoa {
+namespace praxis {
 namespace {
 
 constexpr std::array<std::pair<std::string_view, std::string_view>, 31> kRequiredPaths{{
@@ -104,7 +104,7 @@ std::filesystem::path locateRepositoryRoot(const std::filesystem::path& start) {
         current = parent;
     }
 
-    return std::filesystem::path{SISTER_HOA_SOURCE_DIR};
+    return std::filesystem::path{PRAXIS_SOURCE_DIR};
 }
 
 GovernanceReport inspectGovernanceBaseline(const std::filesystem::path& repositoryRoot) {
@@ -127,4 +127,4 @@ GovernanceReport inspectGovernanceBaseline(const std::filesystem::path& reposito
     return report;
 }
 
-} // namespace sister::hoa
+} // namespace praxis

@@ -1,4 +1,4 @@
-#include "sister/hoa/GitSyncStatus.hpp"
+#include "praxis/GitSyncStatus.hpp"
 #include <array>
 #include <cstdio>
 #include <cstdlib>
@@ -6,7 +6,7 @@
 #include <string>
 #include <sys/wait.h>
 
-namespace sister::hoa {
+namespace praxis {
 namespace {
 std::string shellQuote(const std::string& value) {
     std::string out{"'"};
@@ -66,4 +66,4 @@ std::string toString(const GitSyncState state) {
     }
     return "UNAVAILABLE";
 }
-} // namespace sister::hoa
+} // namespace praxis

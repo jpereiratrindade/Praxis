@@ -1,13 +1,13 @@
-#include "sister/hoa/Commands.hpp"
+#include "praxis/Commands.hpp"
 
-#include "sister/hoa/CommandRegistry.hpp"
-#include "sister/hoa/DashboardSnapshot.hpp"
-#include "sister/hoa/GovernanceBaseline.hpp"
-#include "sister/hoa/ReadOnlyHttpServer.hpp"
-#include "sister/hoa/TargetRegistry.hpp"
-#include "sister/hoa/ExternalObservation.hpp"
-#include "sister/hoa/ActionPlan.hpp"
-#include "sister/hoa/Version.hpp"
+#include "praxis/CommandRegistry.hpp"
+#include "praxis/DashboardSnapshot.hpp"
+#include "praxis/GovernanceBaseline.hpp"
+#include "praxis/ReadOnlyHttpServer.hpp"
+#include "praxis/TargetRegistry.hpp"
+#include "praxis/ExternalObservation.hpp"
+#include "praxis/ActionPlan.hpp"
+#include "praxis/Version.hpp"
 
 #include <charconv>
 #include <cstdint>
@@ -18,7 +18,7 @@
 #include <string>
 #include <string_view>
 
-namespace sister::hoa {
+namespace praxis {
 namespace {
 
 int commandStatus(const std::filesystem::path& repositoryRoot) {
@@ -306,4 +306,4 @@ int runCommand(
     return 2;
 }
 
-} // namespace sister::hoa
+} // namespace praxis

@@ -297,7 +297,7 @@ No H1, a última condição ainda não habilita execução.
 
 ```text
 apps/sister-ops/                 entrada da CLI
-include/sister/hoa/              contratos C++ públicos
+include/praxis/              contratos C++ públicos
 src/cli/                         roteamento e apresentação
 src/core/                        governança e registros
 src/targets/                     carregamento dos alvos

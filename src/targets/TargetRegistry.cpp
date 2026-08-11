@@ -1,4 +1,4 @@
-#include "sister/hoa/TargetRegistry.hpp"
+#include "praxis/TargetRegistry.hpp"
 
 #include <algorithm>
 #include <cstdlib>
@@ -6,7 +6,7 @@
 #include <sstream>
 #include <stdexcept>
 
-namespace sister::hoa {
+namespace praxis {
 namespace {
 
 std::string trim(std::string value) {
@@ -82,4 +82,4 @@ const TargetDefinition* TargetRegistry::find(const std::string_view id) const no
     return nullptr;
 }
 
-} // namespace sister::hoa
+} // namespace praxis

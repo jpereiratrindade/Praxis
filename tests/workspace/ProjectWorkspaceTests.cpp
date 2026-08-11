@@ -1,4 +1,4 @@
-#include "sister/hoa/ProjectWorkspace.hpp"
+#include "praxis/ProjectWorkspace.hpp"
 #include <filesystem>
 #include <fstream>
 #include <iostream>
@@ -10,7 +10,7 @@ int main() {
     std::filesystem::create_directories(root / ".hoa");
     std::ofstream(root / "CMakeLists.txt") << "cmake_minimum_required(VERSION 3.25)\n";
     std::ofstream(root / ".hoa/project.yaml") << "schema: hoa-project/0.1\n";
-    sister::hoa::ProjectWorkspace workspace(root, sister::hoa::WorkspaceSelectionSource::command_line);
+    praxis::ProjectWorkspace workspace(root, praxis::WorkspaceSelectionSource::command_line);
     if (!workspace.hasHoaManifest() || !workspace.hasCMakeProject()) throw std::runtime_error("discovery failed");
     if (!workspace.contains(root / "CMakeLists.txt")) throw std::runtime_error("containment failed");
     bool blocked = false;

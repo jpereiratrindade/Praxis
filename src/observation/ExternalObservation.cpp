@@ -1,4 +1,4 @@
-#include "sister/hoa/ExternalObservation.hpp"
+#include "praxis/ExternalObservation.hpp"
 
 #include <algorithm>
 #include <cerrno>
@@ -7,7 +7,7 @@
 #include <netdb.h>
 #include <unistd.h>
 
-namespace sister::hoa {
+namespace praxis {
 namespace {
 
 bool contains(const std::vector<std::string>& values, const std::string_view value) {
@@ -68,4 +68,4 @@ TargetObservation observeTarget(const TargetDefinition& target) {
     return observation;
 }
 
-} // namespace sister::hoa
+} // namespace praxis

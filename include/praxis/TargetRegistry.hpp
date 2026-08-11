@@ -7,7 +7,7 @@
 #include <string_view>
 #include <vector>
 
-namespace sister::hoa {
+namespace praxis {
 
 struct TargetDefinition {
     std::string id;
@@ -33,4 +33,4 @@ private:
 
 [[nodiscard]] std::filesystem::path expandUserPath(std::string_view value);
 
-} // namespace sister::hoa
+} // namespace praxis

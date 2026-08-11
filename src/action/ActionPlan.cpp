@@ -1,4 +1,4 @@
-#include "sister/hoa/ActionPlan.hpp"
+#include "praxis/ActionPlan.hpp"
 
 #include <chrono>
 #include <fstream>
@@ -6,7 +6,7 @@
 #include <random>
 #include <sstream>
 
-namespace sister::hoa {
+namespace praxis {
 namespace {
 
 std::string escapeJson(const std::string_view value) {
@@ -61,4 +61,4 @@ ActionPlanResult createActionPlan(const std::filesystem::path& repositoryRoot,
     return {id, path};
 }
 
-} // namespace sister::hoa
+} // namespace praxis

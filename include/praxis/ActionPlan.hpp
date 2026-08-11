@@ -1,12 +1,12 @@
 #pragma once
 
-#include "sister/hoa/TargetRegistry.hpp"
+#include "praxis/TargetRegistry.hpp"
 
 #include <filesystem>
 #include <string>
 #include <string_view>
 
-namespace sister::hoa {
+namespace praxis {
 
 struct ActionPlanResult {
     std::string id;
@@ -19,4 +19,4 @@ struct ActionPlanResult {
     const TargetDefinition& target,
     std::string_view operation);
 
-} // namespace sister::hoa
+} // namespace praxis

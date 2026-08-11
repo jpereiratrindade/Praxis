@@ -1,6 +1,6 @@
-#include "sister/hoa/ReadOnlyHttpServer.hpp"
+#include "praxis/ReadOnlyHttpServer.hpp"
 
-#include "sister/hoa/DashboardSnapshot.hpp"
+#include "praxis/DashboardSnapshot.hpp"
 
 #include <array>
 #include <atomic>
@@ -23,7 +23,7 @@
 #error "The H0 read-only dashboard server currently supports POSIX systems only."
 #endif
 
-namespace sister::hoa {
+namespace praxis {
 namespace {
 
 volatile std::sig_atomic_t gStopRequested = 0;
@@ -239,4 +239,4 @@ int serveReadOnlyDashboard(
     return 0;
 }
 
-} // namespace sister::hoa
+} // namespace praxis

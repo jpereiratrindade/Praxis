@@ -2,7 +2,7 @@
 #include <filesystem>
 #include <string>
 
-namespace sister::hoa {
+namespace praxis {
 
 enum class GitSyncState { not_repository, up_to_date, ahead, behind, diverged, dirty, unavailable };
 struct GitSyncStatus {
@@ -17,4 +17,4 @@ struct GitSyncStatus {
 [[nodiscard]] GitSyncStatus inspectGitSync(const std::filesystem::path& root, bool fetchRemote);
 [[nodiscard]] std::string toString(GitSyncState state);
 
-} // namespace sister::hoa
+} // namespace praxis

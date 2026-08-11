@@ -1,9 +1,9 @@
-#include "sister/hoa/DashboardSnapshot.hpp"
+#include "praxis/DashboardSnapshot.hpp"
 
-#include "sister/hoa/ExternalObservation.hpp"
-#include "sister/hoa/GovernanceBaseline.hpp"
-#include "sister/hoa/TargetRegistry.hpp"
-#include "sister/hoa/Version.hpp"
+#include "praxis/ExternalObservation.hpp"
+#include "praxis/GovernanceBaseline.hpp"
+#include "praxis/TargetRegistry.hpp"
+#include "praxis/Version.hpp"
 
 #include <chrono>
 #include <ctime>
@@ -13,7 +13,7 @@
 #include <string_view>
 #include <system_error>
 
-namespace sister::hoa {
+namespace praxis {
 namespace {
 
 std::string escapeJson(const std::string_view value) {
@@ -171,4 +171,4 @@ std::string buildDashboardSnapshotJson(const std::filesystem::path& repositoryRo
     return output.str();
 }
 
-} // namespace sister::hoa
+} // namespace praxis

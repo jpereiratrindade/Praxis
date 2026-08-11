@@ -1,7 +1,7 @@
-#include "sister/hoa/ProjectWorkspace.hpp"
+#include "praxis/ProjectWorkspace.hpp"
 #include <stdexcept>
 
-namespace sister::hoa {
+namespace praxis {
 namespace {
 std::filesystem::path canonicalDirectory(const std::filesystem::path& value) {
     std::error_code error;
@@ -40,4 +40,4 @@ bool ProjectWorkspace::hasGitRepository() const { return std::filesystem::exists
 std::string toString(const WorkspaceSelectionSource source) {
     return source == WorkspaceSelectionSource::command_line ? "command-line" : "current-directory";
 }
-} // namespace sister::hoa
+} // namespace praxis

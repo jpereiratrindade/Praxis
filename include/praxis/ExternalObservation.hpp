@@ -1,11 +1,11 @@
 #pragma once
 
-#include "sister/hoa/TargetRegistry.hpp"
+#include "praxis/TargetRegistry.hpp"
 
 #include <string>
 #include <vector>
 
-namespace sister::hoa {
+namespace praxis {
 
 enum class ObservationState { ready, degraded, unavailable, unknown };
 
@@ -24,4 +24,4 @@ struct TargetObservation {
 [[nodiscard]] TargetObservation observeTarget(const TargetDefinition& target);
 [[nodiscard]] std::string_view toString(ObservationState state) noexcept;
 
-} // namespace sister::hoa
+} // namespace praxis

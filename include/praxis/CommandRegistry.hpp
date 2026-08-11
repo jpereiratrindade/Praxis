@@ -4,7 +4,7 @@
 #include <string>
 #include <string_view>
 
-namespace sister::hoa {
+namespace praxis {
 
 struct CommandDescriptor {
     std::string_view name;
@@ -20,4 +20,4 @@ struct CommandDescriptor {
 [[nodiscard]] std::string renderGeneralHelp();
 [[nodiscard]] std::string renderCommandHelp(std::string_view name);
 
-} // namespace sister::hoa
+} // namespace praxis

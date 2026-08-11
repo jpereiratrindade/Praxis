@@ -5,7 +5,7 @@
 #include <string>
 #include <string_view>
 
-namespace sister::hoa {
+namespace praxis {
 
 struct HttpResponse {
     int status{500};
@@ -24,4 +24,4 @@ int serveReadOnlyDashboard(
     const std::filesystem::path& repositoryRoot,
     std::uint16_t port);
 
-} // namespace sister::hoa
+} // namespace praxis
