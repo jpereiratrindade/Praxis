@@ -95,7 +95,7 @@ std::string buildDashboardSnapshotJson(const std::filesystem::path& repositoryRo
            << "  \"schema\": \"praxis-dashboard/0.3\",\n"
            << "  \"generated_at\": \"" << utcTimestamp() << "\",\n"
            << "  \"system\": {\n"
-           << "    \"name\": \"SisTer-HOA\",\n"
+           << "    \"name\": \"Praxis\",\n"
            << "    \"version\": \"" << escapeJson(kVersion) << "\",\n"
            << "    \"document\": \"" << escapeJson(kDocumentVersion) << "\",\n"
            << "    \"implementation\": \"native C++23\",\n"

@@ -1,6 +1,6 @@
 # Praxis
 
-**Harness Operacional Assistido do ecossistema SisTer**
+**Praxis implements a Governed Operational Harness (HOA).**
 
 [![C++23](https://img.shields.io/badge/C%2B%2B-23-00599C)](#requisitos)
 [![Harness](https://img.shields.io/badge/Harness-H1-13B8A6)](#estado-atual)
@@ -15,7 +15,7 @@ Ele não trata automação como uma sequência livre de comandos. Cada capacidad
 observar → interpretar → planejar → autorizar → executar → verificar → registrar → aprender
 ```
 
-No estágio atual, o HOA observa alvos externos e produz planos governados, mas **não executa ações externas**.
+No estágio atual, o Praxis observa workspaces e alvos externos e produz planos governados, mas **não executa ações externas**.
 
 ## Estado atual
 
@@ -26,7 +26,7 @@ fase do Harness        H1
 baseline de governança READY
 alvos externos         3
 agentes                 2
-skills                  9
+skills                 11
 execução externa        DISABLED
 planejamento externo    ENABLED
 painel web              READ_ONLY
@@ -67,38 +67,46 @@ O dashboard é apenas uma projeção observacional desse núcleo. Ele não possu
 ./scripts/run_quality.sh
 ```
 
+### Selecionar qualquer workspace C++
+
+```bash
+./praxis workspace inspect
+./praxis --project /caminho/do/projeto workspace inspect
+./praxis --project /caminho/do/projeto workspace sync-status --fetch
+```
+
 ### Descobrir a CLI
 
 ```bash
-./sister-ops --help
-./sister-ops help dashboard
+./praxis --help
+./praxis help dashboard
 ```
 
 ### Diagnosticar o próprio Praxis
 
 ```bash
-./sister-ops status
-./sister-ops health
-./sister-ops doctor
-./sister-ops governance check
+./praxis status
+./praxis health
+./praxis doctor
+./praxis governance check
 ```
 
-### Observar o ecossistema
+### Compatibilidade com o ecossistema SisTer
 
 ```bash
-./sister-ops target catalog
-./sister-ops target inspect sister
-./sister-ops target inspect sister-nexo
-./sister-ops ecosystem status
-./sister-ops ecosystem health
+./praxis target catalog
+./praxis target inspect sister
+./praxis target inspect sister-nexo
+./praxis ecosystem status
+./praxis ecosystem health
 ```
 
 ### Planejar uma ação externa
 
 ```bash
-./sister-ops action catalog
+./praxis action catalog
 
-./sister-ops action plan \
+./praxis action plan \
   project.build \
   --target sister
 ```
@@ -150,8 +158,8 @@ service.restart
 ### Dashboard
 
 ```bash
-./sister-ops dashboard snapshot
-./sister-ops dashboard serve --port 8090
+./praxis dashboard snapshot
+./praxis dashboard serve --port 8090
 ```
 
 Acesse:
@@ -164,7 +172,7 @@ O servidor aceita somente `GET` e `HEAD`. Métodos mutáveis retornam `405 Metho
 
 ## Targets
 
-Os alvos externos vivem em `config/targets/`:
+O perfil de compatibilidade SisTer atualmente mantém alvos externos em `config/targets/`:
 
 ```text
 config/targets/
@@ -193,14 +201,14 @@ A definição do alvo estabelece simultaneamente:
 - quais ações podem ser planejadas;
 - qual é a fronteira de autoridade.
 
-Registrar uma ação no HOA não concede automaticamente autoridade sobre todos os alvos.
+Registrar uma ação no Praxis não concede automaticamente autoridade sobre todos os alvos.
 
 ## Governança
 
 A governança do próprio repositório é materializada por:
 
 ```text
-project.sister.yaml
+.hoa/project.yaml
 CONTRIBUTING.md
 .github/CODEOWNERS
 .github/pull_request_template.md
@@ -296,8 +304,9 @@ No H1, a última condição ainda não habilita execução.
 ## Organização do código
 
 ```text
-apps/sister-ops/                 entrada da CLI
-include/praxis/              contratos C++ públicos
+apps/praxis/                     entrada canônica da CLI
+apps/sister-ops/                 compatibilidade legada
+include/praxis/                  contratos C++ públicos
 src/cli/                         roteamento e apresentação
 src/core/                        governança e registros
 src/targets/                     carregamento dos alvos

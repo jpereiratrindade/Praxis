@@ -4,6 +4,8 @@
 
 **Proposta**
 
+> **Atualização — 2026-08-11:** a identidade de produto definida posteriormente pela ADR-0005 é **Praxis**. O executável canônico passou a ser `praxis`; referências a `SisTer-HOA`, `hoa`, `sister::hoa` e `SISTER_HOA_HOME` abaixo são preservadas como registro histórico da baseline e da decisão original.
+
 ## Data
 
 2026-08-06

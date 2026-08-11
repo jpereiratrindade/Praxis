@@ -20,5 +20,5 @@ jobs:
         run: ctest --test-dir build --output-on-failure
       - name: Governance baseline
         run: python3 scripts/validate_governance_repo.py
-      - name: H0 doctor
-        run: SISTER_HOA_HOME="$PWD" ./build/sister-ops doctor
+      - name: Praxis doctor
+        run: PRAXIS_HOME="$PWD" ./build/praxis doctor

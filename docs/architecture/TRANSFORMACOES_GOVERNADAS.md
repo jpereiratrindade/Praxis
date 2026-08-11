@@ -1,10 +1,10 @@
 # Transformações Governadas em Sistemas Reflexivos
 
-## Fundamentos teórico-técnicos do SisTer-HOA
+## Fundamentos teórico-técnicos do Praxis
 
 ## 1. Propósito
 
-Este documento estabelece a base conceitual para compreender mudanças de software no SisTer-HOA não apenas como alterações textuais em arquivos, mas como **transformações governadas**: processos explicitamente orientados por objetivo, executados sob autoridade delimitada, verificados por mecanismos determinísticos e acompanhados de evidências reconstruíveis.
+Este documento estabelece a base conceitual para compreender mudanças de software no Praxis — originalmente desenvolvido como SisTer-HOA — não apenas como alterações textuais em arquivos, mas como **transformações governadas**: processos explicitamente orientados por objetivo, executados sob autoridade delimitada, verificados por mecanismos determinísticos e acompanhados de evidências reconstruíveis.
 
 A formulação resulta da experiência de desenvolvimento do próprio HOA. Ao investigar como retirar do núcleo o vínculo direto com o SisTer, tornou-se evidente que o problema não era somente acrescentar um argumento `--project`. A questão mais profunda era definir como um operador pode receber um contexto, formular uma transformação, aplicá-la de maneira incremental, verificar seus efeitos e submeter o resultado à autoridade humana.
 

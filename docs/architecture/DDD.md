@@ -1,4 +1,4 @@
-# DDD — SisTer-HOA
+# DDD — Praxis
 
 ## Problema governante
 
@@ -7,7 +7,7 @@ segredos ou capacidade autônoma de alterar sistemas.
 
 ## Contexto delimitado
 
-O HOA coordena operações de engenharia e infraestrutura. Não absorve domínio,
+O Praxis implementa um Governed Operational Harness (HOA) para coordenar operações de engenharia e infraestrutura sobre workspaces selecionados. Não absorve domínio,
 identidade, dados ou autoridade dos subsistemas.
 
 ## Linguagem ubíqua
