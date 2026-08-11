@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+# Compatibility wrapper: HOA is now the architectural concept; Praxis is the product.
+set -Eeuo pipefail
+root="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
+exec "$root/praxis" "$@"

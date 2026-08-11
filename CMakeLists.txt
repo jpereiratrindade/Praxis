@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.25)
-project(SisTerHOA VERSION 0.4.1 LANGUAGES CXX)
+project(Praxis VERSION 0.4.1 LANGUAGES CXX)
 
 set(CMAKE_CXX_STANDARD 23)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
@@ -62,7 +62,11 @@ add_executable(sister-ops
 )
 target_link_libraries(sister-ops PRIVATE sister_hoa_core sister_hoa_project_options)
 
-add_executable(hoa apps/hoa/main.cpp)
+add_executable(praxis apps/praxis/main.cpp)
+target_link_libraries(praxis PRIVATE sister_hoa_core sister_hoa_project_options)
+
+# Compatibility alias during the SisTer-HOA -> Praxis transition.
+add_executable(hoa apps/praxis/main.cpp)
 target_link_libraries(hoa PRIVATE sister_hoa_core sister_hoa_project_options)
 
 add_executable(SisTerHOACoreTests

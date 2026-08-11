@@ -1,6 +1,6 @@
-# Contribuindo com o SisTer-HOA
+# Contribuindo com o Praxis
 
-O SisTer-HOA prioriza mudanças pequenas, verificáveis, governadas e alinhadas ao
+O Praxis prioriza mudanças pequenas, verificáveis, governadas e alinhadas ao
 Modo Harness.
 
 ## Fluxo mínimo

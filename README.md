@@ -1,4 +1,4 @@
-# SisTer-HOA
+# Praxis
 
 **Harness Operacional Assistido do ecossistema SisTer**
 
@@ -7,7 +7,7 @@
 [![Governança](https://img.shields.io/badge/Governan%C3%A7a-READY-22C55E)](#governança)
 [![Licença](https://img.shields.io/badge/licen%C3%A7a-GPL--3.0--only-8B5CF6)](LICENSE)
 
-O **SisTer-HOA** é o núcleo nativo em C++23 para observar, planejar e, progressivamente, operar o ecossistema SisTer sob contratos explícitos, autoridade limitada, verificação e evidências.
+**Praxis** é um instrumento geral de experimentação governada sobre workspaces. Implementa um **Governed Operational Harness (HOA)** para observar, planejar e, progressivamente, transformar sistemas sob contratos explícitos, autoridade limitada, verificação e evidências.
 
 Ele não trata automação como uma sequência livre de comandos. Cada capacidade deve pertencer ao ciclo:
 
@@ -36,7 +36,7 @@ LLM                     DISABLED
 ## Visão arquitetural
 
 ```text
-                       SisTer-HOA
+                         Praxis
 
                          CLI C++23
                               │
@@ -74,7 +74,7 @@ O dashboard é apenas uma projeção observacional desse núcleo. Ele não possu
 ./sister-ops help dashboard
 ```
 
-### Diagnosticar o próprio HOA
+### Diagnosticar o próprio Praxis
 
 ```bash
 ./sister-ops status
@@ -103,7 +103,7 @@ O dashboard é apenas uma projeção observacional desse núcleo. Ele não possu
   --target sister
 ```
 
-O plano será salvo em `.sister-hoa/plans/` com o estado:
+O plano será salvo no estado local governado do Praxis com o estado:
 
 ```text
 PLANNED_NOT_EXECUTED

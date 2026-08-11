@@ -1,0 +1,10 @@
+schema: hoa-project/0.1
+id: praxis
+name: Praxis
+paths:
+  targets: .hoa/targets
+  state: .hoa/state
+metadata:
+  architecture: governed-operational-harness
+  implementation: cpp23
+  origin: sister-hoa

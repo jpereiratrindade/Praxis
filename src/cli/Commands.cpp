@@ -22,7 +22,7 @@ namespace sister::hoa {
 namespace {
 
 int commandStatus(const std::filesystem::path& repositoryRoot) {
-    std::cout << "SisTer-HOA\n"
+    std::cout << "Praxis\n"
               << "  version: " << kVersion << '\n'
               << "  document: " << kDocumentVersion << '\n'
               << "  implementation: native C++23\n"
@@ -51,7 +51,7 @@ int printGovernance(const GovernanceReport& report, const bool verbose) {
 
 int commandHealth(const std::filesystem::path& repositoryRoot) {
     const auto report = inspectGovernanceBaseline(repositoryRoot);
-    std::cout << "SisTer-HOA health\n";
+    std::cout << "Praxis health\n";
     std::cout << "  native_core: PASS\n";
     std::cout << "  language_standard: " << kLanguageBaseline << '\n';
     std::cout << "  governance: " << (report.ok() ? "PASS" : "FAIL") << '\n';
@@ -62,7 +62,7 @@ int commandHealth(const std::filesystem::path& repositoryRoot) {
 }
 
 int commandDoctor(const std::filesystem::path& repositoryRoot) {
-    std::cout << "SisTer-HOA doctor\n\n";
+    std::cout << "Praxis doctor\n\n";
     const auto report = inspectGovernanceBaseline(repositoryRoot);
     const auto result = printGovernance(report, true);
     std::cout << "\nHarness H1: " << (result == 0 ? "READY" : "NOT_READY") << '\n';
@@ -116,7 +116,7 @@ int commandDashboard(
 
     if (arguments[0] == "snapshot") {
         if (arguments.size() != 1U) {
-            std::cerr << "ERRO: uso: sister-ops dashboard snapshot\n";
+            std::cerr << "ERRO: uso: praxis dashboard snapshot\n";
             return 2;
         }
         std::cout << buildDashboardSnapshotJson(repositoryRoot);
@@ -127,7 +127,7 @@ int commandDashboard(
         std::uint16_t port = 8090;
         for (std::size_t index = 1; index < arguments.size(); ++index) {
             if (arguments[index] != "--port" || index + 1U >= arguments.size()) {
-                std::cerr << "ERRO: uso: sister-ops dashboard serve [--port 8090]\n";
+                std::cerr << "ERRO: uso: praxis dashboard serve [--port 8090]\n";
                 return 2;
             }
             const auto parsed = parsePort(arguments[index + 1U]);
@@ -188,14 +188,14 @@ int commandTarget(const std::span<const std::string_view> arguments,
         std::cout << "\nAuthority: observe=allowed, mutate=plan-only\n";
         return observation.state == ObservationState::unavailable ? 5 : 0;
     }
-    std::cerr << "ERRO: uso: sister-ops target <catalog|inspect ID>\n";
+    std::cerr << "ERRO: uso: praxis target <catalog|inspect ID>\n";
     return 2;
 }
 
 int commandEcosystem(const std::span<const std::string_view> arguments,
                      const std::filesystem::path& repositoryRoot) {
     if (arguments.size() != 1U || (arguments[0] != "status" && arguments[0] != "health")) {
-        std::cerr << "ERRO: uso: sister-ops ecosystem <status|health>\n";
+        std::cerr << "ERRO: uso: praxis ecosystem <status|health>\n";
         return 2;
     }
     TargetRegistry registry(repositoryRoot);
@@ -252,7 +252,7 @@ int commandAction(const std::span<const std::string_view> arguments,
         std::cerr << "ERRO: action apply ainda está desabilitado no H1; somente planos são permitidos\n";
         return 4;
     }
-    std::cerr << "ERRO: uso: sister-ops action <catalog|plan OP --target ID>\n";
+    std::cerr << "ERRO: uso: praxis action <catalog|plan OP --target ID>\n";
     return 2;
 }
 
@@ -273,7 +273,7 @@ int runCommand(
         return commandHelp(arguments.subspan(1));
     }
     if (arguments[0] == "--version" || arguments[0] == "version") {
-        std::cout << "sister-ops " << kVersion << " (C++23)\n";
+        std::cout << "praxis " << kVersion << " (C++23)\n";
         return 0;
     }
     if (arguments[0] == "status" && arguments.size() == 1U) {

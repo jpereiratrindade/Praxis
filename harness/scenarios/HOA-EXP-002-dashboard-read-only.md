@@ -2,7 +2,7 @@
 
 ## Hipótese
 
-É possível apresentar o estado do SisTer-HOA em uma interface web útil sem conceder autoridade operacional à interface.
+É possível apresentar o estado do Praxis em uma interface web útil sem conceder autoridade operacional à interface.
 
 ## Estado inicial
 

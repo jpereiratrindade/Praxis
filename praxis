@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+# SPDX-License-Identifier: GPL-3.0-only
+set -Eeuo pipefail
+root="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
+binary="$root/build/praxis"
+if [[ ! -x "$binary" ]]; then
+  printf 'ERRO: binário Praxis ainda não construído.\n' >&2
+  printf 'Execute: ./scripts/run_quality.sh\n' >&2
+  exit 2
+fi
+export PRAXIS_HOME="$root"
+exec "$binary" "$@"

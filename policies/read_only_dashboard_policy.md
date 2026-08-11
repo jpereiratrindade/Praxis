@@ -1,6 +1,6 @@
 # Política do Painel de Observação
 
-O painel web do SisTer-HOA é uma interface exclusivamente observacional.
+O painel web do Praxis é uma interface exclusivamente observacional.
 
 ## Autoridade
 
