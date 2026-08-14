@@ -37,6 +37,13 @@ REQUIRED = [
     "policies/praxis_identity_policy.md",
     "docs/adr/ADR-0005-praxis-product-identity.md",
     "docs/architecture/PRAXIS.md",
+    "docs/methodology/GOVERNED_ENGINEERING_METHOD_V0_1.md",
+    "policies/governed_project_state_policy.md",
+    "templates/governed-project/.hoa/project-state.yaml",
+    "scripts/governed_method_schema.py",
+    "scripts/validate_governed_project.py",
+    "scripts/validate_methodology_repo.py",
+    "harness/scenarios/PRAXIS-METHOD-001-governed-state.md",
 ]
 
 SCHEMAS = [
@@ -44,6 +51,8 @@ SCHEMAS = [
     "contracts/operations/skill.schema.json",
     "contracts/operations/operation-plan.schema.json",
     "contracts/operations/execution-receipt.schema.json",
+    "contracts/methodology/project-state.schema.json",
+    "contracts/methodology/experiment-record.schema.json",
 ]
 
 

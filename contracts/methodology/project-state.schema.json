@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://praxis.local/contracts/methodology/project-state.schema.json",
+  "title": "Praxis Governed Project State 0.1",
+  "type": "object",
+  "required": [
+    "version",
+    "project",
+    "governance_method",
+    "phase",
+    "status",
+    "last_verified_milestone",
+    "last_verified_commit",
+    "last_verified_gate",
+    "last_verified_evidence",
+    "next_milestone",
+    "next_milestone_status",
+    "next_milestone_authorized",
+    "updated_on"
+  ],
+  "properties": {
+    "version": {"const": "1.0"},
+    "project": {"type": "string", "minLength": 1},
+    "governance_method": {"const": "praxis-governed-engineering/0.1"},
+    "phase": {"type": "string", "minLength": 1},
+    "status": {"enum": ["scaffolded", "active", "paused", "closed"]},
+    "last_verified_milestone": {"type": "string", "minLength": 1},
+    "last_verified_commit": {"type": "string", "pattern": "^[0-9a-f]{7,40}$"},
+    "last_verified_gate": {"type": "string", "minLength": 1},
+    "last_verified_evidence": {"type": "string", "minLength": 1},
+    "next_milestone": {"type": "string", "minLength": 1},
+    "next_milestone_status": {"enum": ["proposed", "active", "blocked", "none"]},
+    "next_milestone_authorized": {"type": "boolean"},
+    "bootstrap_script": {"type": "string", "minLength": 1},
+    "bootstrap_policy": {"enum": ["create_once", "idempotent"]},
+    "updated_on": {"type": "string", "format": "date"}
+  },
+  "additionalProperties": true
+}

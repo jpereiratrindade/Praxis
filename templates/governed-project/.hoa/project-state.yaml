@@ -1,0 +1,15 @@
+version: "1.0"
+project: example_project
+governance_method: praxis-governed-engineering/0.1
+bootstrap_script: scripts/bootstrap_example.sh
+bootstrap_policy: create_once
+phase: A0
+status: active
+last_verified_milestone: A0
+last_verified_commit: "0000000"
+last_verified_gate: scripts/verify_a0.sh
+last_verified_evidence: docs/experiments/evidence/a0/verification.txt
+next_milestone: A0-E001
+next_milestone_status: proposed
+next_milestone_authorized: false
+updated_on: "2000-01-01"

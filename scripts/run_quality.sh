@@ -5,4 +5,5 @@ root="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")/.." && pwd)"
 "$root/scripts/build.sh"
 "$root/scripts/test.sh"
 python3 "$root/scripts/validate_governance_repo.py"
+python3 "$root/scripts/validate_methodology_repo.py"
 PRAXIS_HOME="$root" "$root/build/praxis" doctor

@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://praxis.local/contracts/methodology/experiment-record.schema.json",
+  "title": "Praxis Governed Experiment Record 0.1",
+  "type": "object",
+  "required": ["experiment", "verification", "outputs"],
+  "properties": {
+    "experiment": {
+      "type": "object",
+      "required": ["id", "title", "phase", "status"],
+      "properties": {
+        "id": {"type": "string", "minLength": 1},
+        "title": {"type": "string", "minLength": 1},
+        "phase": {"type": "string", "minLength": 1},
+        "status": {
+          "enum": ["proposed", "scaffolded", "active", "qualified", "verified", "promoted", "closed", "superseded"]
+        }
+      }
+    },
+    "verification": {
+      "type": "object",
+      "required": ["gate"],
+      "properties": {
+        "gate": {"type": "string", "minLength": 1}
+      }
+    },
+    "outputs": {
+      "type": "object",
+      "properties": {
+        "evidence": {"type": "string"},
+        "tests": {
+          "type": "array",
+          "items": {"type": "string", "minLength": 1}
+        }
+      }
+    }
+  },
+  "additionalProperties": true
+}
