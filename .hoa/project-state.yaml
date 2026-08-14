@@ -1,0 +1,13 @@
+version: "1.0"
+project: praxis
+governance_method: praxis-governed-engineering/0.1
+phase: H1
+status: active
+last_verified_milestone: PRAXIS-METHOD-V0.1
+last_verified_commit: "21b4ed2"
+last_verified_gate: scripts/run_quality.sh
+last_verified_evidence: docs/methodology/evidence/praxis-method-v0.1/verification.txt
+next_milestone: PRAXIS-SG-001
+next_milestone_status: active
+next_milestone_authorized: true
+updated_on: "2026-08-14"
