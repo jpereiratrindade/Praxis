@@ -37,3 +37,22 @@ em projeto já constituído deve ser não destrutiva.
 
 Gates devem rejeitar referências governadas quebradas e divergências entre
 estado canônico, manifests de projeto e documentação que declare estado atual.
+
+## Escopo da prova
+
+`verified` deve ser interpretado apenas dentro do escopo efetivamente submetido
+ao gate e sustentado pela evidência governada. Promoção de um marco não autoriza
+reivindicar maturidade, capacidade, escala, integração ou prontidão operacional
+que não tenham sido comprovadas.
+
+## Avaliações independentes
+
+Findings produzidos por revisão humana, LLM ou outra ferramenta externa são
+insumos de investigação. Eles não alteram estado canônico, não promovem marcos e
+não criam regras ou gates sem evidência e decisão governada subsequentes.
+
+## Autoaplicabilidade
+
+Quando uma política do método for materialmente aplicável ao próprio Praxis, a
+implementação deve satisfazê-la ou registrar de forma explícita a fronteira que
+justifica a exceção.

@@ -44,6 +44,7 @@ REQUIRED = [
     "scripts/validate_governed_project.py",
     "scripts/validate_methodology_repo.py",
     "harness/scenarios/PRAXIS-METHOD-001-governed-state.md",
+    "harness/scenarios/PRAXIS-METHOD-002-proof-boundary.md",
 ]
 
 SCHEMAS = [

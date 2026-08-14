@@ -21,6 +21,7 @@ REQUIRED = [
     "scripts/governed_method_schema.py",
     "scripts/validate_governed_project.py",
     "harness/scenarios/PRAXIS-METHOD-001-governed-state.md",
+    "harness/scenarios/PRAXIS-METHOD-002-proof-boundary.md",
 ]
 
 
@@ -108,15 +109,30 @@ def main() -> int:
 
     for token in [
         "M01 — Canonical State",
+        "M02 — Governed Milestones",
         "M03 — Operational Evidence ≠ Governed Evidence",
         "M04 — Monotonic Bootstrap",
+        "M05 — Referential Integrity of Governed Metadata",
+        "M06 — Build Is Transient",
         "M07 — Learning → Rule → Gate",
+        "Escopo da prova e não-superinterpretação",
+        "Maturidade multidimensional",
+        "Avaliação independente como fonte de findings",
+        "Autoaplicabilidade",
     ]:
         if token not in method_text:
             errors.append(f"method principle missing: {token}")
 
     if "praxis-governed-engineering/0.1" not in policy_text:
         errors.append("policy does not bind praxis-governed-engineering/0.1")
+
+    for token in [
+        "Escopo da prova",
+        "Avaliações independentes",
+        "Autoaplicabilidade",
+    ]:
+        if token not in policy_text:
+            errors.append(f"method policy missing: {token}")
 
     if errors:
         print("Praxis governed engineering method: NOT_READY", file=sys.stderr)

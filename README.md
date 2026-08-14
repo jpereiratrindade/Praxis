@@ -234,6 +234,17 @@ E integra o quality gate:
 ./scripts/run_quality.sh
 ```
 
+O método transversal adotado é `praxis-governed-engineering/0.1`, documentado em
+`docs/methodology/GOVERNED_ENGINEERING_METHOD_V0_1.md`. Ele ajuda cada projeto a
+responder quatro perguntas sem extrapolar a evidência disponível:
+
+```text
+Onde estamos?
+O que está comprovado?
+Em qual fronteira isso está comprovado?
+O que está autorizado a seguir?
+```
+
 ## Harness
 
 ### Agentes
