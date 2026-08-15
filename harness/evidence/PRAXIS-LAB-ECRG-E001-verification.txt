@@ -1,0 +1,26 @@
+PRAXIS-LAB-ECRG-E001 — local constitution verifier
+command=python3 harness/scenarios/verify_praxis_lab_ecrg_e001.py
+timestamp=2026-08-15T13:43:57.459660+00:00
+root=/home/jpereiratrindade/dev/cpp/Praxis
+PASS  declared internal input files exist
+PASS  experiment record conforms to experiment-record.schema.json
+PASS  experiment identity
+PASS  experiment remains proposed
+PASS  ECRG-E001 invariant set
+PASS  epistemic classification set
+PASS  finding and authorization remain distinct
+PASS  MRE and MOG remain distinct
+PASS  PRAXIS-SG-002 remains independent and unimplemented
+PASS  input digest — experiment_prompt
+PASS  input digest — methodological_basis
+PASS  input digest — independent_assessment
+PASS  baseline commit is ancestor of HEAD
+PASS  working tree is confined to authorized experimental artifacts
+files_considered=
+- harness/evidence/PRAXIS-LAB-ECRG-E001-verification.sha256
+- harness/evidence/PRAXIS-LAB-ECRG-E001-verification.txt
+- harness/reports/PRAXIS-LAB-ECRG-E001.md
+- harness/scenarios/PRAXIS-LAB-ECRG-E001.json
+- harness/scenarios/verify_praxis_lab_ecrg_e001.py
+result=PASS
+claim_boundary=experiment constitution only; ECRG and SG-002 not promoted

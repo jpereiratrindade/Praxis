@@ -1,0 +1,142 @@
+{
+  "$schema": "../../contracts/methodology/experiment-record.schema.json",
+  "schema": "praxis-governed-experiment/0.1",
+  "experiment": {
+    "id": "PRAXIS-LAB-ECRG-E002",
+    "title": "Minimal Governed Reconstruction",
+    "phase": "LAB",
+    "status": "proposed",
+    "question": "Qual é o menor conjunto governado de referências, conteúdos e metadados capaz de tornar ECRG-E001 reconstruível em um workspace independente, sem preservar integralmente a conversa e sem depender de caminhos absolutos externos?",
+    "objective": "Investigar quais elementos são materialmente necessários e suficientes para reconstrução independente de ECRG-E001, distinguindo identidade verificável, recuperabilidade e referência governadamente resolvível.",
+    "hypothesis": "Um conjunto menor que o ambiente e a conversa completos, composto por conteúdos materialmente necessários ou referências governadamente resolvíveis, identidades verificáveis, baseline, protocolo executável e memória interpretativa mínima, pode permitir reconstrução independente de ECRG-E001.",
+    "scope": [
+      "definir operacionalmente reconstrução independente para este caso",
+      "avaliar identidade verificável, recuperabilidade e resolução governada de referências",
+      "isolar a reprodução de caminhos e estado implícito do workspace originário",
+      "testar a necessidade de cada classe candidata de conteúdo e metadado",
+      "medir a memória mínima necessária sem preservar integralmente a conversa"
+    ],
+    "out_of_scope": [
+      "executar E002 nesta rodada",
+      "modificar qualquer artefato histórico de E001",
+      "copiar o ambiente ou a conversa completos por conveniência",
+      "criar schema, policy, gate normativo, Skill ou Agent",
+      "alterar Praxis Core, estado canônico ou PRAXIS-SG-002",
+      "alterar os documentos LaTeX do Método Praxis ou da ECRG",
+      "promover a distinção de proveniência a taxonomia normativa",
+      "realizar commit ou push"
+    ],
+    "baseline": {
+      "branch": "main",
+      "commit": "c3e24973a2a9c14bd44c4efa6c932ccb88a0c84e",
+      "canonical_state": ".hoa/project-state.yaml",
+      "last_verified_milestone": "PRAXIS-SG-001",
+      "next_milestone": "H2",
+      "next_milestone_authorized": false,
+      "working_tree_before_constitution": "five untracked PRAXIS-LAB-ECRG-E001 artifacts only"
+    },
+    "predecessor": {
+      "id": "PRAXIS-LAB-ECRG-E001",
+      "historical_result": "SUPPORTED",
+      "preserved_claim_boundary": "local experiment constitution only",
+      "record": "harness/scenarios/PRAXIS-LAB-ECRG-E001.json",
+      "report": "harness/reports/PRAXIS-LAB-ECRG-E001.md",
+      "verification_evidence": "harness/evidence/PRAXIS-LAB-ECRG-E001-verification.txt",
+      "post_reflection": "harness/reports/PRAXIS-LAB-ECRG-E001-post-reflection.md"
+    },
+    "finding": {
+      "id": "ECRG-F001",
+      "statement": "External input identity does not imply portable provenance.",
+      "classification": "SUPPORTED",
+      "scope": "the observed ECRG-E001 representation and verifier",
+      "authority": "finding_only"
+    },
+    "mre_candidate": {
+      "status": "candidate_not_normative",
+      "minimum_learning": "An absolute path and digest can support origin-local lookup and identity verification of available bytes, but do not make a materially necessary input recoverable in an independent workspace.",
+      "candidate_properties": [
+        "registered_reference",
+        "verifiable_identity",
+        "governed_recoverability"
+      ]
+    },
+    "operational_protocol": [
+      "ECRG-OP01",
+      "ECRG-OP02",
+      "ECRG-OP03",
+      "ECRG-OP04",
+      "ECRG-OP05",
+      "ECRG-OP06",
+      "ECRG-OP07",
+      "ECRG-OP08",
+      "ECRG-OP09"
+    ],
+    "expected_outputs_if_execution_is_later_authorized": [
+      "an explicitly bounded candidate reconstruction set",
+      "an isolated independent-workspace procedure",
+      "results for control, candidate and ablation conditions",
+      "evidence sufficient to classify reconstructibility and minimality separately"
+    ]
+  },
+  "constitution_provenance": {
+    "authority_source": {
+      "path": "/home/jpereiratrindade/Downloads/Praxis-Lab - ECRG — próxima execução do Codex.md",
+      "sha256": "53be4e40ba786633e6d9aa6f3fd3d1cdfadb1e5fcd11ad64352bfe73258b7247",
+      "reference_status": "origin_local_absolute_reference",
+      "identity_status": "verifiable_while_content_is_available",
+      "recoverability_status": "not_claimed_as_governed"
+    },
+    "conceptual_sources": [
+      {
+        "title": "Engenharia Conversacional Reflexiva Governada v0.1.0",
+        "sha256": "a805d702392e91e1bf0eb410eb55991603ef550285c217b16a0dd73c06cc9f40",
+        "status": "hypothesis_under_investigation"
+      },
+      {
+        "title": "Método Praxis — Engenharia Experimental Governada v0.1.1",
+        "sha256": "78ecf9189255d69d2067b4862e6102e5404bcb286796661b4af52ec2e53e61c4",
+        "status": "methodological_basis"
+      }
+    ],
+    "claim_boundary": "This metadata identifies constitution inputs available in the origin environment; it does not claim that those external contents are governed or recoverable."
+  },
+  "authority_boundary": {
+    "authorized_now": [
+      "preserve and verify E001",
+      "record post-E001 learning in the existing Harness",
+      "constitute E002 as proposed",
+      "produce only the experimental design and documentation delta"
+    ],
+    "requires_new_explicit_authorization": [
+      "activate or execute E002",
+      "create a reconstruction package or copy external inputs",
+      "create a verifier, evidence or implementation artifact for E002",
+      "modify E001, Core, contracts, policies, normative gates, Agents, Skills or canonical state",
+      "modify or promote either LaTeX document"
+    ]
+  },
+  "verification": {
+    "gate": "not_implemented_by_design",
+    "status": "not_implemented",
+    "reason": "This round is authorized for constitution only; implementing or running the E002 protocol requires new explicit authorization.",
+    "future_questions": [
+      "Are all materially necessary inputs available without origin-only absolute paths?",
+      "Can an isolated workspace verify the identity of every consumed content item?",
+      "Can the reconstruction procedure complete without undeclared origin context?",
+      "Which candidate elements can be removed without changing the reconstruction result?",
+      "Is reconstructibility supported independently from the claim of minimality?"
+    ]
+  },
+  "outputs": {
+    "record": "harness/scenarios/PRAXIS-LAB-ECRG-E002.json",
+    "design": "harness/plans/PRAXIS-LAB-ECRG-E002.md",
+    "post_e001_reflection": "harness/reports/PRAXIS-LAB-ECRG-E001-post-reflection.md",
+    "evidence_status": "not_produced",
+    "tests": []
+  },
+  "promotion_criteria": [
+    "No transition beyond proposed occurs without explicit human authorization.",
+    "Execution must classify reconstructibility and minimality as separate claims.",
+    "No result from this single case automatically changes Praxis Core or creates normative provenance taxonomy."
+  ]
+}
