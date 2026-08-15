@@ -1,0 +1,171 @@
+{
+  "artifact": "praxis-gvi-001-first-cycle-result/0.1",
+  "authority": {
+    "adoption": "NONE",
+    "implementation": "EXPERIMENTAL_HARNESS_ONLY",
+    "merge": "NONE",
+    "promotion": "NONE"
+  },
+  "verdict": "READY_FOR_SEMANTIC_DESIGN",
+  "baselines": {
+    "praxis_p1": "e0532b8f5b9861c3047c0f1ab6173048cb445068",
+    "rejected_pbg": "8f9b685c63617abb7eb02f574d0a74642c1f665d",
+    "srf_p1": "3b5615e5b5302ca93dc56085a999527a8206339e"
+  },
+  "rejected_lineage_preservation": {
+    "github": "PUBLISHED_AT_8f9b685c63617abb7eb02f574d0a74642c1f665d",
+    "gitlab": "PUBLISHED_AT_8f9b685c63617abb7eb02f574d0a74642c1f665d",
+    "merged": false,
+    "tagged": false
+  },
+  "evidence": {
+    "observations": "p1-observations.json",
+    "observations_sha256": "4e27bac707e43ec54052e011440ff219cb5079fce1c2dce29ac44ed78121139f",
+    "pre_observation_hypotheses": "hypotheses.json",
+    "protocol": "../../plans/PRAXIS-GVI-001.md"
+  },
+  "reported_counterexample_reproduction": [
+    {
+      "scenario": "PARTIAL_TO_EMPTY",
+      "praxis_p1": "REJECT",
+      "reproduced": false,
+      "interpretation": "The PBG candidate accepted this transition; P1 rejects both PARTIAL and EMPTY incidentally at missing path NONE, not through transition semantics."
+    },
+    {
+      "scenario": "PARTIAL_TO_ESTABLISHED",
+      "praxis_p1": "ACCEPT_CURRENT_RESTORED_STATE",
+      "reproduced": true,
+      "interpretation": "P1 ignores the invalid predecessor and provides no explicit recovery classification."
+    },
+    {
+      "scenario": "EMPTY_WITH_VERIFIED_METADATA",
+      "praxis_p1": "REJECT_EMPTY_FOR_UNRELATED_NONE_PATH",
+      "reproduced": false,
+      "interpretation": "The validator never mentions or discovers the contradictory manifest."
+    },
+    {
+      "scenario": "UNTRACKED_GATE_OR_EVIDENCE",
+      "praxis_p1": "ACCEPT",
+      "reproduced": true,
+      "severity": "CRITICAL"
+    },
+    {
+      "scenario": "EXTERNAL_GATE_OR_EVIDENCE",
+      "praxis_p1": "ACCEPT",
+      "reproduced": true,
+      "severity": "CRITICAL"
+    },
+    {
+      "scenario": "FAILING_GATE_WITH_PASS_TEXT",
+      "praxis_p1": "ACCEPT",
+      "reproduced": true,
+      "severity": "CRITICAL"
+    },
+    {
+      "scenario": "ROLLBACK_TO_OLDER_ESTABLISHED_TUPLE",
+      "praxis_p1": "ACCEPT",
+      "reproduced": true,
+      "severity": "MAJOR"
+    }
+  ],
+  "additional_observations": [
+    {
+      "id": "GVI-O01",
+      "observation": "P1 accepts proof artifacts tracked only after the claimed verified commit."
+    },
+    {
+      "id": "GVI-O02",
+      "observation": "P1 accepts changed current gate or evidence bytes when no conflicting evidence checksum is present."
+    },
+    {
+      "id": "GVI-O03",
+      "observation": "P1 accepts evidence text 'A0 NOT PASS' and 'A0 BYPASS' because PASS is matched as an unbounded substring."
+    },
+    {
+      "id": "GVI-O04",
+      "observation": "All schema-valid matching, contradictory, and orphan VERIFIED experiment records are ignored during established-state validation."
+    },
+    {
+      "id": "GVI-O05",
+      "observation": "Praxis evidence is legitimately created after its verified source commit: the gate exists at 4389885, while evidence and checksum first appear at c3e2497."
+    }
+  ],
+  "what_p1_proves": [
+    "canonical project-state exists and conforms to the structural P1 schema subset",
+    "the currently resolved gate and evidence paths are files",
+    "current evidence text contains the milestone and PASS in either order on a matching line",
+    "an optional sibling checksum matches current evidence bytes when present",
+    "the declared verified commit is an ancestor of current HEAD",
+    "selected build-transience, next-authorization, and optional bootstrap checks pass"
+  ],
+  "what_p1_does_not_prove": [
+    "gate or evidence path is confined to the governed repository",
+    "gate or evidence is Git-tracked",
+    "gate or evidence existed at any declared verification-record commit",
+    "current proof bytes equal historically identified bytes",
+    "the declared gate was executed",
+    "the recorded execution exited successfully",
+    "PASS text was causally produced by that execution",
+    "the transition into the current state is legitimate",
+    "experiment or milestone metadata is discovered or consistent",
+    "a repaired state explicitly preserves and explains an invalid predecessor"
+  ],
+  "candidate_invariants": {
+    "state_validity": [
+      "Proof references resolve inside the governed repository without traversal or symlink escape.",
+      "A verification claim distinguishes verified source identity from verification-record identity.",
+      "Gate bytes are identified at an explicit source or gate commit.",
+      "Evidence bytes and structured attestation are identified at an explicit later record commit.",
+      "The record commit descends from the verified source commit and is reachable from current governed history.",
+      "A canonical state references one authoritative verification record rather than reconstructing proof from unrelated path strings."
+    ],
+    "proof_coherence": [
+      "A structured attestation binds source commit, exact gate identity, invocation, exit status, result, and output digests.",
+      "PASS is a typed result derived from declared criteria, not an unbounded text search.",
+      "Historical attestation validation and current gate re-execution are distinct operations with distinct claims.",
+      "Integrity of the attestation is established through Git identity and/or recorded content digests, not an optional mutable checksum alone."
+    ],
+    "transition_validity": [
+      "A new authoritative verification record explicitly references its governed predecessor or an append-only chain head.",
+      "Transition order is not inferred from lexicographic milestone names or Git ancestry alone.",
+      "Rollback cannot erase a later record; recovery or supersession must preserve the displaced history.",
+      "State validation and transition validation return separate results."
+    ],
+    "artifact_discovery_and_authority": [
+      "Discovery uses explicit references or a governed registry, not an unconstrained filesystem scan.",
+      "Canonical project-state acts as the current cursor; the referenced verification record carries proof authority.",
+      "Experiment or milestone status may claim verified only through a link to the authoritative verification record, or must be treated as descriptive.",
+      "Contradiction among referenced authoritative artifacts fails closed; orphan artifacts receive no implicit authority."
+    ]
+  },
+  "recovery_semantics": {
+    "status": "INCONCLUSIVE",
+    "observation": "P1 accepts a restored valid A0 after a committed invalid partial state but records no recovery or supersession meaning.",
+    "boundary": "The observation shows repair is possible, not which recovery semantics Praxis should adopt."
+  },
+  "hypothesis_outcomes": [
+    {"id": "GVI-H01", "outcome": "SUPPORTED"},
+    {"id": "GVI-H02", "outcome": "SUPPORTED"},
+    {"id": "GVI-H03", "outcome": "SUPPORTED"},
+    {"id": "GVI-H04", "outcome": "SUPPORTED"},
+    {"id": "GVI-H05", "outcome": "SUPPORTED"},
+    {"id": "GVI-H06", "outcome": "SUPPORTED"},
+    {"id": "GVI-H07", "outcome": "INCONCLUSIVE"}
+  ],
+  "candidate_semantic_architecture": {
+    "status": "DESIGN_DIRECTION_NOT_IMPLEMENTED",
+    "operations": [
+      "parse_and_validate_structure",
+      "resolve_authoritative_verification_record",
+      "validate_proof_provenance",
+      "validate_historical_attestation",
+      "assess_current_reproducibility",
+      "validate_transition",
+      "detect_authoritative_artifact_contradictions"
+    ],
+    "separation": "Small composable semantic operations sharing typed records; no monolithic validator and no duplicated ontology."
+  },
+  "rigor_level_learning": "SUPPORTED_AS_CANDIDATE_LEARNING",
+  "production_files_modified": false,
+  "srf_modified": false
+}
