@@ -23,6 +23,9 @@ EXPERIMENT_SCHEMA = ROOT / "contracts/methodology/experiment-record.schema.json"
 sys.path.insert(0, str(ROOT / "scripts"))
 from governed_method_schema import load_schema, validate_instance  # noqa: E402
 
+os.environ["GIT_AUTHOR_DATE"] = "2026-08-15T12:00:00+00:00"
+os.environ["GIT_COMMITTER_DATE"] = "2026-08-15T12:00:00+00:00"
+
 
 def sha256_bytes(value: bytes) -> str:
     return hashlib.sha256(value).hexdigest()
@@ -277,10 +280,11 @@ def provenance_observations(fixtures: Path) -> list[dict[str, Any]]:
     anchor = initialize_source(root)
     external = fixtures / "external-gate.sh"
     external.write_text("#!/bin/sh\nexit 0\n", encoding="utf-8")
+    external_declared = "../external-gate.sh"
     evidence_path = write_evidence(root, evidence)
-    write_state(root, state_dict("A0", anchor, str(external), evidence))
+    write_state(root, state_dict("A0", anchor, external_declared, evidence))
     commit_paths(root, "record external gate", ".hoa/project-state.yaml", str(evidence_path.relative_to(root)))
-    rows.append(finish_provenance_case(root, "external_gate", anchor, str(external), evidence))
+    rows.append(finish_provenance_case(root, "external_gate", anchor, external_declared, evidence))
 
     root = fixtures / "provenance-external-evidence"
     root.mkdir()
@@ -288,9 +292,10 @@ def provenance_observations(fixtures: Path) -> list[dict[str, Any]]:
     gate_path = write_gate(root, gate)
     external = fixtures / "external-evidence.txt"
     external.write_text("A0 PASS\n", encoding="utf-8")
-    write_state(root, state_dict("A0", anchor, gate, str(external)))
+    external_declared = "../external-evidence.txt"
+    write_state(root, state_dict("A0", anchor, gate, external_declared))
     commit_paths(root, "record external evidence", ".hoa/project-state.yaml", str(gate_path.relative_to(root)))
-    rows.append(finish_provenance_case(root, "external_evidence", anchor, gate, str(external)))
+    rows.append(finish_provenance_case(root, "external_evidence", anchor, gate, external_declared))
 
     root = fixtures / "provenance-mutated-gate"
     root.mkdir()
@@ -443,6 +448,29 @@ def recovery_observation(fixtures: Path) -> dict[str, Any]:
     }
 
 
+def partial_to_empty_observation(fixtures: Path) -> dict[str, Any]:
+    root = fixtures / "partial-to-empty"
+    root.mkdir()
+    anchor = initialize_source(root)
+    partial = state_dict("A0", "0000000", "NONE", "NONE")
+    write_state(root, partial)
+    partial_commit = commit_all(root, "record invalid partial history")
+    partial_result = run_validator(root)
+    empty = state_dict("NONE", "0000000", "NONE", "NONE", phase="A0", next_milestone="A0")
+    write_state(root, empty)
+    empty_commit = commit_all(root, "move partial history to empty sentinel")
+    empty_result = run_validator(root)
+    return {
+        "source_anchor": anchor,
+        "sequence": [
+            {"state": "PARTIAL", "commit": partial_commit, "validator": partial_result},
+            {"state": "EMPTY_SENTINEL", "commit": empty_commit, "validator": empty_result},
+        ],
+        "empty_rejection_mentions_manifest": "manifest" in (empty_result["stdout"] + empty_result["stderr"]).lower(),
+        "git_log": require(root, "git", "log", "--format=%H %s"),
+    }
+
+
 def experiment_record(
     identity: str,
     phase: str,
@@ -561,6 +589,10 @@ def summarize(result: dict[str, Any]) -> dict[str, Any]:
             row["state"]: row["validator"]["classification"]
             for row in result["invalid_state_recovery"]["sequence"]
         },
+        "partial_to_empty": {
+            row["state"]: row["validator"]["classification"]
+            for row in result["partial_to_empty"]["sequence"]
+        },
         "authority": {
             row["id"]: {
                 "manifest_schema": row["manifest_schema"],
@@ -570,6 +602,19 @@ def summarize(result: dict[str, Any]) -> dict[str, Any]:
             for row in authority
         },
     }
+
+
+def normalize_fixture_paths(value: Any, fixtures: Path) -> Any:
+    if isinstance(value, str):
+        return value.replace(str(fixtures), "$FIXTURE_ROOT")
+    if isinstance(value, list):
+        return [normalize_fixture_paths(item, fixtures) for item in value]
+    if isinstance(value, dict):
+        return {
+            key: normalize_fixture_paths(item, fixtures)
+            for key, item in value.items()
+        }
+    return value
 
 
 def main() -> int:
@@ -596,9 +641,11 @@ def main() -> int:
             "proof_coherence": coherence_observations(fixtures),
             "history_ordering": ordering_observations(fixtures),
             "invalid_state_recovery": recovery_observation(fixtures),
+            "partial_to_empty": partial_to_empty_observation(fixtures),
             "artifact_authority": authority_observations(fixtures),
         }
         result["summary"] = summarize(result)
+        result = normalize_fixture_paths(result, fixtures)
 
     output = args.output.resolve()
     output.parent.mkdir(parents=True, exist_ok=True)
