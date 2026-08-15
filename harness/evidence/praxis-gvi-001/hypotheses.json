@@ -1,0 +1,67 @@
+{
+  "artifact": "praxis-gvi-001-pre-observation-hypotheses/0.1",
+  "created_before_decisive_observations": true,
+  "authority": {
+    "adoption": "NONE",
+    "implementation": "EXPERIMENTAL_HARNESS_ONLY",
+    "merge": "NONE",
+    "promotion": "NONE"
+  },
+  "baselines": {
+    "praxis_p1": "e0532b8f5b9861c3047c0f1ab6173048cb445068",
+    "rejected_pbg": "8f9b685c63617abb7eb02f574d0a74642c1f665d",
+    "srf_p1": "3b5615e5b5302ca93dc56085a999527a8206339e"
+  },
+  "hypotheses": [
+    {
+      "id": "GVI-H01",
+      "question": "Does P1 establish that proof artifacts belong to the governed source state?",
+      "prediction": "Untracked, external, or historically absent proof can be accepted.",
+      "falsification": "All provenance-invalid proof is rejected by explicit containment, tracking, and historical-byte checks.",
+      "status": "UNOBSERVED"
+    },
+    {
+      "id": "GVI-H02",
+      "question": "Does P1 establish coherence between execution and PASS evidence?",
+      "prediction": "A nonzero gate plus matching textual PASS evidence is accepted.",
+      "falsification": "P1 rejects using an executable or attested gate/evidence relationship.",
+      "status": "UNOBSERVED"
+    },
+    {
+      "id": "GVI-H03",
+      "question": "Does P1 establish legitimate historical ordering?",
+      "prediction": "A0 to A1 to A0 rollback is accepted.",
+      "falsification": "P1 rejects rollback using an explicit transition invariant.",
+      "status": "UNOBSERVED"
+    },
+    {
+      "id": "GVI-H04",
+      "question": "Does P1 resolve contradictory verification claims across governed artifacts?",
+      "prediction": "Contradictory schema-valid experiment metadata is undiscovered and does not affect established-state validation.",
+      "falsification": "P1 discovers the artifacts and rejects their contradiction specifically.",
+      "status": "UNOBSERVED"
+    },
+    {
+      "id": "GVI-H05",
+      "question": "Are state validity and transition validity distinct?",
+      "prediction": "Individually valid A0 and A1 states do not make A0 to A1 to A0 legitimate.",
+      "falsification": "The properties are shown equivalent under the actual P1 semantics.",
+      "status": "UNOBSERVED"
+    },
+    {
+      "id": "GVI-H06",
+      "question": "Does duplicated verification meaning permit semantic divergence?",
+      "prediction": "At least one narrative or artifact invariant lacks shared executable enforcement.",
+      "falsification": "One reusable executable authority governs state, proof, transitions, and artifact consistency.",
+      "status": "UNOBSERVED"
+    },
+    {
+      "id": "GVI-H07",
+      "question": "Can fail-closed semantics be strengthened without rejecting legitimate states?",
+      "prediction": "Candidate invariants remain consistent with observed Praxis, SRF, and valid controlled histories.",
+      "falsification": "Every plausible strengthening conflicts with legitimate observed practice.",
+      "status": "UNOBSERVED"
+    }
+  ],
+  "interpretation_boundary": "Observations characterize identified artifacts and fixtures; candidate learning is not adoption."
+}
