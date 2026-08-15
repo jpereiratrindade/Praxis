@@ -1,0 +1,99 @@
+{
+  "all_predictions_matched": true,
+  "artifact": "praxis-pbg-001-bootstrap-matrix/0.1",
+  "phase": "baseline",
+  "results": [
+    {
+      "description": "uncommitted repository with exact empty-history tuple",
+      "exit_status": 1,
+      "expected": "REJECT",
+      "id": "A",
+      "matches_prediction": true,
+      "observed": "REJECT",
+      "raw_evidence": "case-a-validator.txt"
+    },
+    {
+      "description": "committed repository with exact empty-history tuple",
+      "exit_status": 1,
+      "expected": "REJECT",
+      "id": "B",
+      "matches_prediction": true,
+      "observed": "REJECT",
+      "raw_evidence": "case-b-validator.txt"
+    },
+    {
+      "description": "established verification with complete references",
+      "exit_status": 0,
+      "expected": "ACCEPT",
+      "id": "C",
+      "matches_prediction": true,
+      "observed": "ACCEPT",
+      "raw_evidence": "case-c-validator.txt"
+    },
+    {
+      "description": "partial tuple: milestone only",
+      "exit_status": 1,
+      "expected": "REJECT",
+      "id": "D1",
+      "matches_prediction": true,
+      "observed": "REJECT",
+      "raw_evidence": "case-d1-validator.txt"
+    },
+    {
+      "description": "partial tuple: commit only",
+      "exit_status": 1,
+      "expected": "REJECT",
+      "id": "D2",
+      "matches_prediction": true,
+      "observed": "REJECT",
+      "raw_evidence": "case-d2-validator.txt"
+    },
+    {
+      "description": "partial tuple: gate only",
+      "exit_status": 1,
+      "expected": "REJECT",
+      "id": "D3",
+      "matches_prediction": true,
+      "observed": "REJECT",
+      "raw_evidence": "case-d3-validator.txt"
+    },
+    {
+      "description": "partial tuple: evidence only",
+      "exit_status": 1,
+      "expected": "REJECT",
+      "id": "D4",
+      "matches_prediction": true,
+      "observed": "REJECT",
+      "raw_evidence": "case-d4-validator.txt"
+    },
+    {
+      "description": "committed regression from established to empty history",
+      "exit_status": 1,
+      "expected": "REJECT",
+      "id": "D5",
+      "matches_prediction": true,
+      "observed": "REJECT",
+      "raw_evidence": "case-d5-validator.txt"
+    },
+    {
+      "description": "existing verified Praxis repository",
+      "exit_status": 0,
+      "expected": "ACCEPT",
+      "id": "E",
+      "matches_prediction": true,
+      "observed": "ACCEPT",
+      "raw_evidence": "case-e-validator.txt"
+    },
+    {
+      "description": "anchored SRF P1 with exact empty-history tuple",
+      "exit_status": 1,
+      "expected": "REJECT",
+      "id": "F",
+      "matches_prediction": true,
+      "observed": "REJECT",
+      "raw_evidence": "case-f-validator.txt"
+    }
+  ],
+  "validator": "/home/jpereiratrindade/dev/cpp/Praxis/scripts/validate_governed_project.py",
+  "validator_sha256": "df1e6f4a9f6263861c62c68527a0a219b9926535e6cf9d62999da8a7bc8109cc"
+}

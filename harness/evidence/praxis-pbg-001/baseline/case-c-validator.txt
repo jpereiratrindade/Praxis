@@ -1,0 +1,16 @@
+exit_status=0
+
+STDOUT
+PASS  canonical state — .hoa/project-state.yaml
+PASS  canonical state conforms to project-state.schema.json
+PASS  governance method — praxis-governed-engineering/0.1
+PASS  gate — scripts/verify_a0.sh
+PASS  governed evidence — docs/evidence/a0/verification.txt
+PASS  governed evidence proves PASS — A0
+PASS  governed evidence checksum
+PASS  verified commit ancestry — 83643e4c138ed2042cfdb32bfef13edbaf3ae5fc
+PASS  next milestone authorization explicit
+
+Governed project method v0.1: READY
+
+STDERR
