@@ -1,0 +1,133 @@
+{
+  "artifact": "praxis-pbg-001-candidate-result/0.1",
+  "authority": {
+    "adoption": "NONE",
+    "main_merge": "FORBIDDEN_IN_THIS_INVESTIGATION",
+    "method_promotion": "NONE",
+    "status": "CANDIDATE"
+  },
+  "candidate": {
+    "branch": "feat/bootstrap-state-semantics",
+    "experiment_record_schema_sha256": "e24d9f98bf391310790b077ccafa3eddf1a61d47aeb2fc0171f5648792b74d46",
+    "implementation_commit": "2cb957b69a3a89106e22dece71b4e0843ec0dcae",
+    "project_state_schema_sha256": "2065baf618091c8944e56b118397e5412e68711872fd454b781a18fb71aa424a",
+    "schema_helper_sha256": "16d98995cc46004b2a317547eb68c25f271eabf9693b52a4c3a75adac007bbbb",
+    "validator_sha256": "b5a08cd2b461d692e55692d239d23c142f6935b580a6b4802e6c2492d01cf241"
+  },
+  "candidate_learning": [
+    {
+      "adoption": "NONE",
+      "evidence": [
+        "baseline/matrix.json",
+        "candidate/matrix.json"
+      ],
+      "id": "PBG-CL01",
+      "proposal": "Represent empty and established verification histories as mutually exclusive atomic tuples across schema, validator, template, policy, and method documentation.",
+      "status": "CANDIDATE"
+    },
+    {
+      "adoption": "NONE",
+      "evidence": [
+        "candidate/case-d5-validator.txt"
+      ],
+      "id": "PBG-CL02",
+      "proposal": "Reject an empty canonical tuple when established verification exists in the current committed project-state history.",
+      "status": "CANDIDATE"
+    }
+  ],
+  "hypothesis_comparisons": [
+    {
+      "comparison": "SUPPORTED",
+      "evidence": [
+        "candidate/case-a-validator.txt",
+        "candidate/case-b-validator.txt",
+        "candidate/case-f-validator.txt"
+      ],
+      "id": "PBG-H01",
+      "relevant_cases": ["A", "B", "F"]
+    },
+    {
+      "comparison": "SUPPORTED",
+      "evidence": [
+        "baseline/case-a-validator.txt",
+        "baseline/case-b-validator.txt",
+        "baseline/case-f-validator.txt"
+      ],
+      "id": "PBG-H02",
+      "relevant_cases": ["A", "B", "F"]
+    },
+    {
+      "comparison": "SUPPORTED",
+      "evidence": [
+        "candidate/case-a-validator.txt",
+        "candidate/case-b-validator.txt",
+        "candidate/case-d1-validator.txt",
+        "candidate/case-d2-validator.txt",
+        "candidate/case-d3-validator.txt",
+        "candidate/case-d4-validator.txt",
+        "candidate/case-d5-validator.txt"
+      ],
+      "id": "PBG-H03",
+      "relevant_cases": ["A", "B", "D1", "D2", "D3", "D4", "D5"]
+    },
+    {
+      "comparison": "SUPPORTED",
+      "evidence": [
+        "candidate/case-a-validator.txt",
+        "candidate/case-b-validator.txt",
+        "candidate/case-f-validator.txt"
+      ],
+      "id": "PBG-H04",
+      "relevant_cases": ["A", "B", "F"]
+    },
+    {
+      "comparison": "SUPPORTED",
+      "evidence": [
+        "candidate/case-c-validator.txt",
+        "candidate/case-e-validator.txt"
+      ],
+      "id": "PBG-H05",
+      "relevant_cases": ["C", "E"],
+      "regression_checks": {
+        "ctest": "PASS (5/5)",
+        "praxis_quality": "PASS",
+        "praxis_self_governance": "PASS"
+      }
+    }
+  ],
+  "matrices": {
+    "baseline": "baseline/matrix.json",
+    "candidate": "candidate/matrix.json"
+  },
+  "praxis_baseline": {
+    "ctest": "PASS (4/4)",
+    "git_head": "e0532b8f5b9861c3047c0f1ab6173048cb445068",
+    "project_state_schema_sha256": "f7771bd32acd3bd279ca6e813f1c722d5f19d9c97ffcd85dfe62701e6e0bf20d",
+    "quality": "PASS",
+    "schema_helper_sha256": "4a733ee291afbdd2af0dace9fdd5fadce3ec2d6951b8bb69818d8a2b621ccf07",
+    "self_governance": "PASS",
+    "validator_sha256": "df1e6f4a9f6263861c62c68527a0a219b9926535e6cf9d62999da8a7bc8109cc"
+  },
+  "root_cause": {
+    "classification": [
+      "ontology",
+      "schema_cross_field_invariant",
+      "validator",
+      "lifecycle",
+      "documentation"
+    ],
+    "finding": "P1 accepted the sentinel values structurally but had no atomic empty-history ontology; the validator treated NONE as a path and lifecycle monotonicity was undefined."
+  },
+  "srf_p1": {
+    "candidate_validation": "ACCEPT",
+    "git_head": "3b5615e5b5302ca93dc56085a999527a8206339e",
+    "github_main": "3b5615e5b5302ca93dc56085a999527a8206339e",
+    "gitlab_main": "3b5615e5b5302ca93dc56085a999527a8206339e",
+    "modified_by_investigation": false,
+    "working_tree_clean": true
+  },
+  "unexpected_observations": {
+    "empty_meaning": "No observation outside the declared baseline and candidate predictions occurred.",
+    "observations": []
+  }
+}
