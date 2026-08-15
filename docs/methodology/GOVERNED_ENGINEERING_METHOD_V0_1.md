@@ -113,6 +113,27 @@ A memória governada mínima combina:
 
 Documentação explica. Memória governada registra o que foi comprovado.
 
+## Ciclo de vida do histórico de verificação
+
+Existência do projeto, proveniência Git e verificação científica são dimensões
+distintas. Um projeto governado pode estar em um de dois estados canônicos de
+histórico:
+
+- **empty** — nenhum marco foi verificado; a tupla completa é
+  `NONE / 0000000 / NONE / NONE` para marco, commit, gate e evidência;
+- **established** — os quatro campos descrevem conjuntamente uma verificação e
+  estão sujeitos à integridade referencial, evidência de PASS e ancestralidade.
+
+A tupla é atômica. Preenchimento parcial não representa bootstrap: representa
+estado inconsistente e deve falhar fechado. No estado `empty`, `0000000` é
+sentinela de ausência de commit verificado, não uma afirmação sobre a existência
+de commits no repositório.
+
+O primeiro commit pode ancorar proveniência sem verificar um marco. A primeira
+verificação é uma transição explícita de `empty` para `established`; depois que
+um histórico estabelecido aparece na linha Git corrente, retornar a `empty` é
+uma regressão não monotônica e deve ser rejeitado.
+
 ## Ciclo de uso
 
 1. observar divergência ou risco;

@@ -1,6 +1,8 @@
 cmake_minimum_required(VERSION 3.25)
 project(Praxis VERSION 0.4.1 LANGUAGES CXX)
 
+find_package(Python3 REQUIRED COMPONENTS Interpreter)
+
 set(CMAKE_CXX_STANDARD 23)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
@@ -97,3 +99,12 @@ add_test(NAME dashboard_read_only_tests COMMAND PraxisDashboardTests)
 add_executable(PraxisWorkspaceTests tests/workspace/ProjectWorkspaceTests.cpp)
 target_link_libraries(PraxisWorkspaceTests PRIVATE praxis_core praxis_project_options)
 add_test(NAME workspace_tests COMMAND PraxisWorkspaceTests)
+
+add_test(
+    NAME methodology_bootstrap_state_tests
+    COMMAND
+        ${Python3_EXECUTABLE}
+        ${CMAKE_CURRENT_SOURCE_DIR}/harness/scenarios/run_pbg_001_matrix.py
+        --phase candidate
+        --output ${CMAKE_CURRENT_BINARY_DIR}/pbg-001-ctest
+)

@@ -1,0 +1,119 @@
+{
+  "all_predictions_matched": true,
+  "artifact": "praxis-pbg-001-bootstrap-matrix/0.1",
+  "phase": "candidate",
+  "results": [
+    {
+      "description": "uncommitted repository with exact empty-history tuple",
+      "exit_status": 0,
+      "expected": "ACCEPT",
+      "id": "A",
+      "matches_prediction": true,
+      "observed": "ACCEPT",
+      "raw_evidence": "case-a-validator.txt",
+      "repository_head": null,
+      "working_tree_clean_before_validator": false
+    },
+    {
+      "description": "committed repository with exact empty-history tuple",
+      "exit_status": 0,
+      "expected": "ACCEPT",
+      "id": "B",
+      "matches_prediction": true,
+      "observed": "ACCEPT",
+      "raw_evidence": "case-b-validator.txt",
+      "repository_head": "87c00e22673ebb1a490efbc7a0026e758ec62a67",
+      "working_tree_clean_before_validator": true
+    },
+    {
+      "description": "established verification with complete references",
+      "exit_status": 0,
+      "expected": "ACCEPT",
+      "id": "C",
+      "matches_prediction": true,
+      "observed": "ACCEPT",
+      "raw_evidence": "case-c-validator.txt",
+      "repository_head": "d1eefecd4848a81e0fcffd7b21eab768292958b7",
+      "working_tree_clean_before_validator": true
+    },
+    {
+      "description": "partial tuple: milestone only",
+      "exit_status": 1,
+      "expected": "REJECT",
+      "id": "D1",
+      "matches_prediction": true,
+      "observed": "REJECT",
+      "raw_evidence": "case-d1-validator.txt",
+      "repository_head": null,
+      "working_tree_clean_before_validator": false
+    },
+    {
+      "description": "partial tuple: commit only",
+      "exit_status": 1,
+      "expected": "REJECT",
+      "id": "D2",
+      "matches_prediction": true,
+      "observed": "REJECT",
+      "raw_evidence": "case-d2-validator.txt",
+      "repository_head": null,
+      "working_tree_clean_before_validator": false
+    },
+    {
+      "description": "partial tuple: gate only",
+      "exit_status": 1,
+      "expected": "REJECT",
+      "id": "D3",
+      "matches_prediction": true,
+      "observed": "REJECT",
+      "raw_evidence": "case-d3-validator.txt",
+      "repository_head": null,
+      "working_tree_clean_before_validator": false
+    },
+    {
+      "description": "partial tuple: evidence only",
+      "exit_status": 1,
+      "expected": "REJECT",
+      "id": "D4",
+      "matches_prediction": true,
+      "observed": "REJECT",
+      "raw_evidence": "case-d4-validator.txt",
+      "repository_head": null,
+      "working_tree_clean_before_validator": false
+    },
+    {
+      "description": "committed regression from established to empty history",
+      "exit_status": 1,
+      "expected": "REJECT",
+      "id": "D5",
+      "matches_prediction": true,
+      "observed": "REJECT",
+      "raw_evidence": "case-d5-validator.txt",
+      "repository_head": "5b60812f91c543ade04db2069a19a1b90a714608",
+      "working_tree_clean_before_validator": true
+    },
+    {
+      "description": "existing verified Praxis repository",
+      "exit_status": 0,
+      "expected": "ACCEPT",
+      "id": "E",
+      "matches_prediction": true,
+      "observed": "ACCEPT",
+      "raw_evidence": "case-e-validator.txt",
+      "repository_head": "0b58077f9797fc080f777c1d74cf1905ed6859e1",
+      "working_tree_clean_before_validator": false
+    },
+    {
+      "description": "anchored SRF P1 with exact empty-history tuple",
+      "exit_status": 0,
+      "expected": "ACCEPT",
+      "id": "F",
+      "matches_prediction": true,
+      "observed": "ACCEPT",
+      "raw_evidence": "case-f-validator.txt",
+      "repository_head": "3b5615e5b5302ca93dc56085a999527a8206339e",
+      "working_tree_clean_before_validator": true
+    }
+  ],
+  "validator": "/home/jpereiratrindade/dev/cpp/Praxis/scripts/validate_governed_project.py",
+  "validator_sha256": "b5a08cd2b461d692e55692d239d23c142f6935b580a6b4802e6c2492d01cf241"
+}

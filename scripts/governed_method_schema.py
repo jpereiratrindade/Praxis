@@ -95,6 +95,20 @@ def validate_instance(
     if "enum" in schema and instance not in schema["enum"]:
         errors.append(f"{path}: valor {instance!r} fora de enum {schema['enum']!r}")
 
+    negated = schema.get("not")
+    if isinstance(negated, dict) and not validate_instance(instance, negated, path=path):
+        errors.append(f"{path}: valor satisfaz schema negado")
+
+    alternatives = schema.get("oneOf")
+    if isinstance(alternatives, list):
+        matches = sum(
+            not validate_instance(instance, alternative, path=path)
+            for alternative in alternatives
+            if isinstance(alternative, dict)
+        )
+        if matches != 1:
+            errors.append(f"{path}: esperado exatamente um schema de oneOf, obtido {matches}")
+
     expected_type = schema.get("type")
     if isinstance(expected_type, str) and not _type_matches(instance, expected_type):
         errors.append(

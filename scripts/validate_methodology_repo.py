@@ -71,6 +71,28 @@ def main() -> int:
             for error in validate_instance(template, project_schema)
         )
 
+        established_fixture = {
+            **template,
+            "last_verified_milestone": "A0",
+            "last_verified_commit": "1234567",
+            "last_verified_gate": "scripts/verify_a0.sh",
+            "last_verified_evidence": "docs/evidence/a0/verification.txt",
+        }
+        errors.extend(
+            f"established fixture: {error}"
+            for error in validate_instance(established_fixture, project_schema)
+        )
+        partial_fields = {
+            "last_verified_milestone": "A0",
+            "last_verified_commit": "1234567",
+            "last_verified_gate": "scripts/verify_a0.sh",
+            "last_verified_evidence": "docs/evidence/a0/verification.txt",
+        }
+        for field, value in partial_fields.items():
+            partial = {**template, field: value}
+            if not validate_instance(partial, project_schema):
+                errors.append(f"partial verification tuple accepted: {field}")
+
     experiment_fixture = {
         "experiment": {
             "id": "A0-E001",
@@ -119,6 +141,7 @@ def main() -> int:
         "Maturidade multidimensional",
         "Avaliação independente como fonte de findings",
         "Autoaplicabilidade",
+        "Ciclo de vida do histórico de verificação",
     ]:
         if token not in method_text:
             errors.append(f"method principle missing: {token}")
@@ -130,6 +153,7 @@ def main() -> int:
         "Escopo da prova",
         "Avaliações independentes",
         "Autoaplicabilidade",
+        "Histórico de verificação",
     ]:
         if token not in policy_text:
             errors.append(f"method policy missing: {token}")
@@ -143,6 +167,8 @@ def main() -> int:
     print("PASS methodology artifacts")
     print("PASS methodology schemas")
     print("PASS canonical-state template conforms to schema")
+    print("PASS empty/established history schema fixtures")
+    print("PASS partial verification tuples rejected")
     print("PASS experiment-record schema executable fixture")
     print("PASS methodology validators compile")
     print("PASS methodology principles/policy")

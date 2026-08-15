@@ -1,0 +1,7 @@
+exit_status=1
+
+STDOUT
+PASS  canonical state — .hoa/project-state.yaml
+
+STDERR
+FAIL  canonical state schema — $: esperado exatamente um schema de oneOf, obtido 0

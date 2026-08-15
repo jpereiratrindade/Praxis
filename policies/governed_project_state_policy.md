@@ -28,6 +28,24 @@ A autorização deve ser explícita e legível por máquina.
 Diretórios transitórios de build não são locais válidos como única evidência de
 promoção.
 
+## Histórico de verificação
+
+O histórico canônico possui dois estados válidos:
+
+```text
+empty       = NONE / 0000000 / NONE / NONE
+established = marco / commit / gate / evidência
+```
+
+Os quatro campos formam uma tupla atômica. Misturar sentinelas de `empty` com
+valores estabelecidos deve falhar fechado. Um repositório pode ter zero ou mais
+commits enquanto seu histórico de verificação continua `empty`; commit de
+proveniência não equivale a verificação científica.
+
+A transição `empty -> established` é válida quando todas as provas usuais são
+satisfeitas. A transição reversa é inválida na linha Git corrente, pois apagaria
+histórico governado em vez de constituir um novo bootstrap.
+
 ## Bootstrap
 
 `create_once` é a política preferida para scaffolds constitucionais. Reexecução

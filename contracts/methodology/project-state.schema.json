@@ -18,6 +18,26 @@
     "next_milestone_authorized",
     "updated_on"
   ],
+  "oneOf": [
+    {
+      "title": "Empty verification history",
+      "properties": {
+        "last_verified_milestone": {"const": "NONE"},
+        "last_verified_commit": {"const": "0000000"},
+        "last_verified_gate": {"const": "NONE"},
+        "last_verified_evidence": {"const": "NONE"}
+      }
+    },
+    {
+      "title": "Established verification history",
+      "properties": {
+        "last_verified_milestone": {"not": {"const": "NONE"}},
+        "last_verified_commit": {"not": {"const": "0000000"}},
+        "last_verified_gate": {"not": {"const": "NONE"}},
+        "last_verified_evidence": {"not": {"const": "NONE"}}
+      }
+    }
+  ],
   "properties": {
     "version": {"const": "1.0"},
     "project": {"type": "string", "minLength": 1},

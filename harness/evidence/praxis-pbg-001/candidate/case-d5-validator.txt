@@ -1,0 +1,10 @@
+exit_status=1
+
+STDOUT
+PASS  canonical state — .hoa/project-state.yaml
+PASS  canonical state conforms to project-state.schema.json
+PASS  governance method — praxis-governed-engineering/0.1
+PASS  verification history state — empty
+
+STDERR
+FAIL  verification history cannot regress from established to empty

@@ -123,6 +123,8 @@ def execute_case(
     expected_accept: bool,
     output: Path,
 ) -> dict[str, Any]:
+    head_result = command(root, "git", "rev-parse", "--verify", "HEAD")
+    status_result = command(root, "git", "status", "--porcelain", "--untracked-files=all")
     result = command(root, sys.executable, str(validator), str(root))
     accepted = result.returncode == 0
     raw_name = f"case-{identity.lower()}-validator.txt"
@@ -137,6 +139,11 @@ def execute_case(
         "observed": "ACCEPT" if accepted else "REJECT",
         "exit_status": result.returncode,
         "matches_prediction": accepted == expected_accept,
+        "repository_head": head_result.stdout.strip()
+        if head_result.returncode == 0
+        else None,
+        "working_tree_clean_before_validator": status_result.returncode == 0
+        and not status_result.stdout.strip(),
         "raw_evidence": raw_name,
     }
 
