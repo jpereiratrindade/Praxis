@@ -1,0 +1,136 @@
+{
+  "artifact": "praxis-pbg-001-independent-candidate-audit/0.1",
+  "audit_phase": "PHASE_I_FALSIFICATION_WITHOUT_REPAIR",
+  "starting_state": {
+    "branch": "feat/bootstrap-state-semantics",
+    "candidate_head": "1cab1b6e4a62b8ed9ce862eb4320ca94f7af10f3",
+    "main": "e0532b8f5b9861c3047c0f1ab6173048cb445068",
+    "origin_main": "e0532b8f5b9861c3047c0f1ab6173048cb445068",
+    "gitlab_main": "e0532b8f5b9861c3047c0f1ab6173048cb445068",
+    "working_tree": "clean"
+  },
+  "identities": {
+    "audit_generator_sha256": "381ad08586cfbd1ea060e1057926bd65dc4cc34f132adadad7055c6f528a75ca",
+    "project_state_schema_sha256": "2065baf618091c8944e56b118397e5412e68711872fd454b781a18fb71aa424a",
+    "schema_helper_sha256": "16d98995cc46004b2a317547eb68c25f271eabf9693b52a4c3a75adac007bbbb",
+    "validator_sha256": "b5a08cd2b461d692e55692d239d23c142f6935b580a6b4802e6c2492d01cf241"
+  },
+  "candidate_claim_reproduction": {
+    "baseline_matrix": "MATCH",
+    "candidate_matrix": "MATCH",
+    "stored_candidate_hashes": "MATCH",
+    "ctest": "PASS_5_OF_5",
+    "quality": "PASS",
+    "self_governance": "PASS",
+    "srf_p1_read_only": "ACCEPT"
+  },
+  "tuple_matrix": [
+    {"pattern": "0000", "schema": "ACCEPT", "validator": "ACCEPT", "semantic": "EMPTY"},
+    {"pattern": "0001", "schema": "REJECT", "validator": "REJECT", "semantic": "INVALID_PARTIAL"},
+    {"pattern": "0010", "schema": "REJECT", "validator": "REJECT", "semantic": "INVALID_PARTIAL"},
+    {"pattern": "0011", "schema": "REJECT", "validator": "REJECT", "semantic": "INVALID_PARTIAL"},
+    {"pattern": "0100", "schema": "REJECT", "validator": "REJECT", "semantic": "INVALID_PARTIAL"},
+    {"pattern": "0101", "schema": "REJECT", "validator": "REJECT", "semantic": "INVALID_PARTIAL"},
+    {"pattern": "0110", "schema": "REJECT", "validator": "REJECT", "semantic": "INVALID_PARTIAL"},
+    {"pattern": "0111", "schema": "REJECT", "validator": "REJECT", "semantic": "INVALID_PARTIAL"},
+    {"pattern": "1000", "schema": "REJECT", "validator": "REJECT", "semantic": "INVALID_PARTIAL"},
+    {"pattern": "1001", "schema": "REJECT", "validator": "REJECT", "semantic": "INVALID_PARTIAL"},
+    {"pattern": "1010", "schema": "REJECT", "validator": "REJECT", "semantic": "INVALID_PARTIAL"},
+    {"pattern": "1011", "schema": "REJECT", "validator": "REJECT", "semantic": "INVALID_PARTIAL"},
+    {"pattern": "1100", "schema": "REJECT", "validator": "REJECT", "semantic": "INVALID_PARTIAL"},
+    {"pattern": "1101", "schema": "REJECT", "validator": "REJECT", "semantic": "INVALID_PARTIAL"},
+    {"pattern": "1110", "schema": "REJECT", "validator": "REJECT", "semantic": "INVALID_PARTIAL"},
+    {"pattern": "1111", "schema": "ACCEPT", "validator": "ACCEPT", "semantic": "ESTABLISHED_STRUCTURALLY_VALID_FIXTURE"}
+  ],
+  "schema_cross_validation": {
+    "implementation": "python-jsonschema Draft202012Validator with FormatChecker",
+    "cases": 24,
+    "disagreements": 0,
+    "coverage": [
+      "sixteen_project_state_occupancy_patterns",
+      "oneOf_exactly_one",
+      "oneOf_zero",
+      "oneOf_multiple",
+      "not_success",
+      "not_failure",
+      "nested_used_shape",
+      "malformed_type"
+    ]
+  },
+  "findings": [
+    {
+      "id": "PBG-AUD-F01",
+      "severity": "MAJOR",
+      "scope": "candidate_bootstrap_lifecycle",
+      "counterexamples": ["PARTIAL_TO_EMPTY", "PARTIAL_TO_ESTABLISHED"],
+      "candidate": "ACCEPT",
+      "violated_invariant": "A committed partial tuple must not become a legitimate lifecycle waypoint."
+    },
+    {
+      "id": "PBG-AUD-F02",
+      "severity": "MAJOR",
+      "scope": "candidate_cross_artifact_consistency",
+      "counterexamples": [
+        "EMPTY_with_verified_experiment_manifest",
+        "ESTABLISHED_A0_with_verified_A1_manifest"
+      ],
+      "candidate": "ACCEPT",
+      "violated_invariant": "Individually valid artifacts must not compose into contradictory project-level verification claims."
+    },
+    {
+      "id": "PBG-AUD-F03",
+      "severity": "CRITICAL",
+      "scope": "pre_existing_established_history_validation",
+      "counterexamples": [
+        "untracked_gate_and_evidence",
+        "absolute_external_gate_and_evidence",
+        "failing_gate_with_pass_text"
+      ],
+      "candidate": "ACCEPT",
+      "baseline": "ACCEPT",
+      "violated_invariant": "A complete tuple must not establish verification from mutable, external, or gate-inconsistent proof."
+    },
+    {
+      "id": "PBG-AUD-F04",
+      "severity": "MAJOR",
+      "scope": "pre_existing_established_history_lifecycle",
+      "counterexample": "ESTABLISHED_ROLLBACK",
+      "candidate": "ACCEPT",
+      "baseline": "ACCEPT",
+      "violated_invariant": "Established history must not silently regress to an older established tuple."
+    },
+    {
+      "id": "PBG-AUD-F05",
+      "severity": "MODERATE",
+      "scope": "pre_existing_established_history_semantics",
+      "counterexamples": [
+        "milestone_inconsistent_with_phase",
+        "legacy_placeholder_values"
+      ],
+      "candidate": "ACCEPT",
+      "baseline": "ACCEPT",
+      "violated_invariant": "Structural occupancy alone must not confer semantic validity on placeholder or project-inconsistent history."
+    }
+  ],
+  "lifecycle_matrix": [
+    {"transition": "EMPTY_TO_EMPTY", "expected": "ACCEPT", "observed": "ACCEPT"},
+    {"transition": "EMPTY_TO_ESTABLISHED", "expected": "ACCEPT", "observed": "ACCEPT"},
+    {"transition": "ESTABLISHED_TO_ESTABLISHED", "expected": "ACCEPT", "observed": "ACCEPT"},
+    {"transition": "ESTABLISHED_TO_EMPTY", "expected": "REJECT", "observed": "REJECT"},
+    {"transition": "EMPTY_TO_PARTIAL", "expected": "REJECT", "observed": "REJECT"},
+    {"transition": "PARTIAL_TO_ESTABLISHED", "expected": "REJECT", "observed": "ACCEPT"},
+    {"transition": "ESTABLISHED_TO_PARTIAL", "expected": "REJECT", "observed": "REJECT"},
+    {"transition": "PARTIAL_TO_EMPTY", "expected": "REJECT", "observed": "ACCEPT"},
+    {"transition": "ESTABLISHED_ROLLBACK", "expected": "REJECT", "observed": "ACCEPT"}
+  ],
+  "hypotheses": {
+    "PBG-H01": "SUPPORTED",
+    "PBG-H02": "SUPPORTED",
+    "PBG-H03": "CONTRADICTED",
+    "PBG-H04": "SUPPORTED",
+    "PBG-H05": "INCONCLUSIVE"
+  },
+  "candidate_modifications": "NONE",
+  "repair_decision": "NOT_ATTEMPTED_REQUIRES_BROADER_METHODOLOGY_DECISIONS",
+  "verdict": "REJECTED"
+}
