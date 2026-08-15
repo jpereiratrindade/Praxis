@@ -1,0 +1,877 @@
+{
+  "artifact": "praxis-gvi-001-p1-observations/0.1",
+  "artifact_authority": [
+    {
+      "canonical_state": {
+        "governance_method": "praxis-governed-engineering/0.1",
+        "last_verified_commit": "8ff84d622b412c24840c5769be20714ad6290c8c",
+        "last_verified_evidence": "docs/evidence/a0/verification.txt",
+        "last_verified_gate": "scripts/verify_a0.sh",
+        "last_verified_milestone": "A0",
+        "next_milestone": "A1",
+        "next_milestone_authorized": false,
+        "next_milestone_status": "proposed",
+        "phase": "A0",
+        "project": "gvi-fixture",
+        "status": "active",
+        "updated_on": "2026-08-15",
+        "version": "1.0"
+      },
+      "id": "matching_a0",
+      "manifest": {
+        "experiment": {
+          "id": "A0",
+          "phase": "A0",
+          "status": "verified",
+          "title": "GVI fixture A0"
+        },
+        "outputs": {
+          "evidence": "docs/evidence/a0/verification.txt",
+          "tests": []
+        },
+        "verification": {
+          "gate": "scripts/verify_a0.sh"
+        }
+      },
+      "manifest_path": ".hoa/experiments/matching_a0.json",
+      "manifest_schema": "ACCEPT",
+      "manifest_schema_errors": [],
+      "validator": {
+        "classification": "ACCEPT",
+        "exit_status": 0,
+        "stderr": "",
+        "stdout": "PASS  canonical state \u2014 .hoa/project-state.yaml\nPASS  canonical state conforms to project-state.schema.json\nPASS  governance method \u2014 praxis-governed-engineering/0.1\nPASS  gate \u2014 scripts/verify_a0.sh\nPASS  governed evidence \u2014 docs/evidence/a0/verification.txt\nPASS  governed evidence proves PASS \u2014 A0\nPASS  verified commit ancestry \u2014 8ff84d622b412c24840c5769be20714ad6290c8c\nPASS  next milestone authorization explicit\n\nGoverned project method v0.1: READY\n"
+      },
+      "validator_mentions_manifest": false
+    },
+    {
+      "canonical_state": {
+        "governance_method": "praxis-governed-engineering/0.1",
+        "last_verified_commit": "8ff84d622b412c24840c5769be20714ad6290c8c",
+        "last_verified_evidence": "docs/evidence/a0/verification.txt",
+        "last_verified_gate": "scripts/verify_a0.sh",
+        "last_verified_milestone": "A0",
+        "next_milestone": "A1",
+        "next_milestone_authorized": false,
+        "next_milestone_status": "proposed",
+        "phase": "A0",
+        "project": "gvi-fixture",
+        "status": "active",
+        "updated_on": "2026-08-15",
+        "version": "1.0"
+      },
+      "id": "contradictory_latest_a1",
+      "manifest": {
+        "experiment": {
+          "id": "A1",
+          "phase": "A1",
+          "status": "verified",
+          "title": "GVI fixture A1"
+        },
+        "outputs": {
+          "evidence": "docs/evidence/a1/verification.txt",
+          "tests": []
+        },
+        "verification": {
+          "gate": "scripts/verify_a1.sh"
+        }
+      },
+      "manifest_path": ".hoa/experiments/contradictory_latest_a1.json",
+      "manifest_schema": "ACCEPT",
+      "manifest_schema_errors": [],
+      "validator": {
+        "classification": "ACCEPT",
+        "exit_status": 0,
+        "stderr": "",
+        "stdout": "PASS  canonical state \u2014 .hoa/project-state.yaml\nPASS  canonical state conforms to project-state.schema.json\nPASS  governance method \u2014 praxis-governed-engineering/0.1\nPASS  gate \u2014 scripts/verify_a0.sh\nPASS  governed evidence \u2014 docs/evidence/a0/verification.txt\nPASS  governed evidence proves PASS \u2014 A0\nPASS  verified commit ancestry \u2014 8ff84d622b412c24840c5769be20714ad6290c8c\nPASS  next milestone authorization explicit\n\nGoverned project method v0.1: READY\n"
+      },
+      "validator_mentions_manifest": false
+    },
+    {
+      "canonical_state": {
+        "governance_method": "praxis-governed-engineering/0.1",
+        "last_verified_commit": "8ff84d622b412c24840c5769be20714ad6290c8c",
+        "last_verified_evidence": "docs/evidence/a0/verification.txt",
+        "last_verified_gate": "scripts/verify_a0.sh",
+        "last_verified_milestone": "A0",
+        "next_milestone": "A1",
+        "next_milestone_authorized": false,
+        "next_milestone_status": "proposed",
+        "phase": "A0",
+        "project": "gvi-fixture",
+        "status": "active",
+        "updated_on": "2026-08-15",
+        "version": "1.0"
+      },
+      "id": "contradictory_evidence",
+      "manifest": {
+        "experiment": {
+          "id": "A0",
+          "phase": "A0",
+          "status": "verified",
+          "title": "GVI fixture A0"
+        },
+        "outputs": {
+          "evidence": "docs/evidence/other/verification.txt",
+          "tests": []
+        },
+        "verification": {
+          "gate": "scripts/verify_a0.sh"
+        }
+      },
+      "manifest_path": ".hoa/experiments/contradictory_evidence.json",
+      "manifest_schema": "ACCEPT",
+      "manifest_schema_errors": [],
+      "validator": {
+        "classification": "ACCEPT",
+        "exit_status": 0,
+        "stderr": "",
+        "stdout": "PASS  canonical state \u2014 .hoa/project-state.yaml\nPASS  canonical state conforms to project-state.schema.json\nPASS  governance method \u2014 praxis-governed-engineering/0.1\nPASS  gate \u2014 scripts/verify_a0.sh\nPASS  governed evidence \u2014 docs/evidence/a0/verification.txt\nPASS  governed evidence proves PASS \u2014 A0\nPASS  verified commit ancestry \u2014 8ff84d622b412c24840c5769be20714ad6290c8c\nPASS  next milestone authorization explicit\n\nGoverned project method v0.1: READY\n"
+      },
+      "validator_mentions_manifest": false
+    },
+    {
+      "canonical_state": {
+        "governance_method": "praxis-governed-engineering/0.1",
+        "last_verified_commit": "8ff84d622b412c24840c5769be20714ad6290c8c",
+        "last_verified_evidence": "docs/evidence/a0/verification.txt",
+        "last_verified_gate": "scripts/verify_a0.sh",
+        "last_verified_milestone": "A0",
+        "next_milestone": "A1",
+        "next_milestone_authorized": false,
+        "next_milestone_status": "proposed",
+        "phase": "A0",
+        "project": "gvi-fixture",
+        "status": "active",
+        "updated_on": "2026-08-15",
+        "version": "1.0"
+      },
+      "id": "contradictory_gate",
+      "manifest": {
+        "experiment": {
+          "id": "A0",
+          "phase": "A0",
+          "status": "verified",
+          "title": "GVI fixture A0"
+        },
+        "outputs": {
+          "evidence": "docs/evidence/a0/verification.txt",
+          "tests": []
+        },
+        "verification": {
+          "gate": "scripts/other_gate.sh"
+        }
+      },
+      "manifest_path": ".hoa/experiments/contradictory_gate.json",
+      "manifest_schema": "ACCEPT",
+      "manifest_schema_errors": [],
+      "validator": {
+        "classification": "ACCEPT",
+        "exit_status": 0,
+        "stderr": "",
+        "stdout": "PASS  canonical state \u2014 .hoa/project-state.yaml\nPASS  canonical state conforms to project-state.schema.json\nPASS  governance method \u2014 praxis-governed-engineering/0.1\nPASS  gate \u2014 scripts/verify_a0.sh\nPASS  governed evidence \u2014 docs/evidence/a0/verification.txt\nPASS  governed evidence proves PASS \u2014 A0\nPASS  verified commit ancestry \u2014 8ff84d622b412c24840c5769be20714ad6290c8c\nPASS  next milestone authorization explicit\n\nGoverned project method v0.1: READY\n"
+      },
+      "validator_mentions_manifest": false
+    },
+    {
+      "canonical_state": {
+        "governance_method": "praxis-governed-engineering/0.1",
+        "last_verified_commit": "8ff84d622b412c24840c5769be20714ad6290c8c",
+        "last_verified_evidence": "docs/evidence/a0/verification.txt",
+        "last_verified_gate": "scripts/verify_a0.sh",
+        "last_verified_milestone": "A0",
+        "next_milestone": "A1",
+        "next_milestone_authorized": false,
+        "next_milestone_status": "proposed",
+        "phase": "A0",
+        "project": "gvi-fixture",
+        "status": "active",
+        "updated_on": "2026-08-15",
+        "version": "1.0"
+      },
+      "id": "orphan_verified",
+      "manifest": {
+        "experiment": {
+          "id": "ORPHAN",
+          "phase": "Z9",
+          "status": "verified",
+          "title": "GVI fixture ORPHAN"
+        },
+        "outputs": {
+          "evidence": "docs/evidence/orphan.txt",
+          "tests": []
+        },
+        "verification": {
+          "gate": "scripts/orphan.sh"
+        }
+      },
+      "manifest_path": ".hoa/experiments/orphan_verified.json",
+      "manifest_schema": "ACCEPT",
+      "manifest_schema_errors": [],
+      "validator": {
+        "classification": "ACCEPT",
+        "exit_status": 0,
+        "stderr": "",
+        "stdout": "PASS  canonical state \u2014 .hoa/project-state.yaml\nPASS  canonical state conforms to project-state.schema.json\nPASS  governance method \u2014 praxis-governed-engineering/0.1\nPASS  gate \u2014 scripts/verify_a0.sh\nPASS  governed evidence \u2014 docs/evidence/a0/verification.txt\nPASS  governed evidence proves PASS \u2014 A0\nPASS  verified commit ancestry \u2014 8ff84d622b412c24840c5769be20714ad6290c8c\nPASS  next milestone authorization explicit\n\nGoverned project method v0.1: READY\n"
+      },
+      "validator_mentions_manifest": false
+    },
+    {
+      "canonical_state": {
+        "governance_method": "praxis-governed-engineering/0.1",
+        "last_verified_commit": "0000000",
+        "last_verified_evidence": "NONE",
+        "last_verified_gate": "NONE",
+        "last_verified_milestone": "NONE",
+        "next_milestone": "A0",
+        "next_milestone_authorized": false,
+        "next_milestone_status": "proposed",
+        "phase": "A0",
+        "project": "gvi-fixture",
+        "status": "active",
+        "updated_on": "2026-08-15",
+        "version": "1.0"
+      },
+      "id": "empty_with_verified_manifest",
+      "manifest": {
+        "experiment": {
+          "id": "A0",
+          "phase": "A0",
+          "status": "verified",
+          "title": "GVI fixture A0"
+        },
+        "outputs": {
+          "evidence": "docs/evidence/a0/verification.txt",
+          "tests": []
+        },
+        "verification": {
+          "gate": "scripts/verify_a0.sh"
+        }
+      },
+      "manifest_path": ".hoa/experiments/empty_with_verified_manifest.json",
+      "manifest_schema": "ACCEPT",
+      "manifest_schema_errors": [],
+      "validator": {
+        "classification": "REJECT",
+        "exit_status": 1,
+        "stderr": "FAIL  gate missing \u2014 NONE\n",
+        "stdout": "PASS  canonical state \u2014 .hoa/project-state.yaml\nPASS  canonical state conforms to project-state.schema.json\nPASS  governance method \u2014 praxis-governed-engineering/0.1\n"
+      },
+      "validator_mentions_manifest": false
+    }
+  ],
+  "history_ordering": {
+    "claimed_commits": {
+      "A0": "de7b46fd314a1b9aece516c668910a4942722d8d",
+      "A1": "ac25b30f94c5a7a1314c852724e77067a0a79b18"
+    },
+    "final_state": "version: \"1.0\"\nproject: gvi-fixture\ngovernance_method: praxis-governed-engineering/0.1\nphase: A0\nstatus: active\nlast_verified_milestone: A0\nlast_verified_commit: \"de7b46fd314a1b9aece516c668910a4942722d8d\"\nlast_verified_gate: scripts/verify_a0.sh\nlast_verified_evidence: docs/evidence/a0/verification.txt\nnext_milestone: A1\nnext_milestone_status: proposed\nnext_milestone_authorized: false\nupdated_on: \"2026-08-15\"\n",
+    "git_log": "431db3405a7eeea55e09fa7d5962546d4cdef02e restore older A0 tuple\nd0cc5147deeed98d5356bd382a11f8ec6640c017 establish A1\nac25b30f94c5a7a1314c852724e77067a0a79b18 anchor A1 source and proof\n6caf482f7233eb503692f9ec6094a48fee9ec7d7 establish A0\nde7b46fd314a1b9aece516c668910a4942722d8d anchor A0 source and proof",
+    "sequence": [
+      {
+        "commit": "6caf482f7233eb503692f9ec6094a48fee9ec7d7",
+        "state": "A0",
+        "validator": {
+          "classification": "ACCEPT",
+          "exit_status": 0,
+          "stderr": "",
+          "stdout": "PASS  canonical state \u2014 .hoa/project-state.yaml\nPASS  canonical state conforms to project-state.schema.json\nPASS  governance method \u2014 praxis-governed-engineering/0.1\nPASS  gate \u2014 scripts/verify_a0.sh\nPASS  governed evidence \u2014 docs/evidence/a0/verification.txt\nPASS  governed evidence proves PASS \u2014 A0\nPASS  verified commit ancestry \u2014 de7b46fd314a1b9aece516c668910a4942722d8d\nPASS  next milestone authorization explicit\n\nGoverned project method v0.1: READY\n"
+        }
+      },
+      {
+        "commit": "d0cc5147deeed98d5356bd382a11f8ec6640c017",
+        "state": "A1",
+        "validator": {
+          "classification": "ACCEPT",
+          "exit_status": 0,
+          "stderr": "",
+          "stdout": "PASS  canonical state \u2014 .hoa/project-state.yaml\nPASS  canonical state conforms to project-state.schema.json\nPASS  governance method \u2014 praxis-governed-engineering/0.1\nPASS  gate \u2014 scripts/verify_a1.sh\nPASS  governed evidence \u2014 docs/evidence/a1/verification.txt\nPASS  governed evidence proves PASS \u2014 A1\nPASS  verified commit ancestry \u2014 ac25b30f94c5a7a1314c852724e77067a0a79b18\nPASS  next milestone authorization explicit\n\nGoverned project method v0.1: READY\n"
+        }
+      },
+      {
+        "commit": "431db3405a7eeea55e09fa7d5962546d4cdef02e",
+        "state": "A0_ROLLBACK",
+        "validator": {
+          "classification": "ACCEPT",
+          "exit_status": 0,
+          "stderr": "",
+          "stdout": "PASS  canonical state \u2014 .hoa/project-state.yaml\nPASS  canonical state conforms to project-state.schema.json\nPASS  governance method \u2014 praxis-governed-engineering/0.1\nPASS  gate \u2014 scripts/verify_a0.sh\nPASS  governed evidence \u2014 docs/evidence/a0/verification.txt\nPASS  governed evidence proves PASS \u2014 A0\nPASS  verified commit ancestry \u2014 de7b46fd314a1b9aece516c668910a4942722d8d\nPASS  next milestone authorization explicit\n\nGoverned project method v0.1: READY\n"
+        }
+      }
+    ]
+  },
+  "instrument": {
+    "experiment_schema_sha256": "e24d9f98bf391310790b077ccafa3eddf1a61d47aeb2fc0171f5648792b74d46",
+    "harness_sha256": "2b90228c15cc9b992b4bcda97a109b7365588931c308f05782b4bf036b02e9a6",
+    "platform": "Linux",
+    "project_schema_sha256": "f7771bd32acd3bd279ca6e813f1c722d5f19d9c97ffcd85dfe62701e6e0bf20d",
+    "python": "3.14.6",
+    "schema_helper_sha256": "4a733ee291afbdd2af0dace9fdd5fadce3ec2d6951b8bb69818d8a2b621ccf07",
+    "validator": "/home/jpereiratrindade/dev/cpp/Praxis/scripts/validate_governed_project.py",
+    "validator_sha256": "df1e6f4a9f6263861c62c68527a0a219b9926535e6cf9d62999da8a7bc8109cc"
+  },
+  "invalid_state_recovery": {
+    "git_log": "d9bd3db79163ada8d8671202e8bae820379ec7aa restore valid A0 after invalid state\n6dcac41defe92a2c131a13db5b6adda7e0d8a307 record invalid partial state\n018a0cced3ba18f637898e36bd3a29a2d17803c6 establish valid A0\nde7b46fd314a1b9aece516c668910a4942722d8d anchor A0 source and proof",
+    "recovery_marker_present": false,
+    "sequence": [
+      {
+        "commit": "018a0cced3ba18f637898e36bd3a29a2d17803c6",
+        "state": "VALID_A0",
+        "validator": {
+          "classification": "ACCEPT",
+          "exit_status": 0,
+          "stderr": "",
+          "stdout": "PASS  canonical state \u2014 .hoa/project-state.yaml\nPASS  canonical state conforms to project-state.schema.json\nPASS  governance method \u2014 praxis-governed-engineering/0.1\nPASS  gate \u2014 scripts/verify_a0.sh\nPASS  governed evidence \u2014 docs/evidence/a0/verification.txt\nPASS  governed evidence proves PASS \u2014 A0\nPASS  verified commit ancestry \u2014 de7b46fd314a1b9aece516c668910a4942722d8d\nPASS  next milestone authorization explicit\n\nGoverned project method v0.1: READY\n"
+        }
+      },
+      {
+        "commit": "6dcac41defe92a2c131a13db5b6adda7e0d8a307",
+        "state": "INVALID_PARTIAL",
+        "validator": {
+          "classification": "REJECT",
+          "exit_status": 1,
+          "stderr": "FAIL  gate missing \u2014 NONE\n",
+          "stdout": "PASS  canonical state \u2014 .hoa/project-state.yaml\nPASS  canonical state conforms to project-state.schema.json\nPASS  governance method \u2014 praxis-governed-engineering/0.1\n"
+        }
+      },
+      {
+        "commit": "d9bd3db79163ada8d8671202e8bae820379ec7aa",
+        "state": "RESTORED_A0",
+        "validator": {
+          "classification": "ACCEPT",
+          "exit_status": 0,
+          "stderr": "",
+          "stdout": "PASS  canonical state \u2014 .hoa/project-state.yaml\nPASS  canonical state conforms to project-state.schema.json\nPASS  governance method \u2014 praxis-governed-engineering/0.1\nPASS  gate \u2014 scripts/verify_a0.sh\nPASS  governed evidence \u2014 docs/evidence/a0/verification.txt\nPASS  governed evidence proves PASS \u2014 A0\nPASS  verified commit ancestry \u2014 de7b46fd314a1b9aece516c668910a4942722d8d\nPASS  next milestone authorization explicit\n\nGoverned project method v0.1: READY\n"
+        }
+      }
+    ]
+  },
+  "praxis_p1": "e0532b8f5b9861c3047c0f1ab6173048cb445068",
+  "proof_coherence": [
+    {
+      "checksum": "absent",
+      "checksum_path": null,
+      "direct_gate_execution": {
+        "exit_status": 0,
+        "stderr": "",
+        "stdout": "",
+        "succeeds": true
+      },
+      "evidence_sha256": "6c201d51541f265cdcab6a1857afae9cd63955034a33078f8d43d101cbfe38a9",
+      "evidence_text": "A0 PASS\n",
+      "gate_sha256": "306c6ca7407560340797866e077e053627ad409277d1b9da58106fce4cf717cb",
+      "id": "success_pass_no_checksum",
+      "validator": {
+        "classification": "ACCEPT",
+        "exit_status": 0,
+        "stderr": "",
+        "stdout": "PASS  canonical state \u2014 .hoa/project-state.yaml\nPASS  canonical state conforms to project-state.schema.json\nPASS  governance method \u2014 praxis-governed-engineering/0.1\nPASS  gate \u2014 scripts/verify_a0.sh\nPASS  governed evidence \u2014 docs/evidence/a0/verification.txt\nPASS  governed evidence proves PASS \u2014 A0\nPASS  verified commit ancestry \u2014 91ea3a300be4945786c5bab275473d7e0f12ed12\nPASS  next milestone authorization explicit\n\nGoverned project method v0.1: READY\n"
+      }
+    },
+    {
+      "checksum": "absent",
+      "checksum_path": null,
+      "direct_gate_execution": {
+        "exit_status": 9,
+        "stderr": "",
+        "stdout": "",
+        "succeeds": false
+      },
+      "evidence_sha256": "6c201d51541f265cdcab6a1857afae9cd63955034a33078f8d43d101cbfe38a9",
+      "evidence_text": "A0 PASS\n",
+      "gate_sha256": "94862798bf9da87e10a2abb45cd2647fd9c59dfcd15e106c5aee5e00de234976",
+      "id": "failure_pass_no_checksum",
+      "validator": {
+        "classification": "ACCEPT",
+        "exit_status": 0,
+        "stderr": "",
+        "stdout": "PASS  canonical state \u2014 .hoa/project-state.yaml\nPASS  canonical state conforms to project-state.schema.json\nPASS  governance method \u2014 praxis-governed-engineering/0.1\nPASS  gate \u2014 scripts/verify_a0.sh\nPASS  governed evidence \u2014 docs/evidence/a0/verification.txt\nPASS  governed evidence proves PASS \u2014 A0\nPASS  verified commit ancestry \u2014 03336b0f48cc084a0f6d3b24902aa58d837aa617\nPASS  next milestone authorization explicit\n\nGoverned project method v0.1: READY\n"
+      }
+    },
+    {
+      "checksum": "absent",
+      "checksum_path": null,
+      "direct_gate_execution": {
+        "exit_status": 9,
+        "stderr": "",
+        "stdout": "",
+        "succeeds": false
+      },
+      "evidence_sha256": "b520aede9e635c564a135e6c554c6472bef19c226a5d7fb21ac9a4b32cb41396",
+      "evidence_text": "A0 NOT PASS\n",
+      "gate_sha256": "94862798bf9da87e10a2abb45cd2647fd9c59dfcd15e106c5aee5e00de234976",
+      "id": "failure_negated_pass",
+      "validator": {
+        "classification": "ACCEPT",
+        "exit_status": 0,
+        "stderr": "",
+        "stdout": "PASS  canonical state \u2014 .hoa/project-state.yaml\nPASS  canonical state conforms to project-state.schema.json\nPASS  governance method \u2014 praxis-governed-engineering/0.1\nPASS  gate \u2014 scripts/verify_a0.sh\nPASS  governed evidence \u2014 docs/evidence/a0/verification.txt\nPASS  governed evidence proves PASS \u2014 A0\nPASS  verified commit ancestry \u2014 d6d327563c3c8c0eb94f0f4a35320c848349afac\nPASS  next milestone authorization explicit\n\nGoverned project method v0.1: READY\n"
+      }
+    },
+    {
+      "checksum": "absent",
+      "checksum_path": null,
+      "direct_gate_execution": {
+        "exit_status": 9,
+        "stderr": "",
+        "stdout": "",
+        "succeeds": false
+      },
+      "evidence_sha256": "935868f4e0ed8299795766389947c189caf26c4547c358ae6de552fbad6da923",
+      "evidence_text": "A0 BYPASS\n",
+      "gate_sha256": "94862798bf9da87e10a2abb45cd2647fd9c59dfcd15e106c5aee5e00de234976",
+      "id": "failure_pass_substring",
+      "validator": {
+        "classification": "ACCEPT",
+        "exit_status": 0,
+        "stderr": "",
+        "stdout": "PASS  canonical state \u2014 .hoa/project-state.yaml\nPASS  canonical state conforms to project-state.schema.json\nPASS  governance method \u2014 praxis-governed-engineering/0.1\nPASS  gate \u2014 scripts/verify_a0.sh\nPASS  governed evidence \u2014 docs/evidence/a0/verification.txt\nPASS  governed evidence proves PASS \u2014 A0\nPASS  verified commit ancestry \u2014 14dc05bc19fc15d12c94bcf596f3d94575f7359c\nPASS  next milestone authorization explicit\n\nGoverned project method v0.1: READY\n"
+      }
+    },
+    {
+      "checksum": "absent",
+      "checksum_path": null,
+      "direct_gate_execution": {
+        "exit_status": 0,
+        "stderr": "",
+        "stdout": "",
+        "succeeds": true
+      },
+      "evidence_sha256": "de6197a5ff3733c1ce7f1d89be5155ba12bcaa7ff3861740917e325a316bde22",
+      "evidence_text": "A0 completed\n",
+      "gate_sha256": "306c6ca7407560340797866e077e053627ad409277d1b9da58106fce4cf717cb",
+      "id": "success_without_pass",
+      "validator": {
+        "classification": "REJECT",
+        "exit_status": 1,
+        "stderr": "FAIL  governed evidence does not prove PASS \u2014 A0\n",
+        "stdout": "PASS  canonical state \u2014 .hoa/project-state.yaml\nPASS  canonical state conforms to project-state.schema.json\nPASS  governance method \u2014 praxis-governed-engineering/0.1\nPASS  gate \u2014 scripts/verify_a0.sh\nPASS  governed evidence \u2014 docs/evidence/a0/verification.txt\n"
+      }
+    },
+    {
+      "checksum": "valid",
+      "checksum_path": "docs/evidence/a0/verification.sha256",
+      "direct_gate_execution": {
+        "exit_status": 0,
+        "stderr": "",
+        "stdout": "",
+        "succeeds": true
+      },
+      "evidence_sha256": "6c201d51541f265cdcab6a1857afae9cd63955034a33078f8d43d101cbfe38a9",
+      "evidence_text": "A0 PASS\n",
+      "gate_sha256": "306c6ca7407560340797866e077e053627ad409277d1b9da58106fce4cf717cb",
+      "id": "success_pass_valid_checksum",
+      "validator": {
+        "classification": "ACCEPT",
+        "exit_status": 0,
+        "stderr": "",
+        "stdout": "PASS  canonical state \u2014 .hoa/project-state.yaml\nPASS  canonical state conforms to project-state.schema.json\nPASS  governance method \u2014 praxis-governed-engineering/0.1\nPASS  gate \u2014 scripts/verify_a0.sh\nPASS  governed evidence \u2014 docs/evidence/a0/verification.txt\nPASS  governed evidence proves PASS \u2014 A0\nPASS  governed evidence checksum\nPASS  verified commit ancestry \u2014 a9a0c09638fc162e40648ed740e06fde3ff0ff64\nPASS  next milestone authorization explicit\n\nGoverned project method v0.1: READY\n"
+      }
+    },
+    {
+      "checksum": "invalid",
+      "checksum_path": "docs/evidence/a0/verification.sha256",
+      "direct_gate_execution": {
+        "exit_status": 0,
+        "stderr": "",
+        "stdout": "",
+        "succeeds": true
+      },
+      "evidence_sha256": "6c201d51541f265cdcab6a1857afae9cd63955034a33078f8d43d101cbfe38a9",
+      "evidence_text": "A0 PASS\n",
+      "gate_sha256": "306c6ca7407560340797866e077e053627ad409277d1b9da58106fce4cf717cb",
+      "id": "success_pass_invalid_checksum",
+      "validator": {
+        "classification": "REJECT",
+        "exit_status": 1,
+        "stderr": "FAIL  governed evidence checksum\n",
+        "stdout": "PASS  canonical state \u2014 .hoa/project-state.yaml\nPASS  canonical state conforms to project-state.schema.json\nPASS  governance method \u2014 praxis-governed-engineering/0.1\nPASS  gate \u2014 scripts/verify_a0.sh\nPASS  governed evidence \u2014 docs/evidence/a0/verification.txt\nPASS  governed evidence proves PASS \u2014 A0\n"
+      }
+    }
+  ],
+  "proof_provenance": [
+    {
+      "HEAD": "1b28fb61f46ec34cbcab53218ffd72ac80394370",
+      "claimed_verified_commit": "607878c5eb7b7c35123f4154930629bf257915dc",
+      "direct_gate_execution": {
+        "exit_status": 0,
+        "stderr": "",
+        "stdout": "",
+        "succeeds": true
+      },
+      "evidence": {
+        "claimed_commit_sha256": "6c201d51541f265cdcab6a1857afae9cd63955034a33078f8d43d101cbfe38a9",
+        "current_matches_claimed_commit": true,
+        "current_sha256": "6c201d51541f265cdcab6a1857afae9cd63955034a33078f8d43d101cbfe38a9",
+        "declared": "docs/evidence/a0/verification.txt",
+        "inside_repository": true,
+        "is_file": true,
+        "present_at_claimed_commit": true,
+        "resolved": "/tmp/praxis-gvi-001-3pnqnaep/provenance-tracked-at-commit/docs/evidence/a0/verification.txt",
+        "tracked_at_HEAD": true
+      },
+      "gate": {
+        "claimed_commit_sha256": "306c6ca7407560340797866e077e053627ad409277d1b9da58106fce4cf717cb",
+        "current_matches_claimed_commit": true,
+        "current_sha256": "306c6ca7407560340797866e077e053627ad409277d1b9da58106fce4cf717cb",
+        "declared": "scripts/verify_a0.sh",
+        "inside_repository": true,
+        "is_file": true,
+        "present_at_claimed_commit": true,
+        "resolved": "/tmp/praxis-gvi-001-3pnqnaep/provenance-tracked-at-commit/scripts/verify_a0.sh",
+        "tracked_at_HEAD": true
+      },
+      "id": "tracked_at_claimed_commit",
+      "validator": {
+        "classification": "ACCEPT",
+        "exit_status": 0,
+        "stderr": "",
+        "stdout": "PASS  canonical state \u2014 .hoa/project-state.yaml\nPASS  canonical state conforms to project-state.schema.json\nPASS  governance method \u2014 praxis-governed-engineering/0.1\nPASS  gate \u2014 scripts/verify_a0.sh\nPASS  governed evidence \u2014 docs/evidence/a0/verification.txt\nPASS  governed evidence proves PASS \u2014 A0\nPASS  verified commit ancestry \u2014 607878c5eb7b7c35123f4154930629bf257915dc\nPASS  next milestone authorization explicit\n\nGoverned project method v0.1: READY\n"
+      },
+      "working_tree": ""
+    },
+    {
+      "HEAD": "b2fcaa849bcab199b93312ae09a0badbed378f7f",
+      "claimed_verified_commit": "56c792aa425e8e4466636d9fcc88af0d31732fa4",
+      "direct_gate_execution": {
+        "exit_status": 0,
+        "stderr": "",
+        "stdout": "",
+        "succeeds": true
+      },
+      "evidence": {
+        "claimed_commit_sha256": null,
+        "current_matches_claimed_commit": false,
+        "current_sha256": "6c201d51541f265cdcab6a1857afae9cd63955034a33078f8d43d101cbfe38a9",
+        "declared": "docs/evidence/a0/verification.txt",
+        "inside_repository": true,
+        "is_file": true,
+        "present_at_claimed_commit": false,
+        "resolved": "/tmp/praxis-gvi-001-3pnqnaep/provenance-tracked-later/docs/evidence/a0/verification.txt",
+        "tracked_at_HEAD": true
+      },
+      "gate": {
+        "claimed_commit_sha256": null,
+        "current_matches_claimed_commit": false,
+        "current_sha256": "306c6ca7407560340797866e077e053627ad409277d1b9da58106fce4cf717cb",
+        "declared": "scripts/verify_a0.sh",
+        "inside_repository": true,
+        "is_file": true,
+        "present_at_claimed_commit": false,
+        "resolved": "/tmp/praxis-gvi-001-3pnqnaep/provenance-tracked-later/scripts/verify_a0.sh",
+        "tracked_at_HEAD": true
+      },
+      "id": "tracked_only_after_claimed_commit",
+      "validator": {
+        "classification": "ACCEPT",
+        "exit_status": 0,
+        "stderr": "",
+        "stdout": "PASS  canonical state \u2014 .hoa/project-state.yaml\nPASS  canonical state conforms to project-state.schema.json\nPASS  governance method \u2014 praxis-governed-engineering/0.1\nPASS  gate \u2014 scripts/verify_a0.sh\nPASS  governed evidence \u2014 docs/evidence/a0/verification.txt\nPASS  governed evidence proves PASS \u2014 A0\nPASS  verified commit ancestry \u2014 56c792aa425e8e4466636d9fcc88af0d31732fa4\nPASS  next milestone authorization explicit\n\nGoverned project method v0.1: READY\n"
+      },
+      "working_tree": ""
+    },
+    {
+      "HEAD": "9b8772c3098601f6994204c96e1d1c4416890006",
+      "claimed_verified_commit": "56c792aa425e8e4466636d9fcc88af0d31732fa4",
+      "direct_gate_execution": {
+        "exit_status": 0,
+        "stderr": "",
+        "stdout": "",
+        "succeeds": true
+      },
+      "evidence": {
+        "claimed_commit_sha256": null,
+        "current_matches_claimed_commit": false,
+        "current_sha256": "6c201d51541f265cdcab6a1857afae9cd63955034a33078f8d43d101cbfe38a9",
+        "declared": "docs/evidence/a0/verification.txt",
+        "inside_repository": true,
+        "is_file": true,
+        "present_at_claimed_commit": false,
+        "resolved": "/tmp/praxis-gvi-001-3pnqnaep/provenance-untracked-gate/docs/evidence/a0/verification.txt",
+        "tracked_at_HEAD": true
+      },
+      "gate": {
+        "claimed_commit_sha256": null,
+        "current_matches_claimed_commit": false,
+        "current_sha256": "306c6ca7407560340797866e077e053627ad409277d1b9da58106fce4cf717cb",
+        "declared": "scripts/verify_a0.sh",
+        "inside_repository": true,
+        "is_file": true,
+        "present_at_claimed_commit": false,
+        "resolved": "/tmp/praxis-gvi-001-3pnqnaep/provenance-untracked-gate/scripts/verify_a0.sh",
+        "tracked_at_HEAD": false
+      },
+      "id": "untracked_gate",
+      "validator": {
+        "classification": "ACCEPT",
+        "exit_status": 0,
+        "stderr": "",
+        "stdout": "PASS  canonical state \u2014 .hoa/project-state.yaml\nPASS  canonical state conforms to project-state.schema.json\nPASS  governance method \u2014 praxis-governed-engineering/0.1\nPASS  gate \u2014 scripts/verify_a0.sh\nPASS  governed evidence \u2014 docs/evidence/a0/verification.txt\nPASS  governed evidence proves PASS \u2014 A0\nPASS  verified commit ancestry \u2014 56c792aa425e8e4466636d9fcc88af0d31732fa4\nPASS  next milestone authorization explicit\n\nGoverned project method v0.1: READY\n"
+      },
+      "working_tree": "?? scripts/verify_a0.sh"
+    },
+    {
+      "HEAD": "ef4437b00bddf50d96f329df68ce9538fc3486c9",
+      "claimed_verified_commit": "56c792aa425e8e4466636d9fcc88af0d31732fa4",
+      "direct_gate_execution": {
+        "exit_status": 0,
+        "stderr": "",
+        "stdout": "",
+        "succeeds": true
+      },
+      "evidence": {
+        "claimed_commit_sha256": null,
+        "current_matches_claimed_commit": false,
+        "current_sha256": "6c201d51541f265cdcab6a1857afae9cd63955034a33078f8d43d101cbfe38a9",
+        "declared": "docs/evidence/a0/verification.txt",
+        "inside_repository": true,
+        "is_file": true,
+        "present_at_claimed_commit": false,
+        "resolved": "/tmp/praxis-gvi-001-3pnqnaep/provenance-untracked-evidence/docs/evidence/a0/verification.txt",
+        "tracked_at_HEAD": false
+      },
+      "gate": {
+        "claimed_commit_sha256": null,
+        "current_matches_claimed_commit": false,
+        "current_sha256": "306c6ca7407560340797866e077e053627ad409277d1b9da58106fce4cf717cb",
+        "declared": "scripts/verify_a0.sh",
+        "inside_repository": true,
+        "is_file": true,
+        "present_at_claimed_commit": false,
+        "resolved": "/tmp/praxis-gvi-001-3pnqnaep/provenance-untracked-evidence/scripts/verify_a0.sh",
+        "tracked_at_HEAD": true
+      },
+      "id": "untracked_evidence",
+      "validator": {
+        "classification": "ACCEPT",
+        "exit_status": 0,
+        "stderr": "",
+        "stdout": "PASS  canonical state \u2014 .hoa/project-state.yaml\nPASS  canonical state conforms to project-state.schema.json\nPASS  governance method \u2014 praxis-governed-engineering/0.1\nPASS  gate \u2014 scripts/verify_a0.sh\nPASS  governed evidence \u2014 docs/evidence/a0/verification.txt\nPASS  governed evidence proves PASS \u2014 A0\nPASS  verified commit ancestry \u2014 56c792aa425e8e4466636d9fcc88af0d31732fa4\nPASS  next milestone authorization explicit\n\nGoverned project method v0.1: READY\n"
+      },
+      "working_tree": "?? docs/evidence/a0/verification.txt"
+    },
+    {
+      "HEAD": "2377288bceceb372c550692ede308b64e08d787a",
+      "claimed_verified_commit": "76787736d6c607b44ef4a91927fe7f8fc7407320",
+      "direct_gate_execution": {
+        "exit_status": 0,
+        "stderr": "",
+        "stdout": "",
+        "succeeds": true
+      },
+      "evidence": {
+        "claimed_commit_sha256": null,
+        "current_matches_claimed_commit": false,
+        "current_sha256": "6c201d51541f265cdcab6a1857afae9cd63955034a33078f8d43d101cbfe38a9",
+        "declared": "docs/evidence/a0/verification.txt",
+        "inside_repository": true,
+        "is_file": true,
+        "present_at_claimed_commit": false,
+        "resolved": "/tmp/praxis-gvi-001-3pnqnaep/provenance-external-gate/docs/evidence/a0/verification.txt",
+        "tracked_at_HEAD": true
+      },
+      "gate": {
+        "claimed_commit_sha256": null,
+        "current_matches_claimed_commit": false,
+        "current_sha256": "306c6ca7407560340797866e077e053627ad409277d1b9da58106fce4cf717cb",
+        "declared": "/tmp/praxis-gvi-001-3pnqnaep/external-gate.sh",
+        "inside_repository": false,
+        "is_file": true,
+        "present_at_claimed_commit": false,
+        "resolved": "/tmp/praxis-gvi-001-3pnqnaep/external-gate.sh",
+        "tracked_at_HEAD": false
+      },
+      "id": "external_gate",
+      "validator": {
+        "classification": "ACCEPT",
+        "exit_status": 0,
+        "stderr": "",
+        "stdout": "PASS  canonical state \u2014 .hoa/project-state.yaml\nPASS  canonical state conforms to project-state.schema.json\nPASS  governance method \u2014 praxis-governed-engineering/0.1\nPASS  gate \u2014 /tmp/praxis-gvi-001-3pnqnaep/external-gate.sh\nPASS  governed evidence \u2014 docs/evidence/a0/verification.txt\nPASS  governed evidence proves PASS \u2014 A0\nPASS  verified commit ancestry \u2014 76787736d6c607b44ef4a91927fe7f8fc7407320\nPASS  next milestone authorization explicit\n\nGoverned project method v0.1: READY\n"
+      },
+      "working_tree": ""
+    },
+    {
+      "HEAD": "7987424456d1680eaafb8e47b5ce17dbef84e043",
+      "claimed_verified_commit": "76787736d6c607b44ef4a91927fe7f8fc7407320",
+      "direct_gate_execution": {
+        "exit_status": 0,
+        "stderr": "",
+        "stdout": "",
+        "succeeds": true
+      },
+      "evidence": {
+        "claimed_commit_sha256": null,
+        "current_matches_claimed_commit": false,
+        "current_sha256": "6c201d51541f265cdcab6a1857afae9cd63955034a33078f8d43d101cbfe38a9",
+        "declared": "/tmp/praxis-gvi-001-3pnqnaep/external-evidence.txt",
+        "inside_repository": false,
+        "is_file": true,
+        "present_at_claimed_commit": false,
+        "resolved": "/tmp/praxis-gvi-001-3pnqnaep/external-evidence.txt",
+        "tracked_at_HEAD": false
+      },
+      "gate": {
+        "claimed_commit_sha256": null,
+        "current_matches_claimed_commit": false,
+        "current_sha256": "306c6ca7407560340797866e077e053627ad409277d1b9da58106fce4cf717cb",
+        "declared": "scripts/verify_a0.sh",
+        "inside_repository": true,
+        "is_file": true,
+        "present_at_claimed_commit": false,
+        "resolved": "/tmp/praxis-gvi-001-3pnqnaep/provenance-external-evidence/scripts/verify_a0.sh",
+        "tracked_at_HEAD": true
+      },
+      "id": "external_evidence",
+      "validator": {
+        "classification": "ACCEPT",
+        "exit_status": 0,
+        "stderr": "",
+        "stdout": "PASS  canonical state \u2014 .hoa/project-state.yaml\nPASS  canonical state conforms to project-state.schema.json\nPASS  governance method \u2014 praxis-governed-engineering/0.1\nPASS  gate \u2014 scripts/verify_a0.sh\nPASS  governed evidence \u2014 /tmp/praxis-gvi-001-3pnqnaep/external-evidence.txt\nPASS  governed evidence proves PASS \u2014 A0\nPASS  verified commit ancestry \u2014 76787736d6c607b44ef4a91927fe7f8fc7407320\nPASS  next milestone authorization explicit\n\nGoverned project method v0.1: READY\n"
+      },
+      "working_tree": ""
+    },
+    {
+      "HEAD": "46b61355dda4a3afba67abdc904da3be1a54c113",
+      "claimed_verified_commit": "91ea3a300be4945786c5bab275473d7e0f12ed12",
+      "direct_gate_execution": {
+        "exit_status": 7,
+        "stderr": "",
+        "stdout": "",
+        "succeeds": false
+      },
+      "evidence": {
+        "claimed_commit_sha256": "6c201d51541f265cdcab6a1857afae9cd63955034a33078f8d43d101cbfe38a9",
+        "current_matches_claimed_commit": true,
+        "current_sha256": "6c201d51541f265cdcab6a1857afae9cd63955034a33078f8d43d101cbfe38a9",
+        "declared": "docs/evidence/a0/verification.txt",
+        "inside_repository": true,
+        "is_file": true,
+        "present_at_claimed_commit": true,
+        "resolved": "/tmp/praxis-gvi-001-3pnqnaep/provenance-mutated-gate/docs/evidence/a0/verification.txt",
+        "tracked_at_HEAD": true
+      },
+      "gate": {
+        "claimed_commit_sha256": "306c6ca7407560340797866e077e053627ad409277d1b9da58106fce4cf717cb",
+        "current_matches_claimed_commit": false,
+        "current_sha256": "4d8fe24768718d56bd8c282eb86ad8c8411b2d3d4f8cc99d84fc37f55f7d3780",
+        "declared": "scripts/verify_a0.sh",
+        "inside_repository": true,
+        "is_file": true,
+        "present_at_claimed_commit": true,
+        "resolved": "/tmp/praxis-gvi-001-3pnqnaep/provenance-mutated-gate/scripts/verify_a0.sh",
+        "tracked_at_HEAD": true
+      },
+      "id": "gate_bytes_changed_after_claim",
+      "validator": {
+        "classification": "ACCEPT",
+        "exit_status": 0,
+        "stderr": "",
+        "stdout": "PASS  canonical state \u2014 .hoa/project-state.yaml\nPASS  canonical state conforms to project-state.schema.json\nPASS  governance method \u2014 praxis-governed-engineering/0.1\nPASS  gate \u2014 scripts/verify_a0.sh\nPASS  governed evidence \u2014 docs/evidence/a0/verification.txt\nPASS  governed evidence proves PASS \u2014 A0\nPASS  verified commit ancestry \u2014 91ea3a300be4945786c5bab275473d7e0f12ed12\nPASS  next milestone authorization explicit\n\nGoverned project method v0.1: READY\n"
+      },
+      "working_tree": "M scripts/verify_a0.sh"
+    },
+    {
+      "HEAD": "c72d49d71d1ed6177eb1e090ef8e66b7e9d742a2",
+      "claimed_verified_commit": "2b37403508a90798c5c4adb82a9003211e45a25f",
+      "direct_gate_execution": {
+        "exit_status": 0,
+        "stderr": "",
+        "stdout": "",
+        "succeeds": true
+      },
+      "evidence": {
+        "claimed_commit_sha256": "239566adba793fe90f6453bfe8133f3194428dc5094d245b4fe230ba5cc5c495",
+        "current_matches_claimed_commit": false,
+        "current_sha256": "95eb4aa1ca25f08870bae23d7ae831dca1651081e987bcbc8b00e7838fe96964",
+        "declared": "docs/evidence/a0/verification.txt",
+        "inside_repository": true,
+        "is_file": true,
+        "present_at_claimed_commit": true,
+        "resolved": "/tmp/praxis-gvi-001-3pnqnaep/provenance-mutated-evidence/docs/evidence/a0/verification.txt",
+        "tracked_at_HEAD": true
+      },
+      "gate": {
+        "claimed_commit_sha256": "306c6ca7407560340797866e077e053627ad409277d1b9da58106fce4cf717cb",
+        "current_matches_claimed_commit": true,
+        "current_sha256": "306c6ca7407560340797866e077e053627ad409277d1b9da58106fce4cf717cb",
+        "declared": "scripts/verify_a0.sh",
+        "inside_repository": true,
+        "is_file": true,
+        "present_at_claimed_commit": true,
+        "resolved": "/tmp/praxis-gvi-001-3pnqnaep/provenance-mutated-evidence/scripts/verify_a0.sh",
+        "tracked_at_HEAD": true
+      },
+      "id": "evidence_bytes_changed_after_claim",
+      "validator": {
+        "classification": "ACCEPT",
+        "exit_status": 0,
+        "stderr": "",
+        "stdout": "PASS  canonical state \u2014 .hoa/project-state.yaml\nPASS  canonical state conforms to project-state.schema.json\nPASS  governance method \u2014 praxis-governed-engineering/0.1\nPASS  gate \u2014 scripts/verify_a0.sh\nPASS  governed evidence \u2014 docs/evidence/a0/verification.txt\nPASS  governed evidence proves PASS \u2014 A0\nPASS  verified commit ancestry \u2014 2b37403508a90798c5c4adb82a9003211e45a25f\nPASS  next milestone authorization explicit\n\nGoverned project method v0.1: READY\n"
+      },
+      "working_tree": "M docs/evidence/a0/verification.txt"
+    }
+  ],
+  "summary": {
+    "authority": {
+      "contradictory_evidence": {
+        "manifest_schema": "ACCEPT",
+        "validator": "ACCEPT",
+        "validator_mentions_manifest": false
+      },
+      "contradictory_gate": {
+        "manifest_schema": "ACCEPT",
+        "validator": "ACCEPT",
+        "validator_mentions_manifest": false
+      },
+      "contradictory_latest_a1": {
+        "manifest_schema": "ACCEPT",
+        "validator": "ACCEPT",
+        "validator_mentions_manifest": false
+      },
+      "empty_with_verified_manifest": {
+        "manifest_schema": "ACCEPT",
+        "validator": "REJECT",
+        "validator_mentions_manifest": false
+      },
+      "matching_a0": {
+        "manifest_schema": "ACCEPT",
+        "validator": "ACCEPT",
+        "validator_mentions_manifest": false
+      },
+      "orphan_verified": {
+        "manifest_schema": "ACCEPT",
+        "validator": "ACCEPT",
+        "validator_mentions_manifest": false
+      }
+    },
+    "coherence": {
+      "failure_negated_pass": "ACCEPT",
+      "failure_pass_no_checksum": "ACCEPT",
+      "failure_pass_substring": "ACCEPT",
+      "success_pass_invalid_checksum": "REJECT",
+      "success_pass_no_checksum": "ACCEPT",
+      "success_pass_valid_checksum": "ACCEPT",
+      "success_without_pass": "REJECT"
+    },
+    "ordering": {
+      "A0": "ACCEPT",
+      "A0_ROLLBACK": "ACCEPT",
+      "A1": "ACCEPT"
+    },
+    "provenance_acceptances": [
+      "tracked_at_claimed_commit",
+      "tracked_only_after_claimed_commit",
+      "untracked_gate",
+      "untracked_evidence",
+      "external_gate",
+      "external_evidence",
+      "gate_bytes_changed_after_claim",
+      "evidence_bytes_changed_after_claim"
+    ],
+    "recovery": {
+      "INVALID_PARTIAL": "REJECT",
+      "RESTORED_A0": "ACCEPT",
+      "VALID_A0": "ACCEPT"
+    }
+  }
+}
