@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://praxis.local/contracts/methodology/licensing-state.schema.json",
+  "title": "Praxis Governed Licensing State 0.1",
+  "type": "object",
+  "required": [
+    "version",
+    "resolved",
+    "provenance",
+    "policy",
+    "policy_default",
+    "artifact",
+    "artifact_sha256"
+  ],
+  "properties": {
+    "version": {"const": "0.1"},
+    "resolved": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9.+-]*$"
+    },
+    "provenance": {"enum": ["explicit", "default", "exception"]},
+    "policy": {"const": "praxis-new-project-license/0.1"},
+    "policy_default": {"const": "GPL-3.0-or-later"},
+    "exception_rationale": {"type": "string", "minLength": 1},
+    "artifact": {"const": "LICENSE"},
+    "artifact_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    }
+  },
+  "additionalProperties": false
+}

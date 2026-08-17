@@ -33,6 +33,31 @@ promoção.
 `create_once` é a política preferida para scaffolds constitucionais. Reexecução
 em projeto já constituído deve ser não destrutiva.
 
+## Licensing prospectivo
+
+Novos projetos criados a partir do template Praxis recebem a capacidade
+consumível `.hoa/initial-constitution`. Somente essa evidência positiva autoriza
+`bootstrap_project_licensing.py` a constituir uma decisão ausente. Sem escolha
+explícita, o default interno é `GPL-3.0-or-later`; uma escolha explícita preserva
+sua proveniência mesmo quando difere do default.
+
+A presença do marcador reconhecido expressa autorização local para executar a
+constituição inicial. Ela não constitui prova histórica ou criptográfica de que
+o diretório se originou do template Praxis. Criar o marcador manualmente é uma
+concessão explícita dessa autorização local e deve permanecer uma ação
+governada pelo responsável pelo workspace.
+
+Uma exceção real ao default é uma categoria separada, deve divergir do default
+e exige rationale. A constituição cria `.hoa/licensing.yaml`, vincula a decisão
+ao `LICENSE` por SHA-256, exige no artefato uma declaração
+`SPDX-License-Identifier` igual à licença resolvida e consome a capacidade
+inicial. Reexecuções validam e preservam a decisão existente.
+
+Ausência de `.hoa/licensing.yaml` sem a capacidade inicial significa legado ou
+decisão ainda não constituída; nunca significa autorização para criar ou
+substituir `LICENSE`. Essa política verifica coerência e proveniência de
+engenharia, não compatibilidade ou conformidade jurídica.
+
 ## Integridade
 
 Gates devem rejeitar referências governadas quebradas e divergências entre
