@@ -1,0 +1,161 @@
+Praxis governed evidence
+milestone=PRAXIS-LIC-001
+status=experimentally-closed-not-promoted
+date=2026-08-17
+baseline_commit=c3e24973a2a9c14bd44c4efa6c932ccb88a0c84e
+gate=scripts/verify_praxis_licensing.sh
+
+Reproduction:
+  ./scripts/verify_praxis_licensing.sh
+
+Observed gate result (exit status 0):
+  PASS 20 licensing unit/adversarial tests
+  PASS methodology artifacts, schemas, executable fixtures, and validators
+  PASS legacy Praxis governed-project validation without licensing mutation
+  PASS Praxis self-license GPL-3.0-only
+  Praxis PRAXIS-LIC-001: PASS
+
+Scenario coverage:
+  LIC-T01 explicit valid license: PASS
+  LIC-T02 new-project default and default provenance: PASS
+  LIC-T03 explicit value differs from default without exception: PASS
+  LIC-T04 resolved state without LICENSE rejected: PASS
+  LIC-T05 exception without rationale rejected without mutation: PASS
+  LIC-T06 repeated bootstrap preserves metadata and artifact bytes: PASS
+  LIC-T07 legacy governed project remains valid and unmodified: PASS
+  LIC-T08 Praxis remains GPL-3.0-only: PASS
+  LIC-T09 independent artifact and identifiable-metadata mutations rejected: PASS
+  LIC-T10 SPDX-identifiable metadata/artifact contradiction rejected: PASS
+  LIC-T11 legacy metadata absence does not establish newness: PASS
+  additional: forged default provenance rejected
+  additional: existing LICENSE blocks default replacement
+  additional: caller-provided artifact blocked for default resolution
+  additional: exception that restates the default rejected
+  additional: conflicting license/provenance reexecution rejected
+  additional: unconsumed capability beside constituted state rejected
+  additional: template capability identity checked
+
+Repository-wide verification:
+  ./scripts/run_quality.sh
+  exit status 0
+  CTest: 4/4 passed
+  licensing tests: 20/20 passed
+  governance baseline: READY
+  governed methodology: READY
+  Praxis doctor: READY
+  git diff --check: exit status 0
+  Python compileall: exit status 0
+
+Real artifact inspection:
+  A project copied from templates/governed-project began with only
+  .hoa/project-state.yaml and .hoa/initial-constitution.
+  The read-only validator reported initial constitution pending.
+  Default bootstrap produced resolved=GPL-3.0-or-later,
+  provenance=default, LICENSE SHA-256
+  7f553b693116c2c443928c003805d50e9c856d63ae40c8aa2a09808c682fc01e,
+  and licensing-state SHA-256
+  5dd4c1d9e36327a6dd6c7d2ed4d5e11ffc61f7588282d6d5419581d37e448717.
+  The capability was absent after success. A second bootstrap returned success
+  and both hashes remained identical.
+
+First-cycle implementation identities at verification:
+  04ed47689dcc333a427738f32ee93e054bad2bdc962d86dfb3d7443125470616  contracts/methodology/licensing-state.schema.json
+  dcc1f727108f91ceca13b51ff1410b8c99d71f3551c992fcecf4fa235e130728  scripts/governed_licensing.py
+  e9f0e5c8ab4e9db9f7be3cd0f5acd82c09fdbcd22540c7ca5481fe7ce05ae13b  scripts/bootstrap_project_licensing.py
+  cbe138acfc8e94415f9773b2b2126ef3eb5fbb90acc786eb7fe8ae14c0f25d89  scripts/validate_governed_licensing.py
+  66ea9df104c6a3f6ee698bd6ed872a6cd533551bdab6c3f5e5fc87e2d6375101  scripts/verify_praxis_licensing.sh
+  3b6f97a6cebb4fc9ad30d2b2f670c9caca1da57e09455cbd9b89725e4e0e5a91  tests/licensing/test_governed_licensing.py
+  30dde04138640e1d17861c44be1c8e451553be71220a6b005c1298fd070373b6  templates/governed-project/.hoa/initial-constitution
+  3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986  LICENSE
+
+Claim boundary:
+  This evidence demonstrates local deterministic engineering-policy coherence,
+  provenance, artifact byte identity, positive bootstrap authorization, and
+  non-destructive behavior for the exercised states. It is not legal advice,
+  license-compatibility analysis, arbitrary legal-text classification, proof
+  against coordinated metadata/artifact replacement, or institutional-policy
+  validation.
+
+Closure continuation — independent audit reproduction:
+  starting_HEAD=c3e24973a2a9c14bd44c4efa6c932ccb88a0c84e
+  starting_index=empty
+  starting_PRAXIS-LIC-001_state=uncommitted working tree
+
+  OBS-LIC-01: REPRODUCED before correction
+    setup: recognized local capability; explicit MIT; CMakeLists.txt supplied as
+      LICENSE bytes with no SPDX declaration
+    bootstrap exit status: 0
+    validator exit status: 0
+    resulting resolved: MIT
+    resulting provenance: explicit
+    resulting artifact SHA-256:
+      13a33f5157f8262207896ee90d4e05423d2b34777e037c7b9c0f06f47494a28c
+    consequence: hash proved byte identity but no declared license identity
+
+  OBS-LIC-02: REPRODUCED before documentation correction
+    setup: arbitrary empty directory; no project-state; manually copied exact
+      .hoa/initial-constitution capability
+    pending validator exit status: 0
+    default bootstrap exit status: 0
+    final validator exit status: 0
+    consequence: capability proves recognized local authorization, not
+      historical template origin
+
+  atomicity fault probe: REPRODUCED
+    injection point: capability Path.unlink after artifact/metadata validation
+    bootstrap exit status: 1
+    resulting files: LICENSE, .hoa/licensing.yaml,
+      .hoa/initial-constitution
+    validator exit status: 1
+    validator observation: initial-constitution capability was not consumed
+    classification: bounded limitation; candidate future hardening; failed
+      closed and requires explicit recovery
+
+Closure correction:
+  Every constituted LICENSE must contain exactly one recognized declaration
+  whose value matches resolved:
+    SPDX-License-Identifier: <resolved>
+  The bootstrap rejects a missing declaration before writing project state.
+  The validator rejects a missing declaration even when artifact SHA-256 is
+  updated to match the declaration-free bytes. This is deterministic identifier
+  coherence, not analysis of legal prose.
+
+Closure verification:
+  licensing unit/adversarial tests: 23/23 passed, exit status 0
+  LIC-T01 through LIC-T11 baseline behavior: preserved
+  LIC-T12 missing matching machine-readable declaration: rejected
+  ambiguous duplicate SPDX declarations: rejected
+  positive explicit MIT declaration/hash/state: accepted
+  clean CMake configure/build: exit status 0
+  clean CTest: 4/4 passed, exit status 0
+  methodology validator: READY, exit status 0
+  governance baseline: READY, exit status 0
+  governed-project validator: READY, exit status 0
+  Praxis doctor from clean build: READY, exit status 0
+  clean build directory: build-clean-praxis-lic-final.pGuPY1 (transient/ignored)
+  git diff --check: exit status 0
+  Praxis LICENSE working-tree SHA-256:
+    3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986
+  Praxis LICENSE HEAD SHA-256:
+    3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986
+
+Closure implementation identities:
+  04ed47689dcc333a427738f32ee93e054bad2bdc962d86dfb3d7443125470616  contracts/methodology/licensing-state.schema.json
+  196061d8008903576eb55bdcf441847e210e5e53b0afad715d2a1b9d21a14e30  scripts/governed_licensing.py
+  72911dfbddccbda55200e4e1db99ff1d9353f96bc3ff7d847fbc5c6d42d07d65  scripts/bootstrap_project_licensing.py
+  cbe138acfc8e94415f9773b2b2126ef3eb5fbb90acc786eb7fe8ae14c0f25d89  scripts/validate_governed_licensing.py
+  66ea9df104c6a3f6ee698bd6ed872a6cd533551bdab6c3f5e5fc87e2d6375101  scripts/verify_praxis_licensing.sh
+  6a612b146a02425d60407c29f82a54e36b630ae6b8c387d2b609e08d6e41b672  tests/licensing/test_governed_licensing.py
+  30dde04138640e1d17861c44be1c8e451553be71220a6b005c1298fd070373b6  templates/governed-project/.hoa/initial-constitution
+  3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986  LICENSE
+
+Closure claim boundary:
+  Demonstrated: local authorization capability semantics, deterministic
+  resolved/SPDX declaration coherence, exact artifact bytes, policy/provenance
+  coherence, monotonic reexecution, legacy non-mutation, and rejection of the
+  observed partial state.
+  Not demonstrated: historical template origin, legal validity or completeness
+  of license prose, universal license compatibility, institutional adequacy,
+  full-sequence transactional atomicity, or resistance to a fully coordinated
+  authorized rewrite of metadata and artifact.
+  No next milestone, method rule, release, publication, or promotion is implied.

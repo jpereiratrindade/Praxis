@@ -11,6 +11,7 @@ import sys
 from pathlib import Path
 
 from governed_method_schema import load_flat_yaml, load_schema, validate_instance
+from governed_licensing import validate_licensing
 
 
 PRAXIS_ROOT = Path(__file__).resolve().parents[1]
@@ -117,5 +118,17 @@ if bootstrap_script:
     if not (root / bootstrap_script).is_file():
         fail(f"bootstrap script missing — {bootstrap_script}")
     ok(f"bootstrap script — {bootstrap_script}")
+
+licensing_status, licensing_errors = validate_licensing(root)
+if licensing_errors:
+    for error in licensing_errors:
+        print(f"FAIL  governed licensing — {error}", file=sys.stderr)
+    raise SystemExit(1)
+if licensing_status == "legacy":
+    ok("governed licensing — legacy/not constituted; no mutation")
+elif licensing_status == "pending":
+    ok("governed licensing — initial constitution pending")
+else:
+    ok("governed licensing — state, provenance, policy, and LICENSE coherent")
 
 print("\nGoverned project method v0.1: READY")
