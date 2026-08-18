@@ -79,13 +79,53 @@ if not re.search(
     fail(f"governed evidence does not prove PASS — {milestone}")
 ok(f"governed evidence proves PASS — {milestone}")
 
-checksum = (root / evidence).with_suffix(".sha256")
-if checksum.is_file():
-    expected = checksum.read_text(encoding="utf-8").split()[0]
-    observed = hashlib.sha256((root / evidence).read_bytes()).hexdigest()
+evidence_path = root / evidence
+
+# Canonical sidecar preserves the complete evidence filename:
+#   verification.txt -> verification.txt.sha256
+#
+# The historical Path.with_suffix() form is retained for backward
+# compatibility:
+#   verification.txt -> verification.sha256
+checksum_candidates = [
+    evidence_path.parent / f"{evidence_path.name}.sha256",
+    evidence_path.with_suffix(".sha256"),
+]
+
+checksums = []
+for candidate in checksum_candidates:
+    if candidate.is_file() and candidate not in checksums:
+        checksums.append(candidate)
+
+if checksums:
+    expected_values = set()
+
+    for checksum in checksums:
+        fields = checksum.read_text(
+            encoding="utf-8", errors="replace"
+        ).split()
+
+        if not fields:
+            fail(
+                "governed evidence checksum sidecar empty — "
+                f"{checksum.relative_to(root)}"
+            )
+
+        expected_values.add(fields[0])
+
+    if len(expected_values) != 1:
+        fail("governed evidence checksum sidecars disagree")
+
+    expected = next(iter(expected_values))
+    observed = hashlib.sha256(evidence_path.read_bytes()).hexdigest()
+
     if expected != observed:
         fail("governed evidence checksum")
-    ok("governed evidence checksum")
+
+    ok(
+        "governed evidence checksum — "
+        + ", ".join(str(p.relative_to(root)) for p in checksums)
+    )
 
 ancestor = run(root, "git", "merge-base", "--is-ancestor", commit, "HEAD")
 if ancestor.returncode != 0:
