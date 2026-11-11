@@ -396,3 +396,9 @@ Consulte [LICENSE](LICENSE).
 > O executor deve obedecer.<br>
 > O sistema deve verificar.<br>
 > A evidência deve permanecer.
+
+## Premissas de desenvolvimento
+
+**Simples, leve. Sempre pronto. Sempre incompleto!**
+
+[Significado e símbolos das premissas](docs/sister-principles/README.md).
